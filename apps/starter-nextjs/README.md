@@ -35,7 +35,7 @@ Follow these steps to get your project up and running:
 
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/andeerc/volt.js.git
+    git clone https://github.com/Volt-js/volt.js.git
     cd volt.js/apps/starter-next-app
     ```
 
@@ -157,7 +157,7 @@ src/
 
 To learn more about Volt.js and its powerful features, check out the official documentation:
 
--   **[Volt.js GitHub Repository](https://github.com/andeerc/volt.js)**
+-   **[Volt.js GitHub Repository](https://github.com/Volt-js/volt.js)**
 -   **[Official Documentation](https://voltjs.com/docs)**
 -   **[Core Concepts](https://voltjs.com/docs/core-concepts)**
 -   **[Client-Side Integration](https://voltjs.com/docs/client-side)**

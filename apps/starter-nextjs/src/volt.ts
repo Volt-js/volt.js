@@ -8,7 +8,7 @@ import { telemetry } from "@/services/telemetry"
 import openapi from "@/docs/openapi.json"
 /**
  * @description Initialize the Volt.js
- * @see https://github.com/andeerc/volt.js
+ * @see https://github.com/Volt-js/volt.js
  */
 export const volt = Volt
   .context(createVoltAppContext())

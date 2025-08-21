@@ -15,7 +15,7 @@ const packages = [
         <path d="M25 20L35 30L25 40L15 30L25 20Z" fill="white" fillOpacity="0.7"/>
       </svg>
     ),
-    link: "https://github.com/andeerc/volt.js/tree/main/packages/core"
+    link: "https://github.com/Volt-js/volt.js/tree/main/packages/core"
   },
   {
     name: "Volt CLI",
@@ -28,7 +28,7 @@ const packages = [
         <path d="M15 30L25 25L35 30L25 35L15 30Z" fill="white" fillOpacity="0.6"/>
       </svg>
     ),
-    link: "https://github.com/andeerc/volt.js/tree/main/packages/cli"
+    link: "https://github.com/Volt-js/volt.js/tree/main/packages/cli"
   },
   {
     name: "Volt Queues",

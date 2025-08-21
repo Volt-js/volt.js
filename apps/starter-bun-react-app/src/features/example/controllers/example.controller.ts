@@ -2,7 +2,7 @@ import { volt } from '@/volt'
 
 /**
  * @description Example controller demonstrating Volt.js features
- * @see https://github.com/andeerc/volt.js
+ * @see https://github.com/Volt-js/volt.js
  */
 export const exampleController = volt.controller({
   name: 'Example',

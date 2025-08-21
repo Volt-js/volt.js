@@ -29,11 +29,11 @@ export const templates: Template[] = [
     css: "Tailwind CSS",
     database: "PostgreSQL",
     demoUrl: "https://volt.js-sample-realtime-chat.vercel.app/",
-    repositoryUrl: "https://github.com/andeerc/volt.js/tree/main/apps/sample-realtime-chat",
-    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/andeerc/volt.js&project-name=volt-realtime-chat&repository-name=volt-realtime-chat&root-directory=apps/sample-realtime-chat",
+    repositoryUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/sample-realtime-chat",
+    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/Volt-js/volt.js&project-name=volt-realtime-chat&repository-name=volt-realtime-chat&root-directory=apps/sample-realtime-chat",
     tags: ["Next.js", "TypeScript", "Prisma", "WebSocket", "Real-Time"],
     creator: {
-      username: "andeerc"
+      username: "Volt-js"
     }
   },
   {
@@ -45,12 +45,12 @@ export const templates: Template[] = [
     useCase: "Full-Stack",
     css: "Tailwind CSS",
     database: "PostgreSQL",
-    demoUrl: "https://github.com/andeerc/volt.js/tree/main/apps/starter-nextjs",
-    repositoryUrl: "https://github.com/andeerc/volt.js/tree/main/apps/starter-nextjs",
-    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/andeerc/volt.js&project-name=volt-nextjs-starter&repository-name=volt-nextjs-starter&root-directory=apps/starter-nextjs",
+    demoUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/starter-nextjs",
+    repositoryUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/starter-nextjs",
+    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/Volt-js/volt.js&project-name=volt-nextjs-starter&repository-name=volt-nextjs-starter&root-directory=apps/starter-nextjs",
     tags: ["Next.js", "TypeScript", "Prisma", "Redis", "BullMQ"],
     creator: {
-      username: "andeerc"
+      username: "Volt-js"
     }
   },
   {
@@ -61,12 +61,12 @@ export const templates: Template[] = [
     framework: "Bun",
     useCase: "Full-Stack",
     css: "Tailwind CSS",
-    demoUrl: "https://github.com/andeerc/volt.js/tree/main/apps/starter-bun-react-app",
-    repositoryUrl: "https://github.com/andeerc/volt.js/tree/main/apps/starter-bun-react-app",
-    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/andeerc/volt.js&project-name=volt-bun-react-starter&repository-name=volt-bun-react-starter&root-directory=apps/starter-bun-react-app",
+    demoUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/starter-bun-react-app",
+    repositoryUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/starter-bun-react-app",
+    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/Volt-js/volt.js&project-name=volt-bun-react-starter&repository-name=volt-bun-react-starter&root-directory=apps/starter-bun-react-app",
     tags: ["Bun", "React", "SSR", "TypeScript", "Redis"],
     creator: {
-      username: "andeerc"
+      username: "Volt-js"
     }
   },
   {
@@ -78,12 +78,12 @@ export const templates: Template[] = [
     useCase: "Full-Stack",
     css: "Tailwind CSS",
     database: "PostgreSQL",
-    demoUrl: "https://github.com/andeerc/volt.js/tree/main/apps/starter-tanstack-start",
-    repositoryUrl: "https://github.com/andeerc/volt.js/tree/main/apps/starter-tanstack-start",
-    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/andeerc/volt.js&project-name=volt-tanstack-starter&repository-name=volt-tanstack-starter&root-directory=apps/starter-tanstack-start",
+    demoUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/starter-tanstack-start",
+    repositoryUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/starter-tanstack-start",
+    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/Volt-js/volt.js&project-name=volt-tanstack-starter&repository-name=volt-tanstack-starter&root-directory=apps/starter-tanstack-start",
     tags: ["TanStack", "TypeScript", "Prisma", "Vite"],
     creator: {
-      username: "andeerc"
+      username: "Volt-js"
     }
   },
   {
@@ -95,12 +95,12 @@ export const templates: Template[] = [
     useCase: "API",
     css: "N/A",
     database: "PostgreSQL",
-    demoUrl: "https://github.com/andeerc/volt.js/tree/main/apps/starter-express-rest-api",
-    repositoryUrl: "https://github.com/andeerc/volt.js/tree/main/apps/starter-express-rest-api",
-    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/andeerc/volt.js&project-name=volt-express-api&repository-name=volt-express-api&root-directory=apps/starter-express-rest-api",
+    demoUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/starter-express-rest-api",
+    repositoryUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/starter-express-rest-api",
+    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/Volt-js/volt.js&project-name=volt-express-api&repository-name=volt-express-api&root-directory=apps/starter-express-rest-api",
     tags: ["Express", "REST API", "TypeScript", "Prisma"],
     creator: {
-      username: "andeerc"
+      username: "Volt-js"
     }
   },
   {
@@ -112,12 +112,12 @@ export const templates: Template[] = [
     useCase: "API",
     css: "N/A",
     database: "PostgreSQL",
-    demoUrl: "https://github.com/andeerc/volt.js/tree/main/apps/starter-bun-rest-api",
-    repositoryUrl: "https://github.com/andeerc/volt.js/tree/main/apps/starter-bun-rest-api",
-    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/andeerc/volt.js&project-name=volt-bun-api&repository-name=volt-bun-api&root-directory=apps/starter-bun-rest-api",
+    demoUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/starter-bun-rest-api",
+    repositoryUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/starter-bun-rest-api",
+    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/Volt-js/volt.js&project-name=volt-bun-api&repository-name=volt-bun-api&root-directory=apps/starter-bun-rest-api",
     tags: ["Bun", "REST API", "TypeScript", "Prisma"],
     creator: {
-      username: "andeerc"
+      username: "Volt-js"
     }
   },
   {
@@ -129,12 +129,12 @@ export const templates: Template[] = [
     useCase: "API",
     css: "N/A",
     database: "PostgreSQL",
-    demoUrl: "https://github.com/andeerc/volt.js/tree/main/apps/starter-deno-rest-api",
-    repositoryUrl: "https://github.com/andeerc/volt.js/tree/main/apps/starter-deno-rest-api",
-    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/andeerc/volt.js&project-name=volt-deno-api&repository-name=volt-deno-api&root-directory=apps/starter-deno-rest-api",
+    demoUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/starter-deno-rest-api",
+    repositoryUrl: "https://github.com/Volt-js/volt.js/tree/main/apps/starter-deno-rest-api",
+    deployUrl: "https://vercel.com/new/clone?repository-url=https://github.com/Volt-js/volt.js&project-name=volt-deno-api&repository-name=volt-deno-api&root-directory=apps/starter-deno-rest-api",
     tags: ["Deno", "REST API", "TypeScript", "Prisma"],
     creator: {
-      username: "andeerc"
+      username: "Volt-js"
     }
   },
   {

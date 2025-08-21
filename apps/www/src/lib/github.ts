@@ -42,7 +42,7 @@ export class GitHubService {
   private readonly octokit: Octokit;
 
   constructor() {
-    this.owner = "andeerc";
+    this.owner = "Volt-js";
     this.repo = "volt.js";
 
     this.octokit = new Octokit({

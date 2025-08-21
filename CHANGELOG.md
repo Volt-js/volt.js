@@ -127,5 +127,5 @@ npx @volt.js/cli@latest init my-app
 
 - **📦 npm**: https://www.npmjs.com/package/@volt.js/core
 - **📚 Documentation**: https://voltjs.com/docs
-- **🐛 Issues**: https://github.com/andeerc/volt.js/issues
-- **💬 Discussions**: https://github.com/andeerc/volt.js/discussions
+- **🐛 Issues**: https://github.com/Volt-js/volt.js/issues
+- **💬 Discussions**: https://github.com/Volt-js/volt.js/discussions

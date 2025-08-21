@@ -3,7 +3,7 @@ import { exampleController } from '@/features/example'
 
 /**
  * @description Main application router configuration
- * @see https://github.com/andeerc/volt.js
+ * @see https://github.com/Volt-js/volt.js
  */
 export const AppRouter = volt.router({
   controllers: {

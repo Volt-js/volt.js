@@ -61,7 +61,7 @@ Our documentation is written in MDX (`.mdx`).
 
 ### Reporting Issues
 
-If you encounter a bug or have a feature request, please [open an issue](https://github.com/andeerc/volt.js/issues) on our GitHub repository. Provide as much detail as possible, including steps to reproduce the issue.
+If you encounter a bug or have a feature request, please [open an issue](https://github.com/Volt-js/volt.js/issues) on our GitHub repository. Provide as much detail as possible, including steps to reproduce the issue.
 
 ## 📜 License
 

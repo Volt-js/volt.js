@@ -802,7 +802,7 @@ Ready to build in public and share the journey! Who else is shipping something c
                       <div className="flex flex-wrap gap-2">
                         <Button
                           onClick={() => {
-                            window.open('https://github.com/andeerc/volt.js', '_blank');
+                            window.open('https://github.com/Volt-js/volt.js', '_blank');
                           }}
                           size="sm"
                           variant="outline"

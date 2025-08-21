@@ -35,7 +35,7 @@ Follow these steps to get your project up and running:
 
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/andeerc/volt.js.git
+    git clone https://github.com/Volt-js/volt.js.git
     cd volt.js/apps/starter-tanstack-start
     ```
 
@@ -141,7 +141,7 @@ src/
 
 ## Further Learning
 
--   **[Volt.js GitHub Repository](https://github.com/andeerc/volt.js)**
+-   **[Volt.js GitHub Repository](https://github.com/Volt-js/volt.js)**
 -   **[Volt.js Documentation Wiki](https://voltjs.com/docs)**
 -   **[TanStack Start Documentation](https://tanstack.com/start/latest/docs/overview)**
 -   **[TanStack Router Documentation](https://tanstack.com/router/latest/docs/overview)**

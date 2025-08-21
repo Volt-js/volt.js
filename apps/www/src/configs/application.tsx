@@ -10,7 +10,7 @@ export const config: Config = {
     'Build powerful TypeScript applications with end-to-end type safety and developer-first experience',
 
   // Links
-  githubUrl: "https://github.com/andeerc/volt.js",
+  githubUrl: "https://github.com/Volt-js/volt.js",
   twitterUrl: "https://x.com/feldbarcelospro",
   purchaseUrl: "",
 

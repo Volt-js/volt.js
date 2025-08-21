@@ -121,9 +121,9 @@ Volt.js 0.3.0 introduces significant performance optimizations:
 
 ## 🤝 Community & Support
 
-- **🐛 [Issues](https://github.com/andeerc/volt.js/issues)** - Report bugs and request features
-- **💬 [Discussions](https://github.com/andeerc/volt.js/discussions)** - Ask questions and share ideas
-- **🤝 [Contributing](https://github.com/andeerc/volt.js/blob/main/CONTRIBUTING.md)** - Help make Volt.js better
+- **🐛 [Issues](https://github.com/Volt-js/volt.js/issues)** - Report bugs and request features
+- **💬 [Discussions](https://github.com/Volt-js/volt.js/discussions)** - Ask questions and share ideas
+- **🤝 [Contributing](https://github.com/Volt-js/volt.js/blob/main/CONTRIBUTING.md)** - Help make Volt.js better
 
 ## 📄 License
 
@@ -133,5 +133,5 @@ MIT License - see the [LICENSE](LICENSE) file for details.
 
 <div align="center">
   <p>Made with ❤️ by the Volt.js team</p>
-  <p><a href="https://voltjs.com">voltjs.com</a> • <a href="https://github.com/andeerc/volt.js">GitHub</a> • <a href="https://www.npmjs.com/package/@volt.js/core">npm</a></p>
+  <p><a href="https://voltjs.com">voltjs.com</a> • <a href="https://github.com/Volt-js/volt.js">GitHub</a> • <a href="https://www.npmjs.com/package/@volt.js/core">npm</a></p>
 </div>

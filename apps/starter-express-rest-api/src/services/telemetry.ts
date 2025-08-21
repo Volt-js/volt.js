@@ -7,7 +7,7 @@ import { store } from './store'
  * @remarks
  * Provides telemetry tracking with configurable options.
  *
- * @see https://github.com/andeerc/volt.js/tree/main/packages/core
+ * @see https://github.com/Volt-js/volt.js/tree/main/packages/core
  */
 export const telemetry = createConsoleTelemetryAdapter({
   serviceName: 'sample-react-app',

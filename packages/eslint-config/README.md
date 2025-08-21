@@ -105,8 +105,8 @@ MIT License - see the [LICENSE](LICENSE) file for details
 ## Support
 
 - 📝 [Documentation](https://voltjs.com/docs)
-- 🐛 [Issue Tracker](https://github.com/andeerc/volt.js/issues)
-- 💬 [Discussions](https://github.com/andeerc/volt.js/discussions)
+- 🐛 [Issue Tracker](https://github.com/Volt-js/volt.js/issues)
+- 💬 [Discussions](https://github.com/Volt-js/volt.js/discussions)
 
 ---
 

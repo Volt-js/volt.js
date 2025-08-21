@@ -32,7 +32,7 @@ Follow these steps to get your project up and running:
 
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/andeerc/todo-volt-project.git
+    git clone https://github.com/Volt-js/todo-volt-project.git
     cd todo-volt-project
     ```
 
@@ -155,7 +155,7 @@ src/
 To learn more about Volt.js and its powerful features, check out the official resources:
 
 -   **[Volt.js Website](https://voltjs.com/)**
--   **[Volt.js GitHub Repository](https://github.com/andeerc/volt.js)**
+-   **[Volt.js GitHub Repository](https://github.com/Volt-js/volt.js)**
 -   **[Follow on X](https://x.com/VoltJs)**
 
 ## License

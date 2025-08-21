@@ -8,7 +8,7 @@ import { AppRouter } from '@/volt.router'
  * It intercepts the incoming web standard `Request` object and passes it
  * to the Volt.js router for processing.
  *
- * @see https://github.com/andeerc/volt.js
+ * @see https://github.com/Volt-js/volt.js
  * @see https://tanstack.com/start/latest/docs/framework/api-routes
  */
 

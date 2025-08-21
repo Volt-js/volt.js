@@ -19,7 +19,7 @@ function mapTemplateToFramework(framework: string): SupportedFramework {
     'starter-deno-rest-api': 'generic',
     'starter-tanstack-start': 'tanstack-start'
   }
-  
+
   return mapping[framework] || 'generic'
 }
 
@@ -69,7 +69,7 @@ export function generateVoltRouter(config: ProjectSetupConfig): TemplateFile {
 
 /**
  * @description Initialize the Volt.js
- * @see https://github.com/andeerc/volt.js
+ * @see https://github.com/Volt-js/volt.js
  */
 ${configChain.join('\n')}
 `
@@ -100,7 +100,7 @@ export function generateVoltContext(config: ProjectSetupConfig): TemplateFile {
 
 /**
  * @description Create the context of the Volt.js application
- * @see https://github.com/andeerc/volt.js
+ * @see https://github.com/Volt-js/volt.js
  */
 export const createVoltAppContext = () => {
   return {
@@ -110,7 +110,7 @@ ${contextProperties.join('\n')}
 
 /**
  * @description The context of the Volt.js application
- * @see https://github.com/andeerc/volt.js
+ * @see https://github.com/Volt-js/volt.js
  */
 export type VoltAppContext = Awaited<ReturnType<typeof createVoltAppContext>>
 `
@@ -224,7 +224,7 @@ import { z } from 'zod'`
 
 /**
  * @description Example controller demonstrating Volt.js features
- * @see https://github.com/andeerc/volt.js
+ * @see https://github.com/Volt-js/volt.js
  */
 export const exampleController = volt.controller({
   name: 'example',
@@ -250,7 +250,7 @@ import { exampleController } from '@/features/example'
 
 /**
  * @description Main application router configuration
- * @see https://github.com/andeerc/volt.js
+ * @see https://github.com/Volt-js/volt.js
  */
 export const AppRouter = volt.router({
   controllers: {
@@ -287,7 +287,7 @@ export * from './example.interfaces'
  * @param config - The project setup configuration.
  * @returns An array of TemplateFile objects representing service files.
  *
- * @see https://github.com/andeerc/volt.js
+ * @see https://github.com/Volt-js/volt.js
  */
 export function generateServiceFiles(config: ProjectSetupConfig): TemplateFile[] {
   const { features, database } = config
@@ -336,7 +336,7 @@ import { redis } from './redis'
   * @remarks
   * Provides a unified interface for data storage operations using Redis.
   *
-  * @see https://github.com/andeerc/volt.js/tree/main/packages/adapter-redis
+  * @see https://github.com/Volt-js/volt.js/tree/main/packages/adapter-redis
   */
 export const store = createRedisStoreAdapter(redis)
 `
@@ -357,7 +357,7 @@ import { z } from 'zod'
   * @remarks
   * Handles asynchronous job processing with BullMQ.
   *
-  * @see https://github.com/andeerc/volt.js/tree/main/packages/adapter-bullmq
+  * @see https://github.com/Volt-js/volt.js/tree/main/packages/adapter-bullmq
   */
 export const jobs = createBullMQAdapter({
   store,
@@ -398,7 +398,7 @@ export const REGISTERED_JOBS = jobs.merge({
   * @remarks
   * Provides structured logging with configurable log levels.
   *
-  * @see https://github.com/andeerc/volt.js/tree/main/packages/core
+  * @see https://github.com/Volt-js/volt.js/tree/main/packages/core
   */
 export const logger = createConsoleLogger({
   level: VoltLogLevel.INFO,
@@ -440,7 +440,7 @@ export const database = new PrismaClient()
        * @remarks
        * Provides telemetry tracking with configurable options.
        *
-       * @see https://github.com/andeerc/volt.js/tree/main/packages/core
+       * @see https://github.com/Volt-js/volt.js/tree/main/packages/core
        */
       export const telemetry = createConsoleTelemetryAdapter({
         serviceName: 'my-volt-app',
@@ -467,7 +467,7 @@ import { AppRouter } from '@/volt.router'
 /**
  * MCP server instance for exposing API as a MCP server.
  *
- * @see https://github.com/andeerc/volt.js/tree/main/packages/adapter-mcp
+ * @see https://github.com/Volt-js/volt.js/tree/main/packages/adapter-mcp
  */
 export default createMcpAdapter(AppRouter, {
   serverInfo: {
@@ -608,7 +608,7 @@ export function generatePackageJson(config: ProjectSetupConfig): TemplateFile {
 
   // Framework-specific dependencies
   const frameworkDeps = getFrameworkDependencies(config.framework)
-  
+
   // Combine all dependencies
   const dependencies = {
     ...baseDependencies,
@@ -648,7 +648,7 @@ export function generatePackageJson(config: ProjectSetupConfig): TemplateFile {
 function getFrameworkDependencies(framework: string) {
   const frameworkType = mapTemplateToFramework(framework)
   const reactFrameworks = ['nextjs', 'vite', 'tanstack-start']
-  
+
   const frameworkConfigs: Record<string, { dependencies: Record<string, string>, devDependencies: Record<string, string> }> = {
     'starter-nextjs': {
       dependencies: {
@@ -791,7 +791,7 @@ export function generateTailwindConfig(config: ProjectSetupConfig): TemplateFile
     return null
   }
 
-  const tailwindConfig = config.ui.shadcn 
+  const tailwindConfig = config.ui.shadcn
     ? generateShadcnTailwindConfig(config.framework)
     : generateBaseTailwindConfig(config.framework)
 
@@ -803,7 +803,7 @@ export function generateTailwindConfig(config: ProjectSetupConfig): TemplateFile
 
 function generateShadcnTailwindConfig(framework: string): string {
   const contentPaths = getFrameworkContentPaths(framework)
-  
+
   return `/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -880,7 +880,7 @@ module.exports = {
 
 function generateBaseTailwindConfig(framework: string): string {
   const contentPaths = getFrameworkContentPaths(framework)
-  
+
   return `/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [${contentPaths.map(p => `"${p}"`).join(', ')}],
@@ -910,7 +910,7 @@ function getFrameworkContentPaths(framework: string): string[] {
       './src/**/*.{js,ts,jsx,tsx}'
     ]
   }
-  
+
   return frameworkPaths[frameworkType] || frameworkPaths.generic
 }
 
@@ -951,7 +951,7 @@ function getGlobalCssPath(framework: string): string {
     'tanstack-start': 'src/styles/app.css',
     'generic': 'src/index.css'
   }
-  
+
   return cssPaths[frameworkType] || cssPaths.generic
 }
 
@@ -985,8 +985,8 @@ export function generateGlobalCSS(config: ProjectSetupConfig): TemplateFile | nu
   }
 
   const cssPath = getGlobalCssPath(config.framework)
-  
-  const cssContent = config.ui.shadcn 
+
+  const cssContent = config.ui.shadcn
     ? generateShadcnGlobalCSS()
     : generateBaseTailwindCSS()
 
@@ -1303,7 +1303,7 @@ export default defineConfig({
 export function generateDatabaseService(config: ProjectSetupConfig): TemplateFile | null {
   if (config.database.provider === 'none') return null
 
-  const content = config.orm === 'prisma' 
+  const content = config.orm === 'prisma'
     ? generatePrismaDatabaseService()
     : generateDrizzleDatabaseService(config.database.provider)
 
@@ -1490,14 +1490,14 @@ export const POST = mcpAdapter.handler`
 export function generateProvidersComponent(config: ProjectSetupConfig): TemplateFile | null {
   const frameworkType = mapTemplateToFramework(config.framework)
   const reactFrameworks = ['nextjs', 'vite', 'tanstack-start']
-  
+
   if (!reactFrameworks.includes(frameworkType)) {
     return null
   }
 
   const isNextJS = frameworkType === 'nextjs'
   const clientDirective = isNextJS ? '"use client"\n\n' : ''
-  
+
   const content = `${clientDirective}import { VoltProvider } from '@volt.js/core/client'
 import { type ReactNode } from 'react'
 
@@ -1611,7 +1611,7 @@ export function generateEnvFile(config: ProjectSetupConfig): TemplateFile {
   // Add Volt.js client configuration for React frameworks
   const frameworkType = mapTemplateToFramework(config.framework)
   const reactFrameworks = ['nextjs', 'vite', 'tanstack-start']
-  
+
   if (reactFrameworks.includes(frameworkType)) {
     if (frameworkType === 'nextjs') {
       content += `# Next.js App URL for VoltProvider\n`
@@ -1760,7 +1760,7 @@ export function generateReadme(config: ProjectSetupConfig): TemplateFile {
 
   const content = `# ${config.projectName}
 
-A modern, type-safe API built with [Volt.js](https://github.com/andeerc/volt.js) and ${config.framework}.
+A modern, type-safe API built with [Volt.js](https://github.com/Volt-js/volt.js) and ${config.framework}.
 
 ## Features
 
@@ -1826,7 +1826,7 @@ ${config.features.jobs ? '- `POST /api/v1/example/schedule-job` - Schedule backg
 
 ## Learn More
 
-- [Volt.js Documentation](https://github.com/andeerc/volt.js)
+- [Volt.js Documentation](https://github.com/Volt-js/volt.js)
 - [${config.framework} Documentation](https://docs.${config.framework === 'nextjs' ? 'nextjs.org' : config.framework + '.dev'})
 ${config.database.provider !== 'none' ? '- [Prisma Documentation](https://prisma.io/docs)' : ''}
 
@@ -1901,7 +1901,7 @@ export async function generateAllTemplates(
     templates.push(generatePackageJson(config))
     templates.push(generateTsConfig(config.framework))
     templates.push(generateGitIgnore())
-    
+
     // Framework-specific base files
     const frameworkFiles = generateFrameworkFiles(config)
     templates.push(...frameworkFiles)

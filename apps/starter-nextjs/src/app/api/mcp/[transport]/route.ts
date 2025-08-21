@@ -4,7 +4,7 @@ import { AppRouter } from '@/volt.router'
 /**
  * MCP server instance for exposing API as a MCP server.
  *
- * @see https://github.com/andeerc/volt.js/tree/main/packages/adapter-mcp
+ * @see https://github.com/Volt-js/volt.js/tree/main/packages/adapter-mcp
  */
 export const { GET, POST, DELETE } = createMcpAdapter(AppRouter, {
   serverInfo: {

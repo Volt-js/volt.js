@@ -44,7 +44,7 @@ export class ProjectGenerator {
       'starter-deno-rest-api': 'generic',
       'starter-tanstack-start': 'tanstack-start'
     }
-    
+
     return mapping[framework] || 'generic'
   }
 
@@ -88,7 +88,7 @@ export class ProjectGenerator {
 
   private async downloadTemplate(): Promise<{ isStarter: boolean, success: boolean }> {
     const { framework } = this.config
-    const templateUrl = `https://github.com/andeerc/volt.js.git`
+    const templateUrl = `https://github.com/Volt-js/volt.js.git`
     const branch = 'main'
     const tempDir = path.join(this.targetDir, '__volt_tmp__')
     const starterDir = path.join(tempDir, 'apps', framework)
@@ -176,9 +176,9 @@ export class ProjectGenerator {
       ]
 
       // Add services directory only if any services are needed
-      const needsServices = Object.values(this.config.features).some(enabled => enabled) || 
-                           this.config.database.provider !== 'none'
-      
+      const needsServices = Object.values(this.config.features).some(enabled => enabled) ||
+        this.config.database.provider !== 'none'
+
       if (needsServices) {
         dirs.push('src/services')
       }
@@ -213,7 +213,7 @@ export class ProjectGenerator {
       // Add app directory structure for NextJS with specific features
       if (frameworkType === 'nextjs') {
         dirs.push('src/app', 'src/app/api', 'src/app/api/v1', 'src/app/api/v1/[[...all]]')
-        
+
         // Add MCP directory if MCP is enabled
         if (this.config.features.mcp) {
           dirs.push('src/app/api/mcp', 'src/app/api/mcp/[transport]')
@@ -271,7 +271,7 @@ export class ProjectGenerator {
       }
 
       // Generate templates using the selected system
-      const allTemplates = this.useModularSystem 
+      const allTemplates = this.useModularSystem
         ? await generateAllTemplatesModular(this.config, this.isExistingProject)
         : await generateAllTemplates(this.config, this.isExistingProject)
 
@@ -292,10 +292,10 @@ export class ProjectGenerator {
 
         // Ensure directory exists
         await fs.mkdir(path.dirname(filePath), { recursive: true })
-        
+
         // Write the file
         await fs.writeFile(filePath, template.content, 'utf8')
-        
+
         // Set executable permission if needed
         if (template.executable) {
           await fs.chmod(filePath, 0o755)

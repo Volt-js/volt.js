@@ -3,7 +3,7 @@
  * It's a good practice to define your Zod schemas and TypeScript types
  * in a separate file to keep your code organized.
  *
- * @see https://github.com/andeerc/volt.js
+ * @see https://github.com/Volt-js/volt.js
  */
 
 import { z } from 'zod';

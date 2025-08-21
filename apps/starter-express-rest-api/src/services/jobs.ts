@@ -8,7 +8,7 @@ import { z } from 'zod'
  * @remarks
  * Handles asynchronous job processing with BullMQ.
  *
- * @see https://github.com/andeerc/volt.js/tree/main/packages/adapter-bullmq
+ * @see https://github.com/Volt-js/volt.js/tree/main/packages/adapter-bullmq
  */
 export const jobs = createBullMQAdapter({
   store,

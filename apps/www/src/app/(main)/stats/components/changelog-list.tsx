@@ -79,7 +79,7 @@ export function ChangelogList({ releases }: ChangelogListProps) {
                       <Markdown>{release.description}</Markdown>
                       <div className="flex flex-wrap items-center gap-4 mt-6">
                         <a
-                          href={`https://github.com/andeerc/drift/releases/tag/${release.version}`}
+                          href={`https://github.com/Volt-js/drift/releases/tag/${release.version}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-sm text-primary hover:underline"
@@ -87,13 +87,13 @@ export function ChangelogList({ releases }: ChangelogListProps) {
                           View on GitHub
                         </a>
                         <a
-                          href={`https://github.com/andeerc/drift/archive/refs/tags/${release.version}.zip`}
+                          href={`https://github.com/Volt-js/drift/archive/refs/tags/${release.version}.zip`}
                           className="text-sm text-primary hover:underline"
                         >
                           Download ZIP
                         </a>
                         <a
-                          href={`https://github.com/andeerc/drift/archive/refs/tags/${release.version}.tar.gz`}
+                          href={`https://github.com/Volt-js/drift/archive/refs/tags/${release.version}.tar.gz`}
                           className="text-sm text-primary hover:underline"
                         >
                           Download TAR

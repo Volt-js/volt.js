@@ -6,12 +6,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andeerc/volt.js.git"
+    "url": "git+https://github.com/Volt-js/volt.js.git"
   },
   "bugs": {
-    "url": "https://github.com/andeerc/volt.js/issues"
+    "url": "https://github.com/Volt-js/volt.js/issues"
   },
-  "homepage": "https://andeerc.github.io/volt.js",
+  "homepage": "https://Volt-js.github.io/volt.js",
   "keywords": [
     "typescript",
     "api",
