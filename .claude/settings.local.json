@@ -22,7 +22,9 @@
       "Bash(timeout 10 npx tsx src/index.ts init my-drizzle-test --database=sqlite --orm=drizzle --template=starter-nextjs --features=store,logging --no-git --no-install)",
       "Bash(if exist my-drizzle-test rmdir /s /q my-drizzle-test)",
       "Bash(npm install:*)",
-      "Bash(npm test)"
+      "Bash(npm test)",
+      "Bash(npm run release:*)",
+      "Bash(changeset publish)"
     ],
     "deny": [],
     "ask": [],

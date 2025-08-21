@@ -1,6 +1,6 @@
 {
   "name": "@volt.js/core",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "A modern, type-safe, performance-optimized HTTP framework for building scalable APIs with TypeScript. Features parallel processing, smart caching, and intelligent plugin dependency resolution.",
   "author": "Anderson da Campo <andercampo12@gmail.com>",
   "license": "MIT",
