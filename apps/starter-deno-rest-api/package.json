@@ -1,0 +1,25 @@
+{
+  "name": "starter-deno-rest-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.tsx",
+  "module": "src/index.tsx",
+  "scripts": {
+    "dev": "deno run --watch src/index.tsx",
+    "start": "deno run src/index.tsx"
+  },
+  "dependencies": {
+    "@volt-js/adapter-bullmq": "latest",
+    "@volt-js/adapter-mcp-server": "latest",
+    "@volt-js/adapter-redis": "latest",
+    "@volt-js/core": "^0.2.6",
+    "@volt-js/eslint-config": "^0.1.0",
+    "@prisma/client": "^6.11.1",
+    "bullmq": "^4",
+    "zod": "3.25.67"
+  },
+  "devDependencies": {
+    "@types/deno": "latest"
+  }
+}

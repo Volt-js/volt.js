@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm run build:*)",
+      "Bash(mv:*)",
+      "Bash(npm run changeset:*)",
+      "Bash(npm run version-packages:*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "C:\\Development"
+    ]
+  }
+}
