@@ -7,7 +7,12 @@
       "Bash(npm run changeset:*)",
       "Bash(npm run version-packages:*)",
       "Bash(npm publish:*)",
-      "Bash(npm whoami:*)"
+      "Bash(npm whoami:*)",
+      "Bash(copy igniter volt)",
+      "Bash(del igniter)",
+      "Bash(cp:*)",
+      "Bash(rm:*)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": [],
