@@ -12,7 +12,8 @@
       "Bash(del igniter)",
       "Bash(cp:*)",
       "Bash(rm:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(npx @volt.js/cli@latest init:*)"
     ],
     "deny": [],
     "ask": [],

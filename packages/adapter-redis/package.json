@@ -1,6 +1,6 @@
 {
   "name": "@volt.js/adapter-redis",
-  "version": "0.2.1",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
@@ -26,6 +26,9 @@
   "peerDependencies": {
     "@volt.js/core": "*",
     "ioredis": "^5.3.2"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "license": "MIT"
 }

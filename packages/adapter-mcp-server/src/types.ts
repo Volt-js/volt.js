@@ -167,7 +167,7 @@ export type InferMcpContextFromFunction<T> = T extends (request: Request) => Mcp
 /**
  * Utility type to infer context type from router.
  */
-export type InferMcpContextFromRouter<TRouter> = TRouter extends VoltRouter<infer TContext, any, any, any>
+export type InferMcpContextFromRouter<TRouter> = TRouter extends VoltRouter<infer TContext, any, any, any, any>
   ? TContext
   : never;
 

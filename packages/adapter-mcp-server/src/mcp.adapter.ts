@@ -18,7 +18,7 @@ export function createMcpAdapter<
   TControllers extends Record<string, VoltControllerConfig<any>>,
   TOptions extends McpAdapterOptions<TContext, any>
 >(
-  router: VoltRouter<TContext, TControllers, any, any>,
+  router: VoltRouter<TContext, TControllers, any, any, any>,
   options: TOptions & {
     context: (request: Request) => McpContext<any> | Promise<McpContext<any>>;
   }
@@ -33,7 +33,7 @@ export function createMcpAdapter<
   TContext extends object,
   TControllers extends Record<string, VoltControllerConfig<any>>
 >(
-  router: VoltRouter<TContext, TControllers, any, any>,
+  router: VoltRouter<TContext, TControllers, any, any, any>,
   options?: McpAdapterOptions<TContext, TContext>
 ): McpHandler;
 
@@ -82,7 +82,7 @@ export function createMcpAdapter<
   TControllers extends Record<string, VoltControllerConfig<any>>,
   TOptions extends McpAdapterOptions<TContext, any> = McpAdapterOptions<TContext, TContext>
 >(
-  router: VoltRouter<TContext, TControllers, any, any>,
+  router: VoltRouter<TContext, TControllers, any, any, any>,
   options: TOptions = {} as TOptions
 ): McpHandler {
   type TInferredContext = InferMcpContext<TContext, TOptions>;
@@ -225,7 +225,7 @@ export function createMcpAdapter<
  * Extract tools from Volt router.
  */
 function extractToolsFromRouter<TContext extends object, TControllers extends Record<string, VoltControllerConfig<any>>, TInferredContext>(
-  router: VoltRouter<TContext, TControllers, any, any>,
+  router: VoltRouter<TContext, TControllers, any, any, any>,
   options: McpAdapterOptions<TContext, TInferredContext>
 ): McpToolInfo[] {
   const tools: McpToolInfo[] = [];
@@ -236,7 +236,7 @@ function extractToolsFromRouter<TContext extends object, TControllers extends Re
 
   // Iterate through controllers and actions
   for (const [controllerName, controller] of Object.entries(router.controllers)) {
-    for (const [actionName, action] of Object.entries(controller.actions)) {
+    for (const [actionName, action] of Object.entries((controller as any).actions)) {
       const actionConfig = action as VoltAction<any, any, any, any, any, any, any, any, any, any>;
 
       // Apply filter if provided
@@ -284,7 +284,7 @@ function extractToolsFromRouter<TContext extends object, TControllers extends Re
  * Create MCP context for tool execution with type inference.
  */
 async function createMcpContext<TContext extends object, TInferredContext>(
-  router: VoltRouter<TContext, any, any, any>,
+  router: VoltRouter<TContext, any, any, any, any>,
   options: McpAdapterOptions<TContext, TInferredContext>,
   args: any,
   request?: Request
@@ -326,7 +326,7 @@ async function createMcpContext<TContext extends object, TInferredContext>(
  * Execute a tool using the Volt router with type inference.
  */
 async function executeTool<TContext extends object, TInferredContext>(
-  router: VoltRouter<TContext, any, any, any>,
+  router: VoltRouter<TContext, any, any, any, any>,
   tool: McpToolInfo,
   args: any,
   context: McpContext<TInferredContext>,

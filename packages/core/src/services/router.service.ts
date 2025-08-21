@@ -2,7 +2,7 @@ import type { ContextCallback, DocsConfig, VoltBaseConfig, VoltControllerConfig,
 import type { VoltPlugin } from "../types/plugin.interface";
 import { RequestProcessor } from "../processors";
 import { createServerCaller } from "./caller.server.service";
-import { parseURL } from "@/utils";
+import { parseURL } from "../utils";
 import { initializeVoltPlayground } from "./playground.service";
 import { VoltConsoleLogger } from "./logger.service";
 import { resolveLogLevel, createLoggerContext } from "../utils/logger";

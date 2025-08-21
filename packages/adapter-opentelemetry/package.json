@@ -71,6 +71,9 @@
   ],
   "author": "Anderson da Campo",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andeerc/volt.js.git",

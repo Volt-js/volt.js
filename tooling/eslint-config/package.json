@@ -1,7 +1,7 @@
 {
   "name": "@volt.js/eslint-config",
   "version": "0.2.0",
-  "private": true,
+  "private": false,
   "description": "ESLint configuration for Volt.js ⚡ monorepo",
   "main": "index.js",
   "license": "MIT",
@@ -24,5 +24,8 @@
     "eslint": "^8.0.0",
     "prettier": "^3.0.0",
     "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 } 

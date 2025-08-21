@@ -32,7 +32,7 @@ class EnhancedRedisAdapter {
   private subscribers = new Map<string, Set<EventCallback>>();
   private healthStatus: RedisHealthStatus;
   private retryOptions: RetryOptions;
-  private healthCheckInterval: NodeJS.Timeout;
+  private healthCheckInterval!: NodeJS.Timeout;
 
   constructor(redisClient: Redis, retryOptions: Partial<RetryOptions> = {}) {
     this.redis = redisClient;
@@ -335,15 +335,6 @@ export function createRedisStoreAdapter(
     async unsubscribe(channel: string, callback?: EventCallback): Promise<void> {
       return enhancedAdapter.unsubscribe(channel, callback);
     },
-
-    // Extended functionality
-    getHealthStatus(): RedisHealthStatus {
-      return enhancedAdapter.getHealthStatus();
-    },
-
-    async disconnect(): Promise<void> {
-      return enhancedAdapter.disconnect();
-    },
   };
 }
 
@@ -358,4 +349,4 @@ export function createEnhancedRedisAdapter(
 }
 
 // Export types and classes for external use
-export { EnhancedRedisAdapter, type RedisHealthStatus, type RetryOptions }; 
+export { EnhancedRedisAdapter }; 
