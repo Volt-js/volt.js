@@ -1,6 +1,6 @@
 {
   "name": "@volt.js/cli",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "CLI for Volt.js ⚡ type-safe client generation",
   "main": "dist/index.js",
   "bin": {
