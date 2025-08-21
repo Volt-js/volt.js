@@ -1,5 +1,5 @@
 {
-  "name": "@volt-js/cli",
+  "name": "@volt.js/cli",
   "version": "0.0.1",
   "description": "CLI for Volt.js ⚡ type-safe client generation",
   "main": "dist/index.js",
@@ -27,7 +27,7 @@
     "code-generation",
     "api"
   ],
-  "author": "Anderson da Campo <andeerc@gmail.com>",
+  "author": "Anderson da Campo <andercampo12@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@volt-js/core": "*",

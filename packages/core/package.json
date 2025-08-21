@@ -1,8 +1,8 @@
 {
-  "name": "@volt-js/core",
+  "name": "@volt.js/core",
   "version": "0.3.0",
-  "description": "A modern, type-safe, and flexible HTTP framework for building scalable APIs with TypeScript",
-  "author": "Anderson da Campo <andeerc@gmail.com>",
+  "description": "A modern, type-safe, performance-optimized HTTP framework for building scalable APIs with TypeScript. Features parallel processing, smart caching, and intelligent plugin dependency resolution.",
+  "author": "Anderson da Campo <andercampo12@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",

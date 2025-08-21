@@ -5,7 +5,9 @@
       "Bash(npm run build:*)",
       "Bash(mv:*)",
       "Bash(npm run changeset:*)",
-      "Bash(npm run version-packages:*)"
+      "Bash(npm run version-packages:*)",
+      "Bash(npm publish:*)",
+      "Bash(npm whoami:*)"
     ],
     "deny": [],
     "ask": [],
