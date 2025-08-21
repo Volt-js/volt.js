@@ -1,0 +1,44 @@
+{
+  "name": "Redis Store",
+  "description": "Caching, sessions, and pub/sub messaging with Redis",
+  "dependencies": {
+    "dependencies": {
+      "@volt.js/adapter-redis": "latest",
+      "ioredis": "^5.6.1"
+    },
+    "devDependencies": {
+      "@types/ioredis": "^4.28.10"
+    }
+  },
+  "environmentVariables": [
+    {
+      "key": "REDIS_URL",
+      "value": "redis://localhost:6379",
+      "description": "Redis connection URL"
+    },
+    {
+      "key": "REDIS_HOST",
+      "value": "localhost",
+      "description": "Redis host"
+    },
+    {
+      "key": "REDIS_PORT",
+      "value": "6379",
+      "description": "Redis port"
+    }
+  ],
+  "dockerServices": [
+    {
+      "name": "redis",
+      "image": "redis:7-alpine",
+      "ports": ["6379:6379"],
+      "environment": {
+        "REDIS_PASSWORD": ""
+      },
+      "volumes": ["redis_data:/data"]
+    }
+  ],
+  "requiredDirectories": [
+    "src/services"
+  ]
+}

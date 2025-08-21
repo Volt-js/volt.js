@@ -133,25 +133,117 @@ export const VOLT_FEATURES: Record<string, FeatureDefinition> = {
 }
 
 /**
- * Database configurations with their dependencies and Docker services
+ * ORM configurations
+ */
+export const ORM_CONFIGS = {
+  prisma: {
+    dependencies: (dbProvider: DatabaseProvider): PackageDependency[] => {
+      const deps = [
+        { name: 'prisma', version: '6.0.0' },
+        { name: '@prisma/client', version: '6.0.0' }
+      ]
+      
+      if (dbProvider === 'mysql') {
+        deps.push({ name: 'mysql2', version: '^3.6.0' })
+      }
+      
+      return deps
+    }
+  },
+  drizzle: {
+    dependencies: (dbProvider: DatabaseProvider): PackageDependency[] => {
+      const deps = [
+        { name: 'drizzle-orm', version: '^0.33.0' },
+        { name: 'drizzle-kit', version: '^0.24.0' }
+      ]
+      
+      switch (dbProvider) {
+        case 'postgresql':
+          deps.push({ name: 'pg', version: '^8.11.0' })
+          deps.push({ name: '@types/pg', version: '^8.11.0', isDev: true })
+          break
+        case 'mysql':
+          deps.push({ name: 'mysql2', version: '^3.6.0' })
+          break
+        case 'sqlite':
+          deps.push({ name: 'better-sqlite3', version: '^9.0.0' })
+          deps.push({ name: '@types/better-sqlite3', version: '^7.6.0', isDev: true })
+          break
+      }
+      
+      return deps
+    }
+  }
+}
+
+/**
+ * Styling configurations
+ */
+export const STYLING_CONFIGS = {
+  none: {
+    dependencies: (): PackageDependency[] => []
+  },
+  tailwind: {
+    dependencies: (): PackageDependency[] => [
+      { name: 'tailwindcss', version: '^3.4.0', isDev: true },
+      { name: 'autoprefixer', version: '^10.4.0', isDev: true },
+      { name: 'postcss', version: '^8.4.0', isDev: true }
+    ]
+  },
+  'styled-components': {
+    dependencies: (): PackageDependency[] => [
+      { name: 'styled-components', version: '^6.0.0' },
+      { name: '@types/styled-components', version: '^5.1.0', isDev: true }
+    ]
+  },
+  emotion: {
+    dependencies: (): PackageDependency[] => [
+      { name: '@emotion/react', version: '^11.11.0' },
+      { name: '@emotion/styled', version: '^11.11.0' }
+    ]
+  }
+}
+
+/**
+ * ShadCN/UI configuration
+ */
+export const SHADCN_CONFIG = {
+  dependencies: (): PackageDependency[] => [
+    { name: '@radix-ui/react-slot', version: '^1.0.0' },
+    { name: 'class-variance-authority', version: '^0.7.0' },
+    { name: 'clsx', version: '^2.0.0' },
+    { name: 'lucide-react', version: '^0.468.0' },
+    { name: 'tailwind-merge', version: '^2.0.0' },
+    { name: 'tailwindcss-animate', version: '^1.0.0', isDev: true },
+    // Tailwind will be added automatically
+    ...STYLING_CONFIGS.tailwind.dependencies()
+  ],
+  
+  // Core ShadCN components that should be installed by default
+  coreComponents: [
+    'button',
+    'card', 
+    'input',
+    'label',
+    'separator',
+    'skeleton',
+    'badge',
+    'alert'
+  ] as const
+}
+
+/**
+ * Database configurations with their Docker services and environment variables
  */
 export const DATABASE_CONFIGS: Record<DatabaseProvider, {
-  dependencies: PackageDependency[]
-  devDependencies?: PackageDependency[]
   dockerService?: DockerService
   envVars: EnvVariable[]
-  schema?: TemplateFile
 }> = {
   none: {
-    dependencies: [],
     envVars: []
   },
 
   postgresql: {
-    dependencies: [
-      { name: 'prisma', version: '6.0.0' },
-      { name: '@prisma/client', version: '6.0.0' },
-    ],
     dockerService: {
       name: 'postgres',
       image: 'postgres:16-alpine',
@@ -174,11 +266,6 @@ export const DATABASE_CONFIGS: Record<DatabaseProvider, {
   },
 
   mysql: {
-    dependencies: [
-      { name: 'prisma', version: '^5.0.0' },
-      { name: '@prisma/client', version: '^5.0.0' },
-      { name: 'mysql2', version: '^3.6.0' }
-    ],
     dockerService: {
       name: 'mysql',
       image: 'mysql:8.0',
@@ -202,10 +289,6 @@ export const DATABASE_CONFIGS: Record<DatabaseProvider, {
   },
 
   sqlite: {
-    dependencies: [
-      { name: 'prisma', version: '6.0.0' },
-      { name: '@prisma/client', version: '6.0.0' }
-    ],
     envVars: [
       { key: 'DATABASE_URL', value: 'file:./dev.db', description: 'SQLite database file path' }
     ]
@@ -213,7 +296,69 @@ export const DATABASE_CONFIGS: Record<DatabaseProvider, {
 }
 
 /**
- * Get all dependencies for enabled features
+ * Get all dependencies for enabled features, ORM, styling, and UI
+ */
+export function getAllDependencies(
+  enabledFeatures: string[],
+  dbProvider: DatabaseProvider,
+  orm: 'prisma' | 'drizzle',
+  styling: string,
+  useShadcn: boolean
+): {
+  dependencies: PackageDependency[]
+  devDependencies: PackageDependency[]
+} {
+  const allDeps: PackageDependency[] = []
+
+  // Add feature dependencies
+  for (const featureKey of enabledFeatures) {
+    const feature = VOLT_FEATURES[featureKey]
+    if (feature) {
+      allDeps.push(...feature.dependencies)
+      if (feature.devDependencies) {
+        allDeps.push(...feature.devDependencies)
+      }
+    }
+  }
+
+  // Add ORM dependencies
+  if (dbProvider !== 'none') {
+    const ormConfig = ORM_CONFIGS[orm]
+    if (ormConfig) {
+      allDeps.push(...ormConfig.dependencies(dbProvider))
+    }
+  }
+
+  // Add UI dependencies (ShadCN takes precedence and auto-includes Tailwind)
+  if (useShadcn) {
+    allDeps.push(...SHADCN_CONFIG.dependencies())
+  } else if (styling !== 'none') {
+    const stylingConfig = STYLING_CONFIGS[styling as keyof typeof STYLING_CONFIGS]
+    if (stylingConfig) {
+      allDeps.push(...stylingConfig.dependencies())
+    }
+  }
+
+  // Separate regular and dev dependencies
+  const dependencies = allDeps.filter(dep => !dep.isDev)
+  const devDependencies = allDeps.filter(dep => dep.isDev)
+
+  // Remove duplicates
+  const uniqueDeps = dependencies.filter((dep, index, self) =>
+    index === self.findIndex(d => d.name === dep.name)
+  )
+  const uniqueDevDeps = devDependencies.filter((dep, index, self) =>
+    index === self.findIndex(d => d.name === dep.name)
+  )
+
+  return {
+    dependencies: uniqueDeps,
+    devDependencies: uniqueDevDeps
+  }
+}
+
+/**
+ * Get all dependencies for enabled features (legacy function for backward compatibility)
  */
 export function getFeatureDependencies(enabledFeatures: string[]): {
   dependencies: PackageDependency[]

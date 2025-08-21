@@ -1,0 +1,14 @@
+import { defineConfig } from 'drizzle-kit'
+
+export default defineConfig({
+  schema: './src/db/schema.ts',
+  out: './drizzle',
+  dialect: '{{database.provider}}',
+  dbCredentials: {
+    {{#if (eq database.provider 'sqlite')}}
+    url: process.env.DATABASE_URL!,
+    {{else}}
+    url: process.env.DATABASE_URL!,
+    {{/if}}
+  },
+})

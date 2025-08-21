@@ -1,0 +1,43 @@
+import { VoltProvider } from '@volt.js/core/client'
+import {
+  createRootRoute,
+  HeadContent,
+  Outlet,
+  Scripts,
+} from '@tanstack/react-router'
+{{#if (or (eq styling 'tailwind') ui.shadcn)}}
+import '../styles/app.css'
+{{/if}}
+
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: 'description', content: '{{projectName}} - Built with Volt.js + TanStack Start' },
+    ],
+  }),
+  component: RootComponent,
+})
+
+function RootComponent() {
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{projectName}}</title>
+        <HeadContent />
+      </head>
+      <body>
+        <VoltProvider
+          enableRealtime={true}
+          debug={{{#if (eq environment 'development')}}true{{else}}false{{/if}}}
+        >
+          <Outlet />
+        </VoltProvider>
+        <Scripts />
+      </body>
+    </html>
+  )
+}

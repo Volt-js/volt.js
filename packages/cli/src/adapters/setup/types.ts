@@ -12,6 +12,18 @@ export interface VoltFeatures {
 }
 
 /**
+ * Styling options
+ */
+export type StylingProvider = 'none' | 'tailwind' | 'styled-components' | 'emotion'
+
+/**
+ * UI component library options
+ */
+export interface UIOptions {
+  shadcn: boolean       // ShadCN/UI components (auto-enables Tailwind)
+}
+
+/**
  * Database options with their configurations
  */
 export type DatabaseProvider = 'none' | 'postgresql' | 'mysql' | 'sqlite'
@@ -38,6 +50,8 @@ export interface ProjectSetupConfig {
   features: VoltFeatures
   database: DatabaseConfig
   orm: 'prisma' | 'drizzle'
+  styling: StylingProvider
+  ui: UIOptions
   packageManager: PackageManager
   initGit: boolean
   installDependencies: boolean

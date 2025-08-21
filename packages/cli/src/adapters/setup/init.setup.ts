@@ -49,7 +49,7 @@ export async function handleInitCommand(
     const config = await runSetupPrompts(targetDir);
 
     // The generator will also need to be smart about adding vs creating files.
-    await generateProject(config, targetDir);
+    await generateProject(config, targetDir, isExistingProject);
 
     logger.info('Project initialization completed successfully', {
       project: config.projectName,

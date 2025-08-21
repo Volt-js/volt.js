@@ -1,0 +1,69 @@
+{
+  "name": "Drizzle ORM",
+  "description": "Type-safe database ORM with SQL-like syntax",
+  "dependencies": {
+    "dependencies": {
+      "drizzle-orm": "^0.33.0"
+    },
+    "devDependencies": {
+      "drizzle-kit": "^0.24.0"
+    }
+  },
+  "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:migrate": "drizzle-kit migrate"
+  },
+  "environmentVariables": [
+    {
+      "key": "DATABASE_URL",
+      "value": "postgresql://user:password@localhost:5432/dbname",
+      "description": "Database connection URL",
+      "required": true
+    }
+  ],
+  "requiredDirectories": [
+    "src/db",
+    "drizzle"
+  ],
+  "conflicts": ["prisma"],
+  "conditions": [
+    {
+      "when": "database.provider === 'postgresql'",
+      "then": {
+        "dependencies": {
+          "dependencies": {
+            "pg": "^8.11.0"
+          },
+          "devDependencies": {
+            "@types/pg": "^8.11.0"
+          }
+        }
+      }
+    },
+    {
+      "when": "database.provider === 'mysql'",
+      "then": {
+        "dependencies": {
+          "dependencies": {
+            "mysql2": "^3.6.0"
+          }
+        }
+      }
+    },
+    {
+      "when": "database.provider === 'sqlite'",
+      "then": {
+        "dependencies": {
+          "dependencies": {
+            "better-sqlite3": "^9.0.0"
+          },
+          "devDependencies": {
+            "@types/better-sqlite3": "^7.6.0"
+          }
+        }
+      }
+    }
+  ]
+}

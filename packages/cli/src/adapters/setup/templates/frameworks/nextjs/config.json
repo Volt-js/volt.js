@@ -1,0 +1,31 @@
+{
+  "name": "Next.js Framework",
+  "description": "React framework with server-side rendering and API routes",
+  "dependencies": {
+    "dependencies": {
+      "@volt.js/core": "latest",
+      "next": "^15.0.0",
+      "react": "^19.0.0",
+      "react-dom": "^19.0.0"
+    },
+    "devDependencies": {
+      "@types/react": "^19.0.0",
+      "@types/react-dom": "^19.0.0",
+      "eslint": "^9.0.0",
+      "eslint-config-next": "^15.0.0"
+    }
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "requiredDirectories": [
+    "src/app",
+    "src/app/api",
+    "src/app/api/v1",
+    "src/app/api/v1/[[...all]]",
+    "src/components"
+  ]
+}

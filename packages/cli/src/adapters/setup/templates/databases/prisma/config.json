@@ -1,0 +1,42 @@
+{
+  "name": "Prisma ORM",
+  "description": "Next-generation ORM for Node.js and TypeScript",
+  "dependencies": {
+    "dependencies": {
+      "@prisma/client": "6.0.0"
+    },
+    "devDependencies": {
+      "prisma": "6.0.0"
+    }
+  },
+  "scripts": {
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:migrate": "prisma migrate dev"
+  },
+  "environmentVariables": [
+    {
+      "key": "DATABASE_URL",
+      "value": "postgresql://user:password@localhost:5432/dbname",
+      "description": "Database connection URL",
+      "required": true
+    }
+  ],
+  "requiredDirectories": [
+    "prisma"
+  ],
+  "conflicts": ["drizzle"],
+  "conditions": [
+    {
+      "when": "database.provider === 'mysql'",
+      "then": {
+        "dependencies": {
+          "dependencies": {
+            "mysql2": "^3.6.0"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{{#if (eq database.provider 'postgresql')}}
+import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core'
+
+export const users = pgTable('users', {
+  id: serial('id').primaryKey(),
+  name: text('name').notNull(),
+  email: text('email').notNull().unique(),
+  createdAt: timestamp('created_at').defaultNow()
+})
+{{else if (eq database.provider 'mysql')}}
+import { mysqlTable, int, varchar, timestamp } from 'drizzle-orm/mysql-core'
+
+export const users = mysqlTable('users', {
+  id: int('id').primaryKey().autoincrement(),
+  name: varchar('name', { length: 255 }).notNull(),
+  email: varchar('email', { length: 255 }).notNull().unique(),
+  createdAt: timestamp('created_at').defaultNow()
+})
+{{else if (eq database.provider 'sqlite')}}
+import { sqliteTable, integer, text } from 'drizzle-orm/sqlite-core'
+
+export const users = sqliteTable('users', {
+  id: integer('id').primaryKey(),
+  name: text('name').notNull(),
+  email: text('email').notNull().unique(),
+  createdAt: integer('created_at', { mode: 'timestamp' })
+})
+{{/if}}

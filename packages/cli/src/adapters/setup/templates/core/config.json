@@ -1,0 +1,13 @@
+{
+  "name": "Volt.js Core",
+  "description": "Core Volt.js configuration files",
+  "dependencies": {
+    "dependencies": {
+      "@volt.js/core": "latest",
+      "zod": "^3.25.0"
+    }
+  },
+  "requiredDirectories": [
+    "src"
+  ]
+}

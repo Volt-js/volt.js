@@ -1,0 +1,35 @@
+import { Volt } from '@volt.js/core'
+import { createVoltAppContext } from "./volt.context"
+
+{{#if features.store}}
+import { store } from "@/services/store"
+{{/if}}
+{{#if features.jobs}}
+import { REGISTERED_JOBS } from "@/services/jobs"
+{{/if}}
+{{#if features.logging}}
+import { logger } from "@/services/logger"
+{{/if}}
+{{#if features.telemetry}}
+import { telemetry } from "@/services/telemetry"
+{{/if}}
+
+/**
+ * @description Initialize the Volt.js
+ * @see https://github.com/andeerc/volt.js
+ */
+export const volt = Volt
+  .context(createVoltAppContext)
+{{#if features.store}}
+  .store(store)
+{{/if}}
+{{#if features.jobs}}
+  .jobs(REGISTERED_JOBS)
+{{/if}}
+{{#if features.logging}}
+  .logger(logger)
+{{/if}}
+{{#if features.telemetry}}
+  .telemetry(telemetry)
+{{/if}}
+  .create()

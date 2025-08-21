@@ -13,12 +13,22 @@
       "Bash(cp:*)",
       "Bash(rm:*)",
       "Bash(node:*)",
-      "Bash(npx @volt.js/cli@latest init:*)"
+      "Bash(npx @volt.js/cli@latest init:*)",
+      "Bash(npm run typecheck:*)",
+      "Bash(npx turbo:*)",
+      "Bash(npx tsc:*)",
+      "Bash(dir \"C:\\Users\\ander\\Desktop\\src\\volt.js\"\")",
+      "Bash(npx tsx:*)",
+      "Bash(timeout 10 npx tsx src/index.ts init my-drizzle-test --database=sqlite --orm=drizzle --template=starter-nextjs --features=store,logging --no-git --no-install)",
+      "Bash(if exist my-drizzle-test rmdir /s /q my-drizzle-test)",
+      "Bash(npm install:*)",
+      "Bash(npm test)"
     ],
     "deny": [],
     "ask": [],
     "additionalDirectories": [
-      "C:\\Development"
+      "C:\\Development",
+      "C:\\c\\Users\\ander\\Desktop\\src"
     ]
   }
 }

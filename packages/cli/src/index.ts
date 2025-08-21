@@ -23,6 +23,11 @@ import {
 } from './adapters/scaffold';
 import { VoltRouter } from "@volt.js/core";
 
+// Export the modular system for external use
+export { ModularTemplateGenerator } from './adapters/setup/templates/modular-generator';
+export { generateAllTemplatesModular, generateModularPreview } from './adapters/setup/templates';
+export { generateProjectModular } from './adapters/setup/generator';
+
 const program = new Command();
 
 program
@@ -48,8 +53,11 @@ program
   .option("--features <features>", "Comma-separated list of features (store,jobs,mcp,logging,telemetry)")
   .option("--database <database>", "Database provider (none, postgresql, mysql, sqlite)")
   .option("--orm <orm>", "ORM provider (prisma, drizzle)")
+  .option("--styling <styling>", "Styling solution (none, tailwind, styled-components, emotion)")
+  .option("--ui <ui>", "UI components (shadcn)")
   .option("--no-git", "Skip git repository initialization")
   .option("--no-install", "Skip automatic dependency installation")
+  .option("--docker", "Setup Docker Compose for development")
   .option("--no-docker", "Skip Docker Compose setup")
   .action(async (projectName: string | undefined, options) => {
     const initLogger = createChildLogger({ component: 'init-command' });

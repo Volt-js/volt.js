@@ -1,0 +1,22 @@
+import { Providers } from '../components/Providers';
+{{#if (or (eq styling 'tailwind') ui.shadcn)}}
+import '../styles/index.css';
+{{/if}}
+
+function App() {
+  return (
+    <Providers>
+      <div className="app">
+        <header className="app-header">
+          <h1>Welcome to {{projectName}}</h1>
+          <p>Built with Volt.js and React</p>
+        </header>
+        <main>
+          <p>Get started by editing src/app/App.tsx</p>
+        </main>
+      </div>
+    </Providers>
+  );
+}
+
+export default App;

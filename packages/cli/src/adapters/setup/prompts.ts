@@ -6,7 +6,9 @@ import type {
   ProjectSetupConfig,
   VoltFeatures,
   DatabaseProvider,
-  PackageManager
+  PackageManager,
+  StylingProvider,
+  UIOptions
 } from './types'
 
 /**
@@ -42,6 +44,8 @@ export interface CLIOptions {
   features?: string
   database?: string
   orm?: string
+  styling?: string
+  ui?: string
   packageManager?: string
   git?: boolean
   install?: boolean
@@ -70,7 +74,7 @@ export async function runSetupPrompts(
   try {
     const answers = await prompts([
       {
-        type: isExistingProject ? null : 'text',
+        type: (isExistingProject || projectName) ? null : 'text',
         name: 'projectName',
         message: chalk.bold('• What will your project be called?'),
         initial: projectName,
@@ -84,7 +88,7 @@ export async function runSetupPrompts(
         format: (value: string) => value.trim().toLowerCase().replace(/\s+/g, '-')
       },
       {
-        type: (cliOptions.template || (isExistingProject && detectedFramework)) ? null : 'select',
+        type: (!cliOptions.template && !cliOptions.framework) ? 'select' : null,
         name: 'framework',
         message: '• Which starter would you like to use?',
         choices: [
@@ -159,15 +163,15 @@ export async function runSetupPrompts(
             value: 'none'
           },
           {
-            title: `${chalk.blue('PostgreSQL + Prisma')} ${chalk.dim('- Production-ready')}`,
+            title: `${chalk.blue('PostgreSQL')} ${chalk.dim('- Production-ready')}`,
             value: 'postgresql'
           },
           {
-            title: `${chalk.blue('MySQL + Prisma')} ${chalk.dim('- Wide compatibility')}`,
+            title: `${chalk.blue('MySQL')} ${chalk.dim('- Wide compatibility')}`,
             value: 'mysql'
           },
           {
-            title: `${chalk.green('SQLite + Prisma')} ${chalk.dim('- Local development')}`,
+            title: `${chalk.green('SQLite')} ${chalk.dim('- Local development')}`,
             value: 'sqlite'
           },
         ],
@@ -175,8 +179,62 @@ export async function runSetupPrompts(
       },
       {
         type: (prev: DatabaseProvider) => {
-          // Skip if docker explicitly disabled via CLI
-          if (cliOptions.docker === false) return null;
+          const dbValue = (cliOptions.database as DatabaseProvider) || prev;
+          return (cliOptions.orm || dbValue === 'none') ? null : 'select';
+        },
+        name: 'orm',
+        message: chalk.bold('• Which ORM would you like to use?'),
+        choices: [
+          {
+            title: `${chalk.blue('Prisma')} ${chalk.dim('- Type-safe database toolkit')}`,
+            value: 'prisma'
+          },
+          {
+            title: `${chalk.green('Drizzle')} ${chalk.dim('- Lightweight TypeScript ORM')}`,
+            value: 'drizzle'
+          }
+        ],
+        initial: 0
+      },
+      {
+        type: (cliOptions.ui !== undefined) ? null : 'confirm',
+        name: 'shadcn',
+        message: chalk.bold('• Would you like to use ShadCN/UI components?'),
+        hint: chalk.dim('Automatically includes Tailwind CSS'),
+        initial: false
+      },
+      {
+        type: (prev: boolean) => {
+          // Skip if ShadCN is enabled (auto-uses Tailwind) or if styling is set via CLI
+          const useShadcn = cliOptions.ui ? cliOptions.ui.includes('shadcn') : prev;
+          return (useShadcn || cliOptions.styling !== undefined) ? null : 'select';
+        },
+        name: 'styling',
+        message: chalk.bold('• Choose your styling solution:'),
+        choices: [
+          {
+            title: `${chalk.gray('None')} ${chalk.dim('- Plain CSS')}`,
+            value: 'none'
+          },
+          {
+            title: `${chalk.cyan('Tailwind CSS')} ${chalk.dim('- Utility-first framework')}`,
+            value: 'tailwind'
+          },
+          {
+            title: `${chalk.magenta('Styled Components')} ${chalk.dim('- CSS-in-JS')}`,
+            value: 'styled-components'
+          },
+          {
+            title: `${chalk.red('Emotion')} ${chalk.dim('- CSS-in-JS with performance')}`,
+            value: 'emotion'
+          }
+        ],
+        initial: 0
+      },
+      {
+        type: (prev: DatabaseProvider) => {
+          // Skip if docker explicitly set via CLI (either --docker or --no-docker)
+          if (cliOptions.docker === true || cliOptions.docker === false) return null;
 
           // Get database value from CLI or prompt answer
           const dbValue = (cliOptions.database as DatabaseProvider) || prev;
@@ -248,15 +306,23 @@ export async function runSetupPrompts(
       telemetry: selectedFeatures.includes('telemetry') || !hasExplicitFeatures
     }
 
+    // Determine styling and UI options
+    const useShadcn = cliOptions.ui ? cliOptions.ui.includes('shadcn') : (answers.shadcn || false)
+    const styling: StylingProvider = useShadcn ? 'tailwind' : (cliOptions.styling as StylingProvider) || (answers.styling || 'none')
+    const ui: UIOptions = { shadcn: useShadcn }
+
     const config: ProjectSetupConfig = {
       projectName: answers.projectName || projectName,
-      framework: cliOptions.template || answers.framework,
+      framework: cliOptions.template || cliOptions.framework || answers.framework,
       features: featuresObj,
       database: { provider: (cliOptions.database as DatabaseProvider) || answers.database || 'none' },
+      orm: (cliOptions.orm as 'prisma' | 'drizzle') || (answers.orm as 'prisma' | 'drizzle') || 'prisma',
+      styling,
+      ui,
       packageManager: (cliOptions.packageManager as PackageManager) || answers.packageManager || detectedPackageManager,
       initGit: cliOptions.git !== false && (answers.initGit !== undefined ? answers.initGit : !isExistingProject),
       installDependencies: cliOptions.install !== false && (answers.installDependencies !== false),
-      dockerCompose: cliOptions.docker !== false && (answers.dockerCompose || false),
+      dockerCompose: cliOptions.docker === true || (cliOptions.docker !== false && (answers.dockerCompose || false)),
     }
 
     // Show configuration summary
@@ -292,7 +358,13 @@ function showConfigSummary(config: ProjectSetupConfig): void {
   }
 
   if (config.database.provider !== 'none') {
-    console.log(`${chalk.cyan('Database:')} ${config.database.provider}`)
+    console.log(`${chalk.cyan('Database:')} ${config.database.provider} + ${config.orm}`)
+  }
+
+  if (config.ui.shadcn) {
+    console.log(`${chalk.cyan('UI:')} ShadCN/UI (with Tailwind CSS)`)
+  } else if (config.styling !== 'none') {
+    console.log(`${chalk.cyan('Styling:')} ${config.styling}`)
   }
 
   console.log(`${chalk.cyan('Package Manager:')} ${config.packageManager}`)

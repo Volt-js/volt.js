@@ -1,0 +1,21 @@
+{{#if (ne database.provider 'none')}}
+import { database } from "@/services/database"
+{{/if}}
+
+/**
+ * @description Create the context of the Volt.js application
+ * @see https://github.com/andeerc/volt.js
+ */
+export const createVoltAppContext = () => {
+  return {
+{{#if (ne database.provider 'none')}}
+    database,
+{{/if}}
+  }
+}
+
+/**
+ * @description The context of the Volt.js application
+ * @see https://github.com/andeerc/volt.js
+ */
+export type VoltAppContext = Awaited<ReturnType<typeof createVoltAppContext>>
