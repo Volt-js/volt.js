@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🔥 Volt.js</h1>
+  <h1>⚡ Volt.js</h1>
   <a href="https://donate.stripe.com/9B68wQeY9eEpeYI5ftcZa01" target="_blank">
     <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Donate-yellow?style=for-the-badge&logo=coffee" alt="Buy Me a Coffee" />
   </a>
@@ -114,7 +114,7 @@ Volt.js 0.3.0 introduces significant performance optimizations:
 // Before: Sequential processing
 // Context: 50ms + Body: 30ms + Plugins: 40ms = 120ms total
 
-// After: Parallel processing  
+// After: Parallel processing
 // Context + Body: max(50ms, 30ms) + Plugins: 40ms = 90ms total
 // 🎯 25% improvement in typical scenarios
 ```
