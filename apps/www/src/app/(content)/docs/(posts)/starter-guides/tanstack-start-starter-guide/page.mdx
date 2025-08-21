@@ -39,7 +39,7 @@ Let's get the project set up and explore its structure.
 
 1.  **Initialize the Project**: Use the Volt.js CLI to scaffold a new TanStack Start project.
     ```bash
-    npx @volt-js/cli init my-tanstack-app
+    npx @volt.js/cli init my-tanstack-app
     ```
     During the interactive setup, select **TanStack Start** as your framework. Also, be sure to enable the **Store (Redis)** and **Queues (BullMQ)** features to follow along with the entire guide.
 
@@ -120,7 +120,7 @@ npx prisma db push
 ### Step 3: Scaffold the Feature with the CLI
 Use the `volt generate` command to create all the necessary backend files.
 ```bash
-npx @volt-js/cli generate feature tasks --schema prisma:Task
+npx @volt.js/cli generate feature tasks --schema prisma:Task
 ```
 This command creates the controller, procedures, and Zod interfaces for your `Task` feature inside `src/features/tasks/`.
 

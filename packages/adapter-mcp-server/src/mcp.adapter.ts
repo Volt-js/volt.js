@@ -1,4 +1,4 @@
-import type { VoltRouter, VoltControllerConfig, VoltAction } from "@volt-js/core";
+import type { VoltRouter, VoltControllerConfig, VoltAction } from "@volt.js/core";
 import type {
   McpAdapterOptions,
   McpContext,
@@ -422,7 +422,7 @@ try {
   // Dynamic import to handle cases where the package might not be installed
   mcpHandlerImport = require('@vercel/mcp-adapter');
 } catch (error) {
-  console.warn('[@volt-js/core] @vercel/mcp-adapter not found. Please install it to use MCP functionality.');
+  console.warn('[@volt.js/core] @vercel/mcp-adapter not found. Please install it to use MCP functionality.');
   console.warn('Run: npm install @vercel/mcp-adapter @modelcontextprotocol/sdk');
 }
 

@@ -3,7 +3,7 @@ import type { Redis } from 'ioredis'
 import { createRedisStoreAdapter } from '../redis.adapter'
 
 // Mock isServer to be true by default for most tests
-vi.mock('@volt-js/core', async (importOriginal) => {
+vi.mock('@volt.js/core', async (importOriginal) => {
   const actual = await importOriginal() as any
   return {
     ...actual,

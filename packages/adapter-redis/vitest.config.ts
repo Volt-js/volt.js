@@ -24,8 +24,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@volt-js/core': path.resolve(__dirname, '../core/src'),
-      '@volt-js/adapter-redis': path.resolve(__dirname, './src')
+      '@volt.js/core': path.resolve(__dirname, '../core/src'),
+      '@volt.js/adapter-redis': path.resolve(__dirname, './src')
     }
   }
 }) 

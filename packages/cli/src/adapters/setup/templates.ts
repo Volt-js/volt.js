@@ -11,7 +11,7 @@ import type { SupportedFramework } from '../framework'
 export function generateVoltRouter(config: ProjectSetupConfig): TemplateFile {
   const { features } = config
 
-  let imports = [`import { Volt } from '@volt-js/core'`]
+  let imports = [`import { Volt } from '@volt.js/core'`]
   let serviceImports: string[] = []
 
   // Add context import
@@ -51,7 +51,7 @@ export function generateVoltRouter(config: ProjectSetupConfig): TemplateFile {
 
 /**
  * @description Initialize the Volt.js
- * @see https://github.com/andeerc/volt-js
+ * @see https://github.com/andeerc/volt.js
  */
 ${configChain.join('\n')}
 `
@@ -82,7 +82,7 @@ export function generateVoltContext(config: ProjectSetupConfig): TemplateFile {
 
 /**
  * @description Create the context of the Volt.js application
- * @see https://github.com/andeerc/volt-js
+ * @see https://github.com/andeerc/volt.js
  */
 export const createVoltAppContext = () => {
   return {
@@ -92,7 +92,7 @@ ${contextProperties.join('\n')}
 
 /**
  * @description The context of the Volt.js application
- * @see https://github.com/andeerc/volt-js
+ * @see https://github.com/andeerc/volt.js
  */
 export type VoltAppContext = Awaited<ReturnType<typeof createVoltAppContext>>
 `
@@ -206,7 +206,7 @@ import { z } from 'zod'`
 
 /**
  * @description Example controller demonstrating Volt.js features
- * @see https://github.com/andeerc/volt-js
+ * @see https://github.com/andeerc/volt.js
  */
 export const exampleController = volt.controller({
   name: 'example',
@@ -232,7 +232,7 @@ import { exampleController } from '@/features/example'
 
 /**
  * @description Main application router configuration
- * @see https://github.com/andeerc/volt-js
+ * @see https://github.com/andeerc/volt.js
  */
 export const AppRouter = volt.router({
   controllers: {
@@ -269,7 +269,7 @@ export * from './example.interfaces'
  * @param config - The project setup configuration.
  * @returns An array of TemplateFile objects representing service files.
  *
- * @see https://github.com/andeerc/volt-js
+ * @see https://github.com/andeerc/volt.js
  */
 export function generateServiceFiles(config: ProjectSetupConfig): TemplateFile[] {
   const { features, database } = config
@@ -278,7 +278,7 @@ export function generateServiceFiles(config: ProjectSetupConfig): TemplateFile[]
   files.push({
     path: 'src/app/api/v1/[[...all]]/route.ts',
     content: `import { AppRouter } from '@/volt.router'
-import { nextRouteHandlerAdapter } from '@volt-js/core/adapters'
+import { nextRouteHandlerAdapter } from '@volt.js/core/adapters'
 
 export const { GET, POST, PUT, DELETE } = nextRouteHandlerAdapter(AppRouter)
 `
@@ -309,7 +309,7 @@ export const redis = new Redis(process.env.REDIS_URL!, {
   if (features.store) {
     files.push({
       path: 'src/services/store.ts',
-      content: `import { createRedisStoreAdapter } from '@volt-js/adapter-redis'
+      content: `import { createRedisStoreAdapter } from '@volt.js/adapter-redis'
 import { redis } from './redis'
 
 /**
@@ -318,7 +318,7 @@ import { redis } from './redis'
   * @remarks
   * Provides a unified interface for data storage operations using Redis.
   *
-  * @see https://github.com/andeerc/volt-js/tree/main/packages/adapter-redis
+  * @see https://github.com/andeerc/volt.js/tree/main/packages/adapter-redis
   */
 export const store = createRedisStoreAdapter(redis)
 `
@@ -330,7 +330,7 @@ export const store = createRedisStoreAdapter(redis)
     files.push({
       path: 'src/services/jobs.ts',
       content: `import { store } from './store'
-import { createBullMQAdapter } from '@volt-js/adapter-bullmq'
+import { createBullMQAdapter } from '@volt.js/adapter-bullmq'
 import { z } from 'zod'
 
 /**
@@ -339,7 +339,7 @@ import { z } from 'zod'
   * @remarks
   * Handles asynchronous job processing with BullMQ.
   *
-  * @see https://github.com/andeerc/volt-js/tree/main/packages/adapter-bullmq
+  * @see https://github.com/andeerc/volt.js/tree/main/packages/adapter-bullmq
   */
 export const jobs = createBullMQAdapter({
   store,
@@ -372,7 +372,7 @@ export const REGISTERED_JOBS = jobs.merge({
   if (features.logging) {
     files.push({
       path: 'src/services/logger.ts',
-      content: `import { createConsoleLogger, VoltLogLevel } from '@volt-js/core'
+      content: `import { createConsoleLogger, VoltLogLevel } from '@volt.js/core'
 
 /**
   * Logger instance for application logging.
@@ -380,7 +380,7 @@ export const REGISTERED_JOBS = jobs.merge({
   * @remarks
   * Provides structured logging with configurable log levels.
   *
-  * @see https://github.com/andeerc/volt-js/tree/main/packages/core
+  * @see https://github.com/andeerc/volt.js/tree/main/packages/core
   */
 export const logger = createConsoleLogger({
   level: VoltLogLevel.INFO,
@@ -413,7 +413,7 @@ export const database = new PrismaClient()
   if (features.telemetry) {
     files.push({
       path: 'src/services/telemetry.ts',
-      content: `import { createConsoleTelemetryAdapter } from '@volt-js/core/adapters'
+      content: `import { createConsoleTelemetryAdapter } from '@volt.js/core/adapters'
       import { store } from './store'
 
       /**
@@ -422,7 +422,7 @@ export const database = new PrismaClient()
        * @remarks
        * Provides telemetry tracking with configurable options.
        *
-       * @see https://github.com/andeerc/volt-js/tree/main/packages/core
+       * @see https://github.com/andeerc/volt.js/tree/main/packages/core
        */
       export const telemetry = createConsoleTelemetryAdapter({
         serviceName: 'my-volt-app',
@@ -443,13 +443,13 @@ export const database = new PrismaClient()
   if (features.mcp) {
     files.push({
       path: 'src/app/api/mcp/[transport].ts',
-      content: `import { createMcpAdapter } from '@volt-js/adapter-mcp'
+      content: `import { createMcpAdapter } from '@volt.js/adapter-mcp'
 import { AppRouter } from '@/volt.router'
 
 /**
  * MCP server instance for exposing API as a MCP server.
  *
- * @see https://github.com/andeerc/volt-js/tree/main/packages/adapter-mcp
+ * @see https://github.com/andeerc/volt.js/tree/main/packages/adapter-mcp
  */
 export default createMcpAdapter(AppRouter, {
   serverInfo: {
@@ -476,7 +476,7 @@ export default createMcpAdapter(AppRouter, {
  * Generate client file for frontend usage
  */
 export function generateVoltClient(config: ProjectSetupConfig): TemplateFile {
-  const content = `import { createVoltClient, useVoltQueryClient } from '@volt-js/core/client'
+  const content = `import { createVoltClient, useVoltQueryClient } from '@volt.js/core/client'
 import type { AppRouterType } from './volt.router'
 
 /**
@@ -707,7 +707,7 @@ export function generateEnvFile(config: ProjectSetupConfig): TemplateFile {
   )
 
   let content = `# Environment variables for ${config.projectName}
-# Generated by @volt-js/cli
+# Generated by @volt.js/cli
 
 `
 
@@ -763,7 +763,7 @@ export function generateDockerCompose(config: ProjectSetupConfig): TemplateFile 
   return {
     path: 'docker-compose.yml',
     content: `# Docker Compose for ${config.projectName}
-# Generated by @volt-js/cli
+# Generated by @volt.js/cli
 
 version: '3.8'
 
@@ -852,7 +852,7 @@ export function generateReadme(config: ProjectSetupConfig): TemplateFile {
 
   const content = `# ${config.projectName}
 
-A modern, type-safe API built with [Volt.js](https://github.com/andeerc/volt-js) and ${config.framework}.
+A modern, type-safe API built with [Volt.js](https://github.com/andeerc/volt.js) and ${config.framework}.
 
 ## Features
 
@@ -918,7 +918,7 @@ ${config.features.jobs ? '- `POST /api/v1/example/schedule-job` - Schedule backg
 
 ## Learn More
 
-- [Volt.js Documentation](https://github.com/andeerc/volt-js)
+- [Volt.js Documentation](https://github.com/andeerc/volt.js)
 - [${config.framework} Documentation](https://docs.${config.framework === 'nextjs' ? 'nextjs.org' : config.framework + '.dev'})
 ${config.database.provider !== 'none' ? '- [Prisma Documentation](https://prisma.io/docs)' : ''}
 

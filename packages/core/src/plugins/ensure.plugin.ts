@@ -10,7 +10,7 @@
  * 
  * @example Basic Usage
  * ```typescript
- * import { Ensure } from '@volt-js/core/services'
+ * import { Ensure } from '@volt.js/core/services'
  * 
  * // In an action handler
  * handler: async ({ request, context }) => {

@@ -43,7 +43,7 @@ export class GitHubService {
 
   constructor() {
     this.owner = "andeerc";
-    this.repo = "volt-js";
+    this.repo = "volt.js";
 
     this.octokit = new Octokit({
       auth: process.env.GITHUB_TOKEN,

@@ -387,9 +387,9 @@ class InteractiveProcessManager {
           ...packageJson.peerDependencies
         };
 
-        const voltVersion = allDeps['@volt-js/core'] ||
-          allDeps['@volt-js/cli'] ||
-          allDeps['volt-js'];
+        const voltVersion = allDeps['@volt.js/core'] ||
+          allDeps['@volt.js/cli'] ||
+          allDeps['volt.js'];
 
         return {
           name: packageJson.name || 'Unknown Project',
@@ -440,12 +440,12 @@ class InteractiveProcessManager {
         }
 
         // Detect Volt adapters
-        if (allDeps['@volt-js/adapter-redis'] || allDeps['@volt-js/adapter-redis']) {
+        if (allDeps['@volt.js/adapter-redis'] || allDeps['@volt.js/adapter-redis']) {
           this.systemCapabilities.detectedPackages.redisAdapter = true;
           this.systemCapabilities.hasRedisStore = true;
         }
 
-        if (allDeps['@volt-js/adapter-bullmq'] || allDeps['@volt-js/adapter-bullmq']) {
+        if (allDeps['@volt.js/adapter-bullmq'] || allDeps['@volt.js/adapter-bullmq']) {
           this.systemCapabilities.detectedPackages.bullmqAdapter = true;
           this.systemCapabilities.hasJobQueue = true;
         }
@@ -1091,9 +1091,9 @@ class InteractiveProcessManager {
       console.log(`${ANSI_COLORS.dim}Background Jobs not configured${ANSI_COLORS.reset}\n`);
       console.log(`${ANSI_COLORS.yellow}To enable job monitoring:${ANSI_COLORS.reset}`);
       console.log(`  1. Install BullMQ: ${ANSI_COLORS.cyan}npm install bullmq${ANSI_COLORS.reset}`);
-      console.log(`  2. Install adapter: ${ANSI_COLORS.cyan}npm install @volt-js/adapter-bullmq${ANSI_COLORS.reset}`);
+      console.log(`  2. Install adapter: ${ANSI_COLORS.cyan}npm install @volt.js/adapter-bullmq${ANSI_COLORS.reset}`);
       console.log(`  3. Configure in your Volt router:\n`);
-      console.log(`${ANSI_COLORS.dim}     import { createBullMQAdapter } from '@volt-js/adapter-bullmq'${ANSI_COLORS.reset}`);
+      console.log(`${ANSI_COLORS.dim}     import { createBullMQAdapter } from '@volt.js/adapter-bullmq'${ANSI_COLORS.reset}`);
       console.log(`${ANSI_COLORS.dim}     const jobs = createBullMQAdapter({ store: redisStore })${ANSI_COLORS.reset}`);
       console.log(`${ANSI_COLORS.dim}     const volt = Volt.context().store(store).jobs(jobs).create()${ANSI_COLORS.reset}\n`);
       return;

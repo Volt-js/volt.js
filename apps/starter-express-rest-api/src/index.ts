@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { expressAdapter } from '@volt-js/core/adapters';
+import { expressAdapter } from '@volt.js/core/adapters';
 import { AppRouter } from './volt.router'
 
 const app = express();

@@ -1,14 +1,14 @@
-# AI Agent Maintenance Manual: `@volt-js/core`
+# AI Agent Maintenance Manual: `@volt.js/core`
 
 **Version:** 1.0.0
-**For AI Agent:** You are an expert TypeScript software engineer. This document is your primary technical guide to the `@volt-js/core` package. Read and understand it thoroughly before attempting any modifications. Your goal is to perform maintenance tasks accurately, respecting the architectural principles outlined here.
+**For AI Agent:** You are an expert TypeScript software engineer. This document is your primary technical guide to the `@volt.js/core` package. Read and understand it thoroughly before attempting any modifications. Your goal is to perform maintenance tasks accurately, respecting the architectural principles outlined here.
 
 ---
 
 ## 1. Package Overview
 
 ### 1.1. Package Name
-`@volt-js/core`
+`@volt.js/core`
 
 ### 1.2. Purpose
 This package is the heart of the Volt.js framework. It contains all the essential, non-adapter-specific logic for building, configuring, and running a type-safe API. It provides the foundational building blocks, including the main builder, the request processing pipeline, all core TypeScript interfaces, and the client-side hooks. This package is a required dependency for any application built with Volt.js.
@@ -69,7 +69,7 @@ The **Context** is the sole dependency injection (DI) mechanism in Volt.js.
 This map outlines the purpose of each key file and directory within `packages/core/src`.
 
 *   `src/index.ts`
-    > **Purpose**: The public entry point of the `@volt-js/core` package. It exports the primary `Volt` builder, the `createVoltPlugin` factories, and all essential types that developers need to interact with the framework.
+    > **Purpose**: The public entry point of the `@volt.js/core` package. It exports the primary `Volt` builder, the `createVoltPlugin` factories, and all essential types that developers need to interact with the framework.
     > **Maintenance**: When adding a new high-level exportable, add it here.
 
 *   `src/services/`
@@ -80,7 +80,7 @@ This map outlines the purpose of each key file and directory within `packages/co
     *   `procedure.service.ts`: Exports `createVoltProcedure` and the enhanced builder/factories. This is where the logic for creating middleware resides.
     *   `router.service.ts`: Exports `createVoltRouter`. This factory takes the final configuration (controllers, context, plugins) and produces the `AppRouter`, which is used by the `RequestProcessor`.
     *   `cookie.service.ts`: Contains the `VoltCookie` class, a helper for parsing and serializing request/response cookies in a standardized way.
-    *   `jobs.service.ts`: Defines the **structure** and **abstractions** for the Volt.js Queues system (e.g., `JobsRegistry`, `JobsRouter`). The concrete implementation is provided by an adapter like `@volt-js/adapter-bullmq`.
+    *   `jobs.service.ts`: Defines the **structure** and **abstractions** for the Volt.js Queues system (e.g., `JobsRegistry`, `JobsRouter`). The concrete implementation is provided by an adapter like `@volt.js/adapter-bullmq`.
     *   `plugin.service.ts`: Contains the `VoltPluginManager`. This is a sophisticated service that handles plugin registration, dependency resolution, lifecycle hook execution, and event bus management.
     *   `realtime.service.ts`: Implements the `VoltRealtimeService`, providing the high-level API (`.publish()`, `.to()`, `.broadcast()`) for interacting with the SSE system.
 
@@ -932,7 +932,7 @@ timer.end(); // Automatically logs duration
 
 ## 9. Common Maintenance Tasks (Instructions for AI Agent)
 
-This section provides step-by-step guides for performing common maintenance and enhancement tasks on the `@volt-js/core` package.
+This section provides step-by-step guides for performing common maintenance and enhancement tasks on the `@volt.js/core` package.
 
 ### Task 1: Add a New Option to `volt.query()`
 **Scenario:** We want to add a new top-level option to all query actions, for example, `cacheTTL: number`.

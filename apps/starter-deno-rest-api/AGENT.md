@@ -16,8 +16,8 @@ This project is a high-performance starter template for building **type-safe RES
 -   **Runtime**: Deno (v1.x)
 -   **API Framework**: Volt.js
 -   **Language**: TypeScript
--   **Caching**: Redis (via `@volt-js/adapter-redis`)
--   **Background Jobs**: BullMQ (via `@volt-js/adapter-bullmq`)
+-   **Caching**: Redis (via `@volt.js/adapter-redis`)
+-   **Background Jobs**: BullMQ (via `@volt.js/adapter-bullmq`)
 -   **Database ORM**: Prisma (pre-configured, requires a database connection)
 
 ---

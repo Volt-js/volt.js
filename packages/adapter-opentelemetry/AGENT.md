@@ -1,19 +1,19 @@
-# AI Agent Maintenance Manual: `@volt-js/adapter-opentelemetry`
+# AI Agent Maintenance Manual: `@volt.js/adapter-opentelemetry`
 
 **Version:** 1.0.0
 **For AI Agent Use Only.**
 
-This document provides a comprehensive technical guide for Large Language Model (LLM) based AI agents responsible for maintaining, debugging, and extending the `@volt-js/adapter-opentelemetry` package. You are an expert TypeScript software engineer; this manual is your single source of truth for this package. Adherence to these instructions is critical.
+This document provides a comprehensive technical guide for Large Language Model (LLM) based AI agents responsible for maintaining, debugging, and extending the `@volt.js/adapter-opentelemetry` package. You are an expert TypeScript software engineer; this manual is your single source of truth for this package. Adherence to these instructions is critical.
 
 ---
 
 ## 1. Package Overview
 
 ### 1.1. Package Name
-`@volt-js/adapter-opentelemetry`
+`@volt.js/adapter-opentelemetry`
 
 ### 1.2. Purpose
-This package is an **Adapter**. Its sole responsibility is to implement the `VoltTelemetryProvider` interface (defined in `@volt-js/core`) using the **OpenTelemetry** standard. It provides a production-ready solution for observability, enabling distributed tracing, metrics collection, and structured event logging for Volt.js applications. This adapter makes it possible to monitor, debug, and analyze the performance of applications in complex, distributed environments.
+This package is an **Adapter**. Its sole responsibility is to implement the `VoltTelemetryProvider` interface (defined in `@volt.js/core`) using the **OpenTelemetry** standard. It provides a production-ready solution for observability, enabling distributed tracing, metrics collection, and structured event logging for Volt.js applications. This adapter makes it possible to monitor, debug, and analyze the performance of applications in complex, distributed environments.
 
 ---
 
@@ -169,4 +169,4 @@ This section provides explicit, step-by-step instructions for performing common 
         -   Write another test that calls `createProductionOpenTelemetryAdapter` **with** `sampleRate: 0.5`. Assert that the underlying factory was called with `sampleRate: 0.5` (proving the override works).
         -   Write a third test that calls it with `sampleRate: 0`. Assert that the underlying factory was called with `sampleRate: 0`.
 
-This systematic, type-first, and test-driven approach is mandatory for maintaining the quality and reliability of the Volt.js adapters. Always consult the interfaces in `@volt-js/core` and the types within this package before implementing changes.
+This systematic, type-first, and test-driven approach is mandatory for maintaining the quality and reliability of the Volt.js adapters. Always consult the interfaces in `@volt.js/core` and the types within this package before implementing changes.

@@ -1,4 +1,4 @@
-import type { VoltRouter } from "@volt-js/core";
+import type { VoltRouter } from "@volt.js/core";
 
 /**
  * MCP context passed to event handlers and instructions function.

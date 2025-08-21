@@ -1,19 +1,19 @@
-# AI Agent Maintenance Manual: `@volt-js/adapter-bullmq`
+# AI Agent Maintenance Manual: `@volt.js/adapter-bullmq`
 
 **Version:** 1.0.0
 **For Agent Use Only.**
 
-This document provides a comprehensive technical guide for Large Language Model (LLM) based AI agents responsible for maintaining, debugging, and extending the `@volt-js/adapter-bullmq` package. You are an expert TypeScript engineer; this manual is your single source of truth for this package. Adherence to these instructions is critical.
+This document provides a comprehensive technical guide for Large Language Model (LLM) based AI agents responsible for maintaining, debugging, and extending the `@volt.js/adapter-bullmq` package. You are an expert TypeScript engineer; this manual is your single source of truth for this package. Adherence to these instructions is critical.
 
 ---
 
 ## 1. Package Overview
 
 ### 1.1. Package Name
-`@volt-js/adapter-bullmq`
+`@volt.js/adapter-bullmq`
 
 ### 1.2. Purpose
-This package serves as a concrete **Adapter** that connects the abstract **Volt.js Queues** system (defined in `@volt-js/core`) to the [BullMQ](https://bullmq.io/) library. Its sole responsibility is to implement the `VoltJobQueueAdapter` interface, providing a robust, production-ready solution for background job processing using Redis as the backend.
+This package serves as a concrete **Adapter** that connects the abstract **Volt.js Queues** system (defined in `@volt.js/core`) to the [BullMQ](https://bullmq.io/) library. Its sole responsibility is to implement the `VoltJobQueueAdapter` interface, providing a robust, production-ready solution for background job processing using Redis as the backend.
 
 ---
 
@@ -22,7 +22,7 @@ This package serves as a concrete **Adapter** that connects the abstract **Volt.
 To effectively maintain this package, you must understand its role as a "bridge" between the Volt.js framework and the BullMQ library.
 
 ### 2.1. The Adapter Pattern
-This package is a classic example of the **Adapter Pattern**. `@volt-js/core` defines a standard interface for what a job queue system should do (`VoltJobQueueAdapter` in `packages/core/src/types/jobs.interface.ts`). This adapter provides the concrete implementation of that interface. This decouples the core framework from the specific queueing technology, meaning another adapter (e.g., for RabbitMQ) could be created without changing the core framework.
+This package is a classic example of the **Adapter Pattern**. `@volt.js/core` defines a standard interface for what a job queue system should do (`VoltJobQueueAdapter` in `packages/core/src/types/jobs.interface.ts`). This adapter provides the concrete implementation of that interface. This decouples the core framework from the specific queueing technology, meaning another adapter (e.g., for RabbitMQ) could be created without changing the core framework.
 
 ### 2.2. Interaction with BullMQ
 This adapter is essentially a sophisticated wrapper around the BullMQ library. When you use the functions provided by this adapter, it translates those calls into the corresponding BullMQ operations:
@@ -33,7 +33,7 @@ This adapter is essentially a sophisticated wrapper around the BullMQ library. W
 *   **Worker Process**: The adapter can optionally start a BullMQ **`Worker`** instance. This worker listens to the Redis queue, picks up jobs as they become available, and executes the corresponding `handler` function that you defined in `jobs.register()`.
 
 ### 2.3. Redis Connection
-BullMQ requires a Redis connection to operate. To promote efficiency, this adapter does **not** create its own Redis connection. Instead, it **requires an existing Redis connection** to be passed in during initialization, typically from an instance of the `@volt-js/adapter-redis` store adapter. This allows the Store and Queues systems to share a single connection pool.
+BullMQ requires a Redis connection to operate. To promote efficiency, this adapter does **not** create its own Redis connection. Instead, it **requires an existing Redis connection** to be passed in during initialization, typically from an instance of the `@volt.js/adapter-redis` store adapter. This allows the Store and Queues systems to share a single connection pool.
 
 ---
 

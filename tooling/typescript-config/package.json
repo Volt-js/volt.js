@@ -1,5 +1,5 @@
 {
-  "name": "@volt-js/typescript-config",
+  "name": "@volt.js/typescript-config",
   "version": "0.2.0",
   "private": true,
   "description": "TypeScript configuration for Volt.js ⚡ monorepo",

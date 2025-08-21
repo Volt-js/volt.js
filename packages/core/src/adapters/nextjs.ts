@@ -55,9 +55,9 @@ const NODE_MODULES = [
  * Lista MÍNIMA de pacotes específicos do Volt.js (server-only)
  */
 const VOLT_PACKAGES = [
-  "@volt-js/adapter-redis",
-  "@volt-js/adapter-bullmq",
-  "@volt-js/adapter-opentelemetry",
+  "@volt.js/adapter-redis",
+  "@volt.js/adapter-bullmq",
+  "@volt.js/adapter-opentelemetry",
 ] as const;
 
 /**
@@ -729,9 +729,9 @@ export const withVolt = (...configs: NextConfig[]): NextConfig => {
 
       serverExternalPackages: [
         ...(mergedConfig.serverExternalPackages || []),
-        "@volt-js/adapter-bullmq",
-        "@volt-js/adapter-opentelemetry",
-        "@volt-js/adapter-redis",
+        "@volt.js/adapter-bullmq",
+        "@volt.js/adapter-opentelemetry",
+        "@volt.js/adapter-redis",
         'ioredis',
         'bullmq',
       ],

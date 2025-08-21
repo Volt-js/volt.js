@@ -1,7 +1,7 @@
 import type {
   VoltTelemetryProvider,
   VoltTelemetryConfig,
-} from '@volt-js/core';
+} from '@volt.js/core';
 
 /**
  * OpenTelemetry exporter types

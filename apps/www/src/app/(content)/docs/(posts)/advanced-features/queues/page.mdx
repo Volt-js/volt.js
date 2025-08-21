@@ -32,7 +32,7 @@ Next, create a file at `src/services/jobs.ts` to initialize the BullMQ adapter. 
 
 ```typescript
 // src/services/jobs.ts
-import { createBullMQAdapter } from '@volt-js/core/adapters';
+import { createBullMQAdapter } from '@volt.js/core/adapters';
 import { store } from '@/services/store'; // Assuming you have an ioredis instance exported from here
 
 /**
@@ -68,7 +68,7 @@ Finally, enable the Queues system in your main `volt.ts` file by passing your `j
 
 ```typescript
 // src/volt.ts
-import { Volt } from '@volt-js/core';
+import { Volt } from '@volt.js/core';
 import { jobs } from '@/services/jobs'; // 1. Import the jobs adapter
 // ... other imports
 

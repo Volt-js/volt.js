@@ -1,5 +1,5 @@
 {
-  "name": "@volt-js/adapter-bullmq",
+  "name": "@volt.js/adapter-bullmq",
   "version": "0.2.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,14 +20,14 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@volt-js/core": "*",
+    "@volt.js/core": "*",
     "bullmq": "^4.10.3",
     "vitest": "^2.1.4",
     "zod": "^3.23.8",
     "typescript": "^5.6.3"
   },
   "peerDependencies": {
-    "@volt-js/core": "*",
+    "@volt.js/core": "*",
     "bullmq": "^4.10.3"
   },
   "license": "MIT"

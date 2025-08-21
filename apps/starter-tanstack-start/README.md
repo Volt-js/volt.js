@@ -16,8 +16,8 @@ Welcome to the Volt.js starter for building full-stack, type-safe applications w
 -   **Server-Side Data Fetching**: Leverages TanStack Router's loaders to fetch data on the server.
 -   **Feature-Based API Architecture**: A scalable project structure that organizes API code by business domain.
 -   **Ready-to-Use Services**: Pre-configured examples for:
-    -   **Caching**: Integrated with Redis via `@volt-js/adapter-redis`.
-    -   **Background Jobs**: Asynchronous task processing with BullMQ via `@volt-js/adapter-bullmq`.
+    -   **Caching**: Integrated with Redis via `@volt.js/adapter-redis`.
+    -   **Background Jobs**: Asynchronous task processing with BullMQ via `@volt.js/adapter-bullmq`.
 -   **Auto-Generated API Client**: A fully-typed client that mirrors your API, providing autocomplete and compile-time error checking.
 
 ## Prerequisites
@@ -35,8 +35,8 @@ Follow these steps to get your project up and running:
 
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/andeerc/volt-js.git
-    cd volt-js/apps/starter-tanstack-start
+    git clone https://github.com/andeerc/volt.js.git
+    cd volt.js/apps/starter-tanstack-start
     ```
 
 2.  **Install Dependencies**
@@ -45,7 +45,7 @@ Follow these steps to get your project up and running:
     ```
 
 3.  **Configure Environment Variables**
-    Create a `.env` file in the root of this starter (`volt-js/apps/starter-tanstack-start/.env`) and add your database and Redis connection URLs:
+    Create a `.env` file in the root of this starter (`volt.js/apps/starter-tanstack-start/.env`) and add your database and Redis connection URLs:
 
     ```env
     # .env
@@ -141,7 +141,7 @@ src/
 
 ## Further Learning
 
--   **[Volt.js GitHub Repository](https://github.com/andeerc/volt-js)**
+-   **[Volt.js GitHub Repository](https://github.com/andeerc/volt.js)**
 -   **[Volt.js Documentation Wiki](https://voltjs.com/docs)**
 -   **[TanStack Start Documentation](https://tanstack.com/start/latest/docs/overview)**
 -   **[TanStack Router Documentation](https://tanstack.com/router/latest/docs/overview)**

@@ -1,5 +1,5 @@
 {
-  "name": "@volt-js/eslint",
+  "name": "@volt.js/eslint",
   "version": "0.2.1",
   "private": false,
   "description": "ESLint configuration for Volt.js ⚡ projects.",
@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andeerc/volt-js.git",
+    "url": "git+https://github.com/andeerc/volt.js.git",
     "directory": "packages/eslint-config"
   },
   "bugs": {
-    "url": "https://github.com/andeerc/volt-js/issues"
+    "url": "https://github.com/andeerc/volt.js/issues"
   },
-  "homepage": "https://github.com/andeerc/volt-js/tree/main/packages/eslint-config#readme",
+  "homepage": "https://github.com/andeerc/volt.js/tree/main/packages/eslint-config#readme",
   "keywords": [
     "eslint",
     "eslintconfig",

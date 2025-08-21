@@ -6,8 +6,8 @@ var tsup_config_default = defineConfig({
   dts: true,
   outDir: "dist",
   clean: true,
-  external: ["@volt-js/core"],
-  noExternal: ["@volt-js/core"]
+  external: ["@volt.js/core"],
+  noExternal: ["@volt.js/core"]
 });
 export {
   tsup_config_default as default

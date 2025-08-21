@@ -1,4 +1,4 @@
-import { createConsoleLogger, VoltLogLevel } from '@volt-js/core'
+import { createConsoleLogger, VoltLogLevel } from '@volt.js/core'
 
 /**
  * Logger instance for application logging.
@@ -6,7 +6,7 @@ import { createConsoleLogger, VoltLogLevel } from '@volt-js/core'
  * @remarks
  * Provides structured logging with configurable log levels.
  *
- * @see https://github.com/andeerc/volt-js/tree/main/packages/core
+ * @see https://github.com/andeerc/volt.js/tree/main/packages/core
  */
 export const logger = createConsoleLogger({
   level: VoltLogLevel.INFO,

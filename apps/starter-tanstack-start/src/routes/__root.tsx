@@ -2,7 +2,7 @@
 /// <reference types="vite/client" />
 // other imports...
 
-import { VoltProvider } from '@volt-js/core/client'
+import { VoltProvider } from '@volt.js/core/client'
 import {
   createRootRoute,
   HeadContent,

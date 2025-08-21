@@ -1,5 +1,5 @@
-import type { VoltTelemetrySpan, VoltSpanOptions, VoltSpanContext } from '@volt-js/core';
-import { VoltConsoleLogger, resolveLogLevel } from '@volt-js/core';
+import type { VoltTelemetrySpan, VoltSpanOptions, VoltSpanContext } from '@volt.js/core';
+import { VoltConsoleLogger, resolveLogLevel } from '@volt.js/core';
 
 // Centralized logger for span module
 const logger = VoltConsoleLogger.create({

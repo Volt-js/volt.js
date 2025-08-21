@@ -1,5 +1,5 @@
-import type { VoltTimer } from '@volt-js/core';
-import { VoltConsoleLogger, resolveLogLevel } from '@volt-js/core';
+import type { VoltTimer } from '@volt.js/core';
+import { VoltConsoleLogger, resolveLogLevel } from '@volt.js/core';
 
 // Centralized logger for timer module
 const logger = VoltConsoleLogger.create({

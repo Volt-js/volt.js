@@ -5,7 +5,7 @@ import {
   type VoltSpanOptions,
   VoltConsoleLogger,
   VoltLogLevel,
-} from '@volt-js/core';
+} from '@volt.js/core';
 
 import { OpenTelemetrySpanWrapper } from './span';
 import { OpenTelemetryTimer, NoOpTimer } from './timer';

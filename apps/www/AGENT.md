@@ -1,4 +1,4 @@
-# AI Agent Maintenance Manual: Volt.js Website (`@volt-js/www`)
+# AI Agent Maintenance Manual: Volt.js Website (`@volt.js/www`)
 
 **Version:** 1.0.0
 **For Agent Use Only.**
@@ -9,7 +9,7 @@ This document provides a detailed technical guide for maintaining the Volt.js of
 
 ## 1. Project Overview
 
-**Name:** `@volt-js/www`
+**Name:** `@volt.js/www`
 
 **Purpose:** This package serves as the public-facing website for the Volt.js framework. Its primary responsibilities are:
 1.  **Marketing & Landing Pages:** To introduce new users to Volt.js and highlight its key features.
@@ -70,7 +70,7 @@ The project follows the standard Next.js App Router structure within the `src/` 
 2.  **Install Dependencies:** Ensure all dependencies are installed by running `npm install` from the monorepo root.
 3.  **Run Development Server:**
     ```bash
-    npm run dev --filter @volt-js/www
+    npm run dev --filter @volt.js/www
     ```
     The website will be available at `http://localhost:3000`.
 
@@ -118,7 +118,7 @@ The website is automatically deployed via a GitHub Action whenever changes are p
 
 1.  Checks out the code.
 2.  Installs dependencies (`npm install`).
-3.  Builds the Next.js application (`npm run build --filter @volt-js/www`).
+3.  Builds the Next.js application (`npm run build --filter @volt.js/www`).
 4.  Deploys the static output from the `out` directory to the hosting provider (e.g., Vercel, Netlify, or GitHub Pages).
 
 Refer to the specific deployment workflow file for precise details.

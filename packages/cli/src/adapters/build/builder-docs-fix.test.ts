@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Volt } from '@volt-js/core';
+import { Volt } from '@volt.js/core';
 
 describe('VoltBuilder - docs configuration fix', () => {
   it('should include docs configuration in router config object', () => {

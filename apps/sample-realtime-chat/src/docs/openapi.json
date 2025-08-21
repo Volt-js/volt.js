@@ -10,7 +10,7 @@
       "description": "Development"
     },
     {
-      "url": "https://volt-js-sample-realtime-chat.vercel.app/api/v1",
+      "url": "https://volt.js-sample-realtime-chat.vercel.app/api/v1",
       "description": "Production"
     }
   ],

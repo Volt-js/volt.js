@@ -68,7 +68,7 @@ export class ProjectGenerator {
 
   private async downloadTemplate(): Promise<{ isStarter: boolean, success: boolean }> {
     const { framework } = this.config
-    const templateUrl = `https://github.com/andeerc/volt-js.git`
+    const templateUrl = `https://github.com/andeerc/volt.js.git`
     const branch = 'main'
     const tempDir = path.join(this.targetDir, '__volt_tmp__')
     const starterDir = path.join(tempDir, 'apps', framework)
@@ -207,7 +207,7 @@ export class ProjectGenerator {
       const dbConfig = DATABASE_CONFIGS[this.config.database.provider]
 
       const coreDependencies = [
-        { name: '@volt-js/core', version: '*' },
+        { name: '@volt.js/core', version: '*' },
         { name: 'zod', version: '3.25.48' },
       ]
 

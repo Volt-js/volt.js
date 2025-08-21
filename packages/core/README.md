@@ -2,7 +2,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/@volt.js/core.svg)](https://www.npmjs.com/package/@volt.js/core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/andeerc/volt-js/main.yml?branch=main)](https://github.com/andeerc/volt-js/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/andeerc/volt.js/main.yml?branch=main)](https://github.com/andeerc/volt.js/actions)
 
 **Performance-optimized core package for the Volt.js framework.** 
 
@@ -86,7 +86,7 @@ Create the main `volt` instance, telling it about your `AppContext`.
 
 ```typescript
 // src/volt.ts
-import { Volt } from '@volt-js/core';
+import { Volt } from '@volt.js/core';
 import type { AppContext } from './volt.context';
 
 export const volt = Volt.context<AppContext>().create();

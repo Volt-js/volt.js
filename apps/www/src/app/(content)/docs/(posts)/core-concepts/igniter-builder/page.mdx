@@ -89,7 +89,7 @@ const volt = Volt
   <Field name="storeAdapter" type="VoltStoreAdapter" required description="A store adapter implementing the VoltStoreAdapter interface." />
 
   ```typescript
-  import { RedisAdapter } from '@volt-js/adapter-redis';
+  import { RedisAdapter } from '@volt.js/adapter-redis';
 
   const store = new RedisAdapter({
     host: 'localhost',
@@ -103,7 +103,7 @@ const volt = Volt
   ```
 
   **Supported Adapters:**
-  - `@volt-js/adapter-redis` - Redis-based storage with pub/sub support
+  - `@volt.js/adapter-redis` - Redis-based storage with pub/sub support
   - Custom adapters implementing `VoltStoreAdapter` interface
 
   **Store Features:**
@@ -117,7 +117,7 @@ const volt = Volt
   <Field name="loggerAdapter" type="VoltLogger" required description="A logger adapter implementing the VoltLogger interface." />
 
   ```typescript
-  import { ConsoleLogger } from '@volt-js/logger-console';
+  import { ConsoleLogger } from '@volt.js/logger-console';
 
   const logger = new ConsoleLogger({
     level: 'info',
@@ -143,7 +143,7 @@ const volt = Volt
   <Field name="jobsAdapter" type="MergedJobsExecutor<any>" required description="A jobs adapter that provides background job processing capabilities." />
 
   ```typescript
-  import { BullMQAdapter } from '@volt-js/adapter-bullmq';
+  import { BullMQAdapter } from '@volt.js/adapter-bullmq';
 
   const jobs = new BullMQAdapter({
     connection: {
@@ -162,7 +162,7 @@ const volt = Volt
   ```
 
   **Supported Adapters:**
-  - `@volt-js/adapter-bullmq` - BullMQ integration with Redis
+  - `@volt.js/adapter-bullmq` - BullMQ integration with Redis
 
   **Job Features:**
   - Type-safe job definitions and handlers
@@ -175,7 +175,7 @@ const volt = Volt
   <Field name="telemetryProvider" type="VoltTelemetryProvider" required description="A telemetry provider implementing distributed tracing and metrics collection." />
 
   ```typescript
-  import { OpenTelemetryProvider } from '@volt-js/adapter-opentelemetry';
+  import { OpenTelemetryProvider } from '@volt.js/adapter-opentelemetry';
 
   const telemetry = new OpenTelemetryProvider({
     serviceName: 'my-api',
@@ -192,7 +192,7 @@ const volt = Volt
   ```
 
   **Supported Providers:**
-  - `@volt-js/adapter-opentelemetry` - OpenTelemetry integration
+  - `@volt.js/adapter-opentelemetry` - OpenTelemetry integration
 
   **Telemetry Features:**
   - Distributed tracing across requests
@@ -206,8 +206,8 @@ const volt = Volt
   <Field name="pluginsRecord" type="Record<string, VoltPlugin>" required description="An object containing plugin instances keyed by their names." />
 
   ```typescript
-  import { AuthPlugin } from '@volt-js/plugin-auth';
-  import { CachePlugin } from '@volt-js/plugin-cache';
+  import { AuthPlugin } from '@volt.js/plugin-auth';
+  import { CachePlugin } from '@volt.js/plugin-cache';
 
   const volt = Volt
     .context<AppContext>()

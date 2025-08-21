@@ -19,8 +19,8 @@ This project is a starter template for building high-performance, full-stack, ty
 -   **Language**: TypeScript
 -   **Styling**: TailwindCSS
 -   **Database ORM**: Prisma
--   **Caching & Messaging**: Redis (via `@volt-js/adapter-redis`)
--   **Background Jobs**: BullMQ (via `@volt-js/adapter-bullmq`)
+-   **Caching & Messaging**: Redis (via `@volt.js/adapter-redis`)
+-   **Background Jobs**: BullMQ (via `@volt.js/adapter-bullmq`)
 
 ---
 
@@ -319,7 +319,7 @@ This is a **mandatory** root provider (`src/providers/volt.provider.tsx`) for al
 
 ### 5.2. `useQuery`
 The primary hook for fetching data in Client Components. It is available for all `query` (GET) actions.
--   **Return Values** (see [`QueryActionCallerResult`](volt-js/packages/core/src/types/client.interface.ts)):
+-   **Return Values** (see [`QueryActionCallerResult`](volt.js/packages/core/src/types/client.interface.ts)):
     -   `data`: The response data (`TAction["$Infer"]["$Response"]["data"]`).
     -   `variables`: The input variables used for the query.
     -   `isLoading`: `true` only during the very first fetch.
@@ -332,7 +332,7 @@ The primary hook for fetching data in Client Components. It is available for all
     -   `loading`: **[DEPRECATED]** Use `isLoading` instead.
     -   `invalidate`: **[DEPRECATED]** Use `refetch` instead.
     -   `execute`: The function to execute the query directly.
--   **Options** (see [`QueryActionCallerOptions`](volt-js/packages/core/src/types/client.interface.ts)):
+-   **Options** (see [`QueryActionCallerOptions`](volt.js/packages/core/src/types/client.interface.ts)):
     -   `enabled`: If `false`, disables automatic fetching.
     -   `initialData`: Provide initial data for hydration.
     -   `query`, `params`: Input variables for the query.
@@ -344,7 +344,7 @@ The primary hook for fetching data in Client Components. It is available for all
 
 ### 5.3. `useMutation`
 The hook for creating, updating, or deleting data. Available for all `mutation` (non-GET) actions.
--   **Return Values** (see [`MutationActionCallerResult`](volt-js/packages/core/src/types/client.interface.ts)):
+-   **Return Values** (see [`MutationActionCallerResult`](volt.js/packages/core/src/types/client.interface.ts)):
     -   `mutate`: The function to execute the mutation (deprecated alias for `mutate`).
     -   `data`: The response data.
     -   `variables`: The input variables used for the mutation.
@@ -355,7 +355,7 @@ The hook for creating, updating, or deleting data. Available for all `mutation` 
     -   `retry`: Function to manually retry the mutation.
     -   `status`: `'loading' | 'error' | 'success'`.
     -   `loading`: **[DEPRECATED]** Use `isLoading` instead.
--   **Options** (see [`MutationActionCallerOptions`](volt-js/packages/core/src/types/client.interface.ts)):
+-   **Options** (see [`MutationActionCallerOptions`](volt.js/packages/core/src/types/client.interface.ts)):
     -   `query`, `params`, `body`: Input variables for the mutation (all support partial updates).
     -   `onLoading`, `onRequest`, `onSuccess`, `onError`, `onSettled`: Lifecycle callbacks.
 
@@ -380,14 +380,14 @@ function SomeComponent() {
 
 ### 5.4. `useRealtime`
 For subscribing to custom, continuous data streams from the backend (e.g., for a notification feed). Requires a backend action with `stream: true`.
--   **Return Values** (see [`RealtimeActionCallerResult`](volt-js/packages/core/src/types/client.interface.ts)):
+-   **Return Values** (see [`RealtimeActionCallerResult`](volt.js/packages/core/src/types/client.interface.ts)):
     -   `data`: Latest data received from the stream.
     -   `isConnected`: Whether the stream is currently connected.
     -   `isReconnecting`: Whether the stream is attempting to reconnect.
     -   `error`: Last error that occurred, if any.
     -   `disconnect`: Manually disconnect the stream.
     -   `reconnect`: Manually reconnect the stream.
--   **Options** (see [`RealtimeActionCallerOptions`](volt-js/packages/core/src/types/client.interface.ts)):
+-   **Options** (see [`RealtimeActionCallerOptions`](volt.js/packages/core/src/types/client.interface.ts)):
     -   `initialParams`, `initialData`: Initial values for the stream.
     -   `onConnect`, `onDisconnect`, `onError`, `onMessage`: Lifecycle callbacks.
     -   `autoReconnect`, `maxReconnectAttempts`, `reconnectDelay`: Reconnection behavior.
@@ -410,7 +410,7 @@ For subscribing to custom, continuous data streams from the backend (e.g., for a
 2.  **Apply to DB**: Run `npx prisma db push`.
 3.  **Scaffold Feature**: Use `volt generate feature`.
     ```bash
-    npx @volt-js/cli generate feature products --schema prisma:Product
+    npx @volt.js/cli generate feature products --schema prisma:Product
     ```
     This command generates a complete, production-ready CRUD API feature slice in `src/features/products/`, including controllers, Zod schemas, and a repository procedure.
 4.  **Register Controller**: Open `src/volt.router.ts` and register the new `productsController`.

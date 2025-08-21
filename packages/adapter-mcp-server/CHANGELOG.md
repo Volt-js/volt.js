@@ -1,4 +1,4 @@
-# @volt-js/adapter-mcp-server
+# @volt.js/adapter-mcp-server
 
 ## 0.2.0
 
@@ -30,7 +30,7 @@
     - Automatic reconnection and event replay for reliable delivery
     - Strongly-typed event payloads and handler signatures
     - Extensible hooks for connection lifecycle, authentication, and custom event processing
-  - **Job System** (`@volt-js/adapter-bullmq`)
+  - **Job System** (`@volt.js/adapter-bullmq`)
     - Strongly-typed job definitions and payloads
     - Flexible, cron-like job scheduling and delayed jobs
     - Automatic retries, exponential backoff, and failure handling
@@ -41,7 +41,7 @@
     - Built-in event emitters for job and queue events
     - Pluggable middleware for job processing and context injection
     - Type-safe job result and error propagation
-  - **Store Layer** (`@volt-js/adapter-redis`)
+  - **Store Layer** (`@volt.js/adapter-redis`)
     - Strongly-typed, generic key-value store interface
     - Type-safe CRUD operations with schema validation
     - Atomic and transactional operations (multi, pipeline)
@@ -51,14 +51,14 @@
     - Namespaced keys and pattern-based operations
     - Extensible serialization/deserialization (custom codecs)
     - Event hooks for store and Pub/Sub lifecycle events
-  - **Telemetry** (`@volt-js/adapter-opentelemetry`)
+  - **Telemetry** (`@volt.js/adapter-opentelemetry`)
     - Distributed request tracing with automatic span creation for HTTP, jobs, and realtime events
     - Performance monitoring with customizable span attributes and duration metrics
     - Flexible metric collection for application and system-level insights
     - Context propagation across async boundaries and between adapters
     - Seamless integration with OpenTelemetry exporters and observability backends
     - Middleware for automatic instrumentation and custom trace enrichment
-  - **MCP Server Integration** (`@volt-js/adapter-mcp`)
+  - **MCP Server Integration** (`@volt.js/adapter-mcp`)
     - Full MCP protocol support for seamless integration with MCP-compatible clients and services
     - Define type-safe MCP procedures using a declarative API, with automatic context injection for each request
     - Built-in support for context-aware AI operations, allowing you to handle AI-driven tasks and workflows with access to user/session context
@@ -81,17 +81,17 @@
 
   ```bash
   # Core framework
-  npm install @volt-js/core
+  npm install @volt.js/core
 
   # Choose the adapters you need
-  npm install @volt-js/adapter-redis ioredis
+  npm install @volt.js/adapter-redis ioredis
   npm install @types/ioredis --save-dev
 
-  npm install @volt-js/adapter-bullmq bullmq
+  npm install @volt.js/adapter-bullmq bullmq
 
-  npm install @volt-js/adapter-opentelemetry
+  npm install @volt.js/adapter-opentelemetry
 
-  npm install @volt-js/adapter-mcp @vercel/mcp-adapter @modelcontextprotocol/sdk
+  npm install @volt.js/adapter-mcp @vercel/mcp-adapter @modelcontextprotocol/sdk
   ```
 
   ### Key Benefits

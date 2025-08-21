@@ -1,5 +1,5 @@
 import type { Redis } from "ioredis";
-import { type EventCallback, type KeyValueOptions, type VoltStoreAdapter, isServer } from "@volt-js/core";
+import { type EventCallback, type KeyValueOptions, type VoltStoreAdapter, isServer } from "@volt.js/core";
 
 /**
  * Redis connection health status

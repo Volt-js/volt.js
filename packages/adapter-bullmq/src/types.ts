@@ -1,5 +1,5 @@
 import type { Queue, Worker, Job, QueueOptions, WorkerOptions } from "bullmq";
-import type { VoltLogger, VoltStoreAdapter } from "@volt-js/core";
+import type { VoltLogger, VoltStoreAdapter } from "@volt.js/core";
 
 /**
  * Options for configuring the BullMQ Adapter.

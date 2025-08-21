@@ -20,8 +20,8 @@ This project is a high-performance starter template for building **type-safe RES
 -   **Runtime**: Node.js (v18+)
 -   **API Framework**: Volt.js
 -   **Language**: TypeScript
--   **Caching**: Redis (via `@volt-js/adapter-redis`)
--   **Background Jobs**: BullMQ (via `@volt-js/adapter-bullmq`)
+-   **Caching**: Redis (via `@volt.js/adapter-redis`)
+-   **Background Jobs**: BullMQ (via `@volt.js/adapter-bullmq`)
 -   **Database ORM**: Prisma (pre-configured, requires a database connection)
 
 ---
@@ -33,7 +33,7 @@ This application is a **pure API server**. It uses Express as the HTTP layer and
 ### 2.1. Server Entry Point (`src/index.ts`)
 The primary entry point is `src/index.ts`. It performs two key functions:
 1.  It creates a standard Express application instance.
-2.  It uses the **`expressAdapter`** from `@volt-js/core/adapters` to mount the entire Volt.js router as a middleware on the `/api/v1` path. This adapter is the critical link between the Express and Volt.js ecosystems.
+2.  It uses the **`expressAdapter`** from `@volt.js/core/adapters` to mount the entire Volt.js router as a middleware on the `/api/v1` path. This adapter is the critical link between the Express and Volt.js ecosystems.
 
 ### 2.2. Volt.js API Layer
 The back-end business logic is powered by Volt.js and follows a structured, feature-based pattern.
@@ -108,7 +108,7 @@ Follow these workflows for common development tasks.
 >
 > ```bash
 > # This single command creates the controller, Zod schemas, and procedures.
-> npx @volt-js/cli generate feature products --schema prisma:Product
+> npx @volt.js/cli generate feature products --schema prisma:Product
 > ```
 > This saves time and ensures consistency across your application. After running the command, you just need to register the new controller in `src/volt.router.ts`.
 

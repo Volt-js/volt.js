@@ -35,7 +35,7 @@ Create a file at `src/services/store.ts` to initialize the Redis adapter. You'll
 
 ```typescript
 // src/services/store.ts
-import { createRedisStoreAdapter } from '@volt-js/core/adapters';
+import { createRedisStoreAdapter } from '@volt.js/core/adapters';
 import { redis } from './redis'; // Assuming you have your ioredis client instance here
 
 /**
@@ -56,7 +56,7 @@ Finally, enable the Store feature in `src/volt.ts` by passing your adapter to th
 
 ```typescript
 // src/volt.ts
-import { Volt } from '@volt-js/core';
+import { Volt } from '@volt.js/core';
 import { store } from '@/services/store'; // 1. Import the store adapter
 // ... other imports
 

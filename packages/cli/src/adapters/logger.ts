@@ -1,4 +1,4 @@
-import { VoltLogLevel, createConsoleLogger } from '@volt-js/core';
+import { VoltLogLevel, createConsoleLogger } from '@volt.js/core';
 
 /**
  * Get the log level from environment variables

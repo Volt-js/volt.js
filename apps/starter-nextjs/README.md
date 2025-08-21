@@ -13,8 +13,8 @@ Welcome to the Volt.js starter for building full-stack, type-safe applications w
 -   **End-to-End Type Safety**: Powered by Volt.js, ensuring type safety between your React components and your back-end API.
 -   **Feature-Based Architecture**: A scalable project structure that organizes code by business domain.
 -   **Ready-to-Use Services**: Pre-configured examples for:
-    -   **Caching**: Integrated with Redis via `@volt-js/adapter-redis`.
-    -   **Background Jobs**: Asynchronous task processing with BullMQ via `@volt-js/adapter-bullmq`.
+    -   **Caching**: Integrated with Redis via `@volt.js/adapter-redis`.
+    -   **Background Jobs**: Asynchronous task processing with BullMQ via `@volt.js/adapter-bullmq`.
     -   **Structured Logging**: Production-ready logging.
 -   **Database Ready**: Comes with Prisma set up for seamless database integration.
 -   **Seamless Integration**: Uses the `nextRouteHandlerAdapter` to cleanly connect the Volt.js router to the Next.js App Router.
@@ -35,8 +35,8 @@ Follow these steps to get your project up and running:
 
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/andeerc/volt-js.git
-    cd volt-js/apps/starter-next-app
+    git clone https://github.com/andeerc/volt.js.git
+    cd volt.js/apps/starter-next-app
     ```
 
 2.  **Install Dependencies**
@@ -45,7 +45,7 @@ Follow these steps to get your project up and running:
     ```
 
 3.  **Configure Environment Variables**
-    Create a `.env` file in the root of this starter (`volt-js/apps/starter-next-app/.env`) and add your database and Redis connection URLs:
+    Create a `.env` file in the root of this starter (`volt.js/apps/starter-next-app/.env`) and add your database and Redis connection URLs:
 
     ```env
     # .env
@@ -75,7 +75,7 @@ The entry point for all API requests is the catch-all route handler located at `
 ```typescript
 // src/app/api/[[...all]]/route.ts
 import { AppRouter } from '@/volt.router'
-import { nextRouteHandlerAdapter } from '@volt-js/core/adapters'
+import { nextRouteHandlerAdapter } from '@volt.js/core/adapters'
 
 // The adapter creates GET, POST, etc. handlers from your Volt.js router.
 export const { GET, POST, PUT, DELETE } = nextRouteHandlerAdapter(AppRouter)
@@ -157,7 +157,7 @@ src/
 
 To learn more about Volt.js and its powerful features, check out the official documentation:
 
--   **[Volt.js GitHub Repository](https://github.com/andeerc/volt-js)**
+-   **[Volt.js GitHub Repository](https://github.com/andeerc/volt.js)**
 -   **[Official Documentation](https://voltjs.com/docs)**
 -   **[Core Concepts](https://voltjs.com/docs/core-concepts)**
 -   **[Client-Side Integration](https://voltjs.com/docs/client-side)**

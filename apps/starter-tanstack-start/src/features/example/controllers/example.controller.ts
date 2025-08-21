@@ -5,7 +5,7 @@ import { z } from 'zod'
  * @description Example controller demonstrating Volt.js features.
  * This file serves as a starting point for your application's logic.
  *
- * @see https://github.com/andeerc/volt-js
+ * @see https://github.com/andeerc/volt.js
  */
 export const exampleController = volt.controller({
   // The base path for all actions in this controller.

@@ -10,7 +10,7 @@ export default defineConfig({
   treeshake: true,
   minify: false,
   external: [
-    '@volt-js/core',
+    '@volt.js/core',
     '@opentelemetry/api',
     '@opentelemetry/sdk-node',
     '@opentelemetry/exporter-jaeger',

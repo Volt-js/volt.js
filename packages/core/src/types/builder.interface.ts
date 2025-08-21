@@ -351,7 +351,7 @@ export type VoltBuilderExtension<
  *
  * @example
  * ```typescript
- * import { Volt } from '@volt-js/core';
+ * import { Volt } from '@volt.js/core';
  *
  * const volt = Volt
  *   .context<AppContext>()

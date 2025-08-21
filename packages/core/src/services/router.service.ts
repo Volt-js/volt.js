@@ -27,7 +27,7 @@ import { resolveLogLevel, createLoggerContext } from "../utils/logger";
  *
  * ### 1. Minimal Example (No Plugins)
  * ```typescript
- * import { createVoltRouter } from "@volt-js/core";
+ * import { createVoltRouter } from "@volt.js/core";
  * import { userController } from "./controllers/user.controller";
  *
  * const router = createVoltRouter({

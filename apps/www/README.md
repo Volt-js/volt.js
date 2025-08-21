@@ -1,4 +1,4 @@
-# Volt.js Website (`@volt-js/www`)
+# Volt.js Website (`@volt.js/www`)
 
 This repository contains the source code for the official Volt.js website and documentation platform, available at [https://voltjs.com](https://voltjs.com).
 
@@ -26,8 +26,8 @@ Follow these instructions to set up the project for local development.
 1.  **Clone the Monorepo:**
     If you haven't already, clone the entire Volt.js monorepo to your local machine.
     ```bash
-    git clone https://github.com/your-org/volt-js.git
-    cd volt-js
+    git clone https://github.com/your-org/volt.js.git
+    cd volt.js
     ```
 
 2.  **Install Dependencies:**
@@ -38,9 +38,9 @@ Follow these instructions to set up the project for local development.
     This command leverages npm workspaces to link all local packages correctly.
 
 3.  **Run the Development Server:**
-    Use the npm `--filter` flag to run the development server specifically for the `@volt-js/www` package.
+    Use the npm `--filter` flag to run the development server specifically for the `@volt.js/www` package.
     ```bash
-    npm run dev --filter @volt-js/www
+    npm run dev --filter @volt.js/www
     ```
 
 4.  **Open in Browser:**
@@ -61,7 +61,7 @@ Our documentation is written in MDX (`.mdx`).
 
 ### Reporting Issues
 
-If you encounter a bug or have a feature request, please [open an issue](https://github.com/andeerc/volt-js/issues) on our GitHub repository. Provide as much detail as possible, including steps to reproduce the issue.
+If you encounter a bug or have a feature request, please [open an issue](https://github.com/andeerc/volt.js/issues) on our GitHub repository. Provide as much detail as possible, including steps to reproduce the issue.
 
 ## 📜 License
 

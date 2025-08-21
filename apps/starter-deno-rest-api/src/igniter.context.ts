@@ -2,7 +2,7 @@
 
 /**
  * @description Create the context of the Volt.js application
- * @see https://github.com/andeerc/volt-js
+ * @see https://github.com/andeerc/volt.js
  */
 export const createVoltAppContext = () => {
   return {
@@ -12,6 +12,6 @@ export const createVoltAppContext = () => {
 
 /**
  * @description The context of the Volt.js application
- * @see https://github.com/andeerc/volt-js
+ * @see https://github.com/andeerc/volt.js
  */
 export type VoltAppContext = Awaited<ReturnType<typeof createVoltAppContext>>

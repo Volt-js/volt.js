@@ -4,8 +4,8 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "@volt-js/core": ["../core/src"],
-      "@volt-js/*": ["../*/src"]
+      "@volt.js/core": ["../core/src"],
+      "@volt.js/*": ["../*/src"]
     }
   },
   "include": ["src/**/*"],

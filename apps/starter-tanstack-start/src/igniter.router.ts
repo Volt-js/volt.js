@@ -3,7 +3,7 @@ import { exampleController } from '@/features/example'
 
 /**
  * @description Main application router configuration
- * @see https://github.com/andeerc/volt-js
+ * @see https://github.com/andeerc/volt.js
  */
 export const AppRouter = volt.router({
   // The `basePath` is used by the client to construct the full API URL.

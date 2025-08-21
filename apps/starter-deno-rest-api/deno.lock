@@ -3,11 +3,11 @@
   "specifiers": {
     "jsr:@std/assert@1": "1.0.13",
     "jsr:@std/internal@^1.0.6": "1.0.9",
-    "npm:@volt-js/adapter-bullmq@latest": "0.2.1_@volt-js+core@0.2.6__ioredis@5.7.0__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__react@19.1.1__react-dom@19.1.1___react@19.1.1__typescript@5.9.2_bullmq@4.18.3",
-    "npm:@volt-js/adapter-mcp-server@latest": "0.2.1_@volt-js+core@0.2.6__ioredis@5.7.0__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__react@19.1.1__react-dom@19.1.1___react@19.1.1__typescript@5.9.2_@modelcontextprotocol+sdk@1.17.2__express@5.1.0__zod@3.25.67_@vercel+mcp-adapter@0.2.4__@modelcontextprotocol+sdk@1.17.2___express@5.1.0___zod@3.25.67__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__redis@4.7.1___@redis+client@1.6.1",
-    "npm:@volt-js/adapter-redis@latest": "0.2.1_@volt-js+core@0.2.6__ioredis@5.7.0__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__react@19.1.1__react-dom@19.1.1___react@19.1.1__typescript@5.9.2_ioredis@5.7.0",
-    "npm:@volt-js/core@~0.2.6": "0.2.6_ioredis@5.7.0_next@15.4.6__react@19.1.1__react-dom@19.1.1___react@19.1.1_react@19.1.1_react-dom@19.1.1__react@19.1.1_typescript@5.9.2",
-    "npm:@volt-js/eslint-config@0.1": "0.1.0_eslint@8.57.1_@typescript-eslint+parser@6.21.0__eslint@8.57.1_eslint-plugin-import@2.32.0__eslint@8.57.1_eslint-plugin-n@16.6.2__eslint@8.57.1_eslint-plugin-promise@6.6.0__eslint@8.57.1_eslint-config-prettier@9.1.2__eslint@8.57.1_prettier@3.6.2",
+    "npm:@volt.js/adapter-bullmq@latest": "0.2.1_@volt.js+core@0.2.6__ioredis@5.7.0__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__react@19.1.1__react-dom@19.1.1___react@19.1.1__typescript@5.9.2_bullmq@4.18.3",
+    "npm:@volt.js/adapter-mcp-server@latest": "0.2.1_@volt.js+core@0.2.6__ioredis@5.7.0__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__react@19.1.1__react-dom@19.1.1___react@19.1.1__typescript@5.9.2_@modelcontextprotocol+sdk@1.17.2__express@5.1.0__zod@3.25.67_@vercel+mcp-adapter@0.2.4__@modelcontextprotocol+sdk@1.17.2___express@5.1.0___zod@3.25.67__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__redis@4.7.1___@redis+client@1.6.1",
+    "npm:@volt.js/adapter-redis@latest": "0.2.1_@volt.js+core@0.2.6__ioredis@5.7.0__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__react@19.1.1__react-dom@19.1.1___react@19.1.1__typescript@5.9.2_ioredis@5.7.0",
+    "npm:@volt.js/core@~0.2.6": "0.2.6_ioredis@5.7.0_next@15.4.6__react@19.1.1__react-dom@19.1.1___react@19.1.1_react@19.1.1_react-dom@19.1.1__react@19.1.1_typescript@5.9.2",
+    "npm:@volt.js/eslint-config@0.1": "0.1.0_eslint@8.57.1_@typescript-eslint+parser@6.21.0__eslint@8.57.1_eslint-plugin-import@2.32.0__eslint@8.57.1_eslint-plugin-n@16.6.2__eslint@8.57.1_eslint-plugin-promise@6.6.0__eslint@8.57.1_eslint-config-prettier@9.1.2__eslint@8.57.1_prettier@3.6.2",
     "npm:@prisma/client@^6.11.1": "6.13.0",
     "npm:@types/deno@latest": "2.3.0",
     "npm:bullmq@4": "4.18.3",
@@ -74,29 +74,29 @@
       "integrity": "sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==",
       "deprecated": true
     },
-    "@volt-js/adapter-bullmq@0.2.1_@volt-js+core@0.2.6__ioredis@5.7.0__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__react@19.1.1__react-dom@19.1.1___react@19.1.1__typescript@5.9.2_bullmq@4.18.3": {
+    "@volt.js/adapter-bullmq@0.2.1_@volt.js+core@0.2.6__ioredis@5.7.0__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__react@19.1.1__react-dom@19.1.1___react@19.1.1__typescript@5.9.2_bullmq@4.18.3": {
       "integrity": "sha512-GbMFWdOvJzgTcjQjGrCe4oSeh0CYXCAg1rfg7zZJfBIB85lvf1M6K7amF7kaUwGcsyQ9QB/MYK30r4dKMV9H0Q==",
       "dependencies": [
-        "@volt-js/core",
+        "@volt.js/core",
         "bullmq"
       ]
     },
-    "@volt-js/adapter-mcp-server@0.2.1_@volt-js+core@0.2.6__ioredis@5.7.0__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__react@19.1.1__react-dom@19.1.1___react@19.1.1__typescript@5.9.2_@modelcontextprotocol+sdk@1.17.2__express@5.1.0__zod@3.25.67_@vercel+mcp-adapter@0.2.4__@modelcontextprotocol+sdk@1.17.2___express@5.1.0___zod@3.25.67__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__redis@4.7.1___@redis+client@1.6.1": {
+    "@volt.js/adapter-mcp-server@0.2.1_@volt.js+core@0.2.6__ioredis@5.7.0__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__react@19.1.1__react-dom@19.1.1___react@19.1.1__typescript@5.9.2_@modelcontextprotocol+sdk@1.17.2__express@5.1.0__zod@3.25.67_@vercel+mcp-adapter@0.2.4__@modelcontextprotocol+sdk@1.17.2___express@5.1.0___zod@3.25.67__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__redis@4.7.1___@redis+client@1.6.1": {
       "integrity": "sha512-ER0NevJ8cyoMynFYQ63noTde3CuSwCE56mCFP1CNSXoS5jnQTKI/lr5d88pbe4e5Djr4V5DNINEnfHfVojQrDw==",
       "dependencies": [
-        "@volt-js/core",
+        "@volt.js/core",
         "@modelcontextprotocol/sdk",
         "@vercel/mcp-adapter"
       ]
     },
-    "@volt-js/adapter-redis@0.2.1_@volt-js+core@0.2.6__ioredis@5.7.0__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__react@19.1.1__react-dom@19.1.1___react@19.1.1__typescript@5.9.2_ioredis@5.7.0": {
+    "@volt.js/adapter-redis@0.2.1_@volt.js+core@0.2.6__ioredis@5.7.0__next@15.4.6___react@19.1.1___react-dom@19.1.1____react@19.1.1__react@19.1.1__react-dom@19.1.1___react@19.1.1__typescript@5.9.2_ioredis@5.7.0": {
       "integrity": "sha512-2OiCr3YzJlmmxc+ILpkUGTw1jy7Ho76NN3DO98UJT9uoyBX+IteMlyqHDJAipCugbj0yhx7206wmixk+hHzj/Q==",
       "dependencies": [
-        "@volt-js/core",
+        "@volt.js/core",
         "ioredis"
       ]
     },
-    "@volt-js/core@0.2.6_ioredis@5.7.0_next@15.4.6__react@19.1.1__react-dom@19.1.1___react@19.1.1_react@19.1.1_react-dom@19.1.1__react@19.1.1_typescript@5.9.2": {
+    "@volt.js/core@0.2.6_ioredis@5.7.0_next@15.4.6__react@19.1.1__react-dom@19.1.1___react@19.1.1_react@19.1.1_react-dom@19.1.1__react@19.1.1_typescript@5.9.2": {
       "integrity": "sha512-Zk566+TqD1fJLGpViaSYgu1MwAXaJjY0KxqShHgzyTia4RyX8Ho7jUr9p4hqxEJWEaKYyp6fe3WZzDkY7fgQwQ==",
       "dependencies": [
         "@scalar/core",
@@ -112,7 +112,7 @@
         "uncrypto"
       ]
     },
-    "@volt-js/eslint-config@0.1.0_eslint@8.57.1_@typescript-eslint+parser@6.21.0__eslint@8.57.1_eslint-plugin-import@2.32.0__eslint@8.57.1_eslint-plugin-n@16.6.2__eslint@8.57.1_eslint-plugin-promise@6.6.0__eslint@8.57.1_eslint-config-prettier@9.1.2__eslint@8.57.1_prettier@3.6.2": {
+    "@volt.js/eslint-config@0.1.0_eslint@8.57.1_@typescript-eslint+parser@6.21.0__eslint@8.57.1_eslint-plugin-import@2.32.0__eslint@8.57.1_eslint-plugin-n@16.6.2__eslint@8.57.1_eslint-plugin-promise@6.6.0__eslint@8.57.1_eslint-config-prettier@9.1.2__eslint@8.57.1_prettier@3.6.2": {
       "integrity": "sha512-LuzBUOB6AMCE5E4A3QhxbKotbBB6GY2jWPMtFMmloNWHOmOCkr0HP3BxYCLbt8gpDNTrSvVb7n+HLmgIWGTCmA==",
       "dependencies": [
         "@typescript-eslint/eslint-plugin",
@@ -3014,11 +3014,11 @@
     ],
     "packageJson": {
       "dependencies": [
-        "npm:@volt-js/adapter-bullmq@latest",
-        "npm:@volt-js/adapter-mcp-server@latest",
-        "npm:@volt-js/adapter-redis@latest",
-        "npm:@volt-js/core@~0.2.6",
-        "npm:@volt-js/eslint-config@0.1",
+        "npm:@volt.js/adapter-bullmq@latest",
+        "npm:@volt.js/adapter-mcp-server@latest",
+        "npm:@volt.js/adapter-redis@latest",
+        "npm:@volt.js/core@~0.2.6",
+        "npm:@volt.js/eslint-config@0.1",
         "npm:@prisma/client@^6.11.1",
         "npm:@types/deno@latest",
         "npm:bullmq@4",

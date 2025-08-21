@@ -1,4 +1,4 @@
-import { Volt } from '@volt-js/core'
+import { Volt } from '@volt.js/core'
 import { createVoltAppContext } from "./volt.context"
 import { logger } from "@/services/logger"
 import { telemetry } from "@/services/telemetry"
@@ -8,7 +8,7 @@ import openapi from './docs/openapi.json'
 
 /**
  * @description Initialize the Volt.js
- * @see https://github.com/andeerc/volt-js
+ * @see https://github.com/andeerc/volt.js
  */
 export const volt = Volt
   .context(createVoltAppContext())
@@ -28,7 +28,7 @@ export const volt = Volt
       contact: {
         name: 'Volt.js',
         email: 'team@voltjs.com',
-        url: 'https://github.com/andeerc/volt-js'
+        url: 'https://github.com/andeerc/volt.js'
       },
       license: {
         name: 'MIT',

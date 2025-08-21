@@ -71,7 +71,7 @@ The entry point for all API requests is the catch-all route handler located at `
 ```typescript
 // src/app/api/[[...all]]/route.ts
 import { AppRouter } from '@/volt.router'
-import { nextRouteHandlerAdapter } from '@volt-js/core/adapters'
+import { nextRouteHandlerAdapter } from '@volt.js/core/adapters'
 
 // The adapter creates GET, POST, etc. handlers from your Volt.js router.
 export const { GET, POST, PUT, DELETE } = nextRouteHandlerAdapter(AppRouter)
@@ -155,7 +155,7 @@ src/
 To learn more about Volt.js and its powerful features, check out the official resources:
 
 -   **[Volt.js Website](https://voltjs.com/)**
--   **[Volt.js GitHub Repository](https://github.com/andeerc/volt-js)**
+-   **[Volt.js GitHub Repository](https://github.com/andeerc/volt.js)**
 -   **[Follow on X](https://x.com/VoltJs)**
 
 ## License

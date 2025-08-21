@@ -14,8 +14,8 @@ Welcome to the Volt.js starter for building full-stack, type-safe applications w
 -   **Type-Safe API**: Powered by Volt.js, ensuring type safety between your front-end and back-end.
 -   **Feature-Based Architecture**: A scalable project structure that organizes code by feature.
 -   **Ready-to-Use Services**: Pre-configured examples for:
-    -   **Caching**: Integrated with Redis via `@volt-js/adapter-redis`.
-    -   **Background Jobs**: Asynchronous task processing with BullMQ via `@volt-js/adapter-bullmq`.
+    -   **Caching**: Integrated with Redis via `@volt.js/adapter-redis`.
+    -   **Background Jobs**: Asynchronous task processing with BullMQ via `@volt.js/adapter-bullmq`.
     -   **Structured Logging**: Production-ready logging.
 -   **TailwindCSS**: A utility-first CSS framework for rapid UI development.
 -   **Auto-Generated API Client**: A fully-typed client that mirrors your API, providing autocomplete and compile-time error checking.
@@ -33,8 +33,8 @@ Follow these steps to get your project up and running:
 
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/andeerc/volt-js.git
-    cd volt-js/apps/starter-bun-react-app
+    git clone https://github.com/andeerc/volt.js.git
+    cd volt.js/apps/starter-bun-react-app
     ```
 
 2.  **Install Dependencies**
@@ -44,7 +44,7 @@ Follow these steps to get your project up and running:
 
 3.  **Configure Environment Variables**
 
-    Create a `.env` file in the root of this starter (`volt-js/apps/starter-bun-react-app/.env`) and add your Redis connection URL:
+    Create a `.env` file in the root of this starter (`volt.js/apps/starter-bun-react-app/.env`) and add your Redis connection URL:
 
     ```env
     # .env
@@ -124,7 +124,7 @@ src/
 
 To learn more about Volt.js and its powerful features, check out the official documentation:
 
--   **[Volt.js GitHub Repository](https://github.com/andeerc/volt-js)**
+-   **[Volt.js GitHub Repository](https://github.com/andeerc/volt.js)**
 -   **[Official Documentation](https://voltjs.com/docs)**
 -   **[Core Concepts](https://voltjs.com/docs/core-concepts)**
 -   **[Client-Side Integration](https://voltjs.com/docs/client-side)**

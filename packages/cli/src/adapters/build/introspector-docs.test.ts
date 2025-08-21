@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { introspectRouter } from './introspector';
-import type { VoltRouter } from '@volt-js/core';
+import type { VoltRouter } from '@volt.js/core';
 
 describe('introspector - docs configuration', () => {
   it('should extract docs configuration from router config', () => {

@@ -13,13 +13,13 @@ Volt.js provides automatic OpenAPI spec generation and an optional interactive U
 You can generate the OpenAPI specification for your app using the CLI:
 
 ```bash
-npx @volt-js/cli generate docs --output ./docs/openapi.json
+npx @volt.js/cli generate docs --output ./docs/openapi.json
 ```
 
 - Use the `--ui` flag to also generate an HTML page with Scalar API Reference UI:
 
 ```bash
-npx @volt-js/cli generate docs --output ./docs --ui
+npx @volt.js/cli generate docs --output ./docs --ui
 ```
 
 This will create `./docs/openapi.json` and `./docs/index.html`.
@@ -29,7 +29,7 @@ This will create `./docs/openapi.json` and `./docs/index.html`.
 During development, you can enable Volt Studio on your local server with:
 
 ```bash
-npx @volt-js/cli dev --docs --docs-output ./docs
+npx @volt.js/cli dev --docs --docs-output ./docs
 ```
 
 - `--docs` enables OpenAPI generation and the interactive UI.
@@ -42,7 +42,7 @@ In production, you can enable it via the Core configuration (see below) to serve
 You can configure documentation metadata and security using the `.docs()` method in your Volt builder:
 
 ```ts
-import { Volt } from '@volt-js/core'
+import { Volt } from '@volt.js/core'
 import openapi from './docs/openapi.json'
 
 export const volt = Volt

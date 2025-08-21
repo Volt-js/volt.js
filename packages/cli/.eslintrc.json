@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["@volt-js/eslint-config"],
+  "extends": ["@volt.js/eslint-config"],
   "parserOptions": {
     "project": "./tsconfig.json"
   }

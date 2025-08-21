@@ -4,7 +4,7 @@ import type {
   OpenTelemetryAdapter,
   CreateOpenTelemetryAdapterOptions,
 } from './types';
-import { VoltConsoleLogger, resolveLogLevel } from '@volt-js/core';
+import { VoltConsoleLogger, resolveLogLevel } from '@volt.js/core';
 
 // Centralized logger for this module
 const logger = VoltConsoleLogger.create({

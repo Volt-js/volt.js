@@ -1,7 +1,7 @@
 /* eslint-disable */
 /* prettier-ignore */
 
-import { createVoltClient, useVoltQueryClient } from '@volt-js/core/client'
+import { createVoltClient, useVoltQueryClient } from '@volt.js/core/client'
 import type { AppRouterType } from './volt.router'
 
 /**

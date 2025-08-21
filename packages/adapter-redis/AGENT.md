@@ -1,17 +1,17 @@
-# AI Agent Maintenance Manual: `@volt-js/adapter-redis`
+# AI Agent Maintenance Manual: `@volt.js/adapter-redis`
 
 **Version:** 1.0.0
-**For AI Agent:** You are an expert TypeScript software engineer. This document is your primary technical guide to the `@volt-js/adapter-redis` package. Read and understand it thoroughly before attempting any modifications. Your goal is to perform maintenance tasks accurately, respecting the architectural principles outlined here.
+**For AI Agent:** You are an expert TypeScript software engineer. This document is your primary technical guide to the `@volt.js/adapter-redis` package. Read and understand it thoroughly before attempting any modifications. Your goal is to perform maintenance tasks accurately, respecting the architectural principles outlined here.
 
 ---
 
 ## 1. Package Overview
 
 ### 1.1. Package Name
-`@volt-js/adapter-redis`
+`@volt.js/adapter-redis`
 
 ### 1.2. Purpose
-This package is an **Adapter**. Its sole purpose is to provide a concrete, production-ready implementation of the `VoltStoreAdapter` interface (defined in `@volt-js/core`). It uses the `ioredis` library to connect to a Redis server, enabling two critical functionalities for the Volt.js framework:
+This package is an **Adapter**. Its sole purpose is to provide a concrete, production-ready implementation of the `VoltStoreAdapter` interface (defined in `@volt.js/core`). It uses the `ioredis` library to connect to a Redis server, enabling two critical functionalities for the Volt.js framework:
 1.  **Key-Value Caching:** High-performance storage and retrieval of frequently accessed data.
 2.  **Pub/Sub Messaging:** A message bus for event-driven communication between different parts of an application or between microservices.
 
@@ -23,9 +23,9 @@ To effectively maintain this package, you must understand its role as a "transla
 
 ### 2.1. The Adapter Pattern and the Core Contract
 
-This package is a textbook example of the **Adapter Pattern**. `@volt-js/core` defines a standard interface, `VoltStoreAdapter`, which dictates the methods a store must provide (e.g., `get`, `set`, `del`, `publish`, `subscribe`). This can be found in `packages/core/src/types/store.interface.ts`.
+This package is a textbook example of the **Adapter Pattern**. `@volt.js/core` defines a standard interface, `VoltStoreAdapter`, which dictates the methods a store must provide (e.g., `get`, `set`, `del`, `publish`, `subscribe`). This can be found in `packages/core/src/types/store.interface.ts`.
 
-**This interface is the absolute source of truth.** The `@volt-js/adapter-redis` package **must** implement every method defined in `VoltStoreAdapter` correctly. Any changes to the public-facing API of the store should begin by modifying the interface in `@volt-js/core`.
+**This interface is the absolute source of truth.** The `@volt.js/adapter-redis` package **must** implement every method defined in `VoltStoreAdapter` correctly. Any changes to the public-facing API of the store should begin by modifying the interface in `@volt.js/core`.
 
 ### 2.2. The `ioredis` Dependency
 

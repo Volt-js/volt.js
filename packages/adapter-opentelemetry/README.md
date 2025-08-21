@@ -1,4 +1,4 @@
-# @volt-js/adapter-opentelemetry
+# @volt.js/adapter-opentelemetry
 
 OpenTelemetry adapter for Volt.js telemetry system. Provides production-ready observability with distributed tracing, metrics, and events.
 
@@ -15,7 +15,7 @@ OpenTelemetry adapter for Volt.js telemetry system. Provides production-ready ob
 ## 📦 Installation
 
 ```bash
-npm install @volt-js/adapter-opentelemetry
+npm install @volt.js/adapter-opentelemetry
 
 # Peer dependencies (install the exporters you need)
 npm install @opentelemetry/api @opentelemetry/sdk-node
@@ -31,8 +31,8 @@ npm install @opentelemetry/exporter-otlp-http      # For OTLP
 ### Development Setup
 
 ```typescript
-import { Volt } from '@volt-js/core';
-import { createSimpleOpenTelemetryAdapter } from '@volt-js/adapter-opentelemetry';
+import { Volt } from '@volt.js/core';
+import { createSimpleOpenTelemetryAdapter } from '@volt.js/adapter-opentelemetry';
 
 // Simple setup for development
 const telemetry = await createSimpleOpenTelemetryAdapter('my-api');
@@ -64,7 +64,7 @@ export const router = volt.router({
 ### Production Setup with Jaeger
 
 ```typescript
-import { createProductionOpenTelemetryAdapter } from '@volt-js/adapter-opentelemetry';
+import { createProductionOpenTelemetryAdapter } from '@volt.js/adapter-opentelemetry';
 
 const telemetry = await createProductionOpenTelemetryAdapter({
   serviceName: 'my-api',
@@ -86,7 +86,7 @@ const volt = Volt
 ### Advanced Configuration
 
 ```typescript
-import { createOpenTelemetryAdapter } from '@volt-js/adapter-opentelemetry';
+import { createOpenTelemetryAdapter } from '@volt.js/adapter-opentelemetry';
 
 const telemetry = await createOpenTelemetryAdapter({
   config: {

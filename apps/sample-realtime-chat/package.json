@@ -15,9 +15,9 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
-    "@volt-js/adapter-redis": "latest",
-    "@volt-js/core": "^0.2.6",
-    "@volt-js/eslint-config": "^0.1.0",
+    "@volt.js/adapter-redis": "latest",
+    "@volt.js/core": "^0.2.6",
+    "@volt.js/eslint-config": "^0.1.0",
     "@prisma/client": "^6.11.1",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",

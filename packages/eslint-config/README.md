@@ -1,6 +1,6 @@
-# @volt-js/eslint-config
+# @volt.js/eslint-config
 
-[![npm version](https://badge.fury.io/js/@volt-js%2Feslint-config.svg)](https://www.npmjs.com/package/@volt-js/eslint-config)
+[![npm version](https://badge.fury.io/js/@volt.js%2Feslint-config.svg)](https://www.npmjs.com/package/@volt.js/eslint-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A carefully crafted ESLint and Prettier configuration preset for modern JavaScript and TypeScript projects. Enforce consistent code style and catch potential errors before they make it to production.
@@ -18,14 +18,14 @@ A carefully crafted ESLint and Prettier configuration preset for modern JavaScri
 Install dependencies:
 
 ```bash
-npm i -D eslint @volt-js/eslint-config
+npm i -D eslint @volt.js/eslint-config
 ```
 
 Inside `.eslintrc.json`:
 ```json
 {
   "extends": [
-    "@volt-js/eslint-config/next",
+    "@volt.js/eslint-config/next",
     "next/core-web-vitals"
   ]
 }
@@ -35,13 +35,13 @@ Inside `.eslintrc.json`:
 Install dependencies:
 
 ```bash
-npm i -D eslint @volt-js/eslint-config
+npm i -D eslint @volt.js/eslint-config
 ```
 
 Inside `.eslintrc.json`:
 ```json
 {
-  "extends": "@volt-js/eslint-config/react"
+  "extends": "@volt.js/eslint-config/react"
 }
 ```
 
@@ -49,13 +49,13 @@ Inside `.eslintrc.json`:
 Install dependencies:
 
 ```bash
-npm i -D eslint @volt-js/eslint-config
+npm i -D eslint @volt.js/eslint-config
 ```
 
 Inside `.eslintrc.json`:
 ```json
 {
-  "extends": "@volt-js/eslint-config/node"
+  "extends": "@volt.js/eslint-config/node"
 }
 ```
 
@@ -64,7 +64,7 @@ Inside `.eslintrc.json`:
 This config includes Prettier settings. Add a `prettier.config.js` to your project:
 
 ```javascript
-module.exports = require('@volt-js/eslint-config/prettier')
+module.exports = require('@volt.js/eslint-config/prettier')
 ```
 
 ## What's Included
@@ -83,7 +83,7 @@ You can override any rules by adding them to your ESLint config file:
 
 ```json
 {
-  "extends": "@volt-js/eslint-config",
+  "extends": "@volt.js/eslint-config",
   "rules": {
     // Your custom rules here
   }
@@ -105,8 +105,8 @@ MIT License - see the [LICENSE](LICENSE) file for details
 ## Support
 
 - 📝 [Documentation](https://voltjs.com/docs)
-- 🐛 [Issue Tracker](https://github.com/andeerc/volt-js/issues)
-- 💬 [Discussions](https://github.com/andeerc/volt-js/discussions)
+- 🐛 [Issue Tracker](https://github.com/andeerc/volt.js/issues)
+- 💬 [Discussions](https://github.com/andeerc/volt.js/discussions)
 
 ---
 

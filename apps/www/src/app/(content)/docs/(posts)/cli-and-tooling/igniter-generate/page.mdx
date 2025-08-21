@@ -20,7 +20,7 @@ This command reads your database schema, understands your model's structure, and
 
 ```bash
 # Example: Generate a 'user' feature from the 'User' model in your Prisma schema
-npx @volt-js/cli generate feature user --schema prisma:User
+npx @volt.js/cli generate feature user --schema prisma:User
 ```
 
 **What it Creates:**
@@ -56,7 +56,7 @@ If you don't have a database model or need to build a feature with custom logic 
 **Command:**
 ```bash
 # Example: Generate a new, empty feature called 'dashboard'
-npx @volt-js/cli generate feature dashboard
+npx @volt.js/cli generate feature dashboard
 ```
 
 **What it Creates:**
@@ -75,7 +75,7 @@ This command performs a **one-time generation** of the client schema. It's perfe
 **Usage:**
 ```bash
 # Manually generate the client
-npx @volt-js/cli generate schema
+npx @volt.js/cli generate schema
 ```
 ```json
 // Example in package.json
@@ -104,10 +104,10 @@ Generate OpenAPI documentation for your entire API:
 
 ```bash
 # Generate OpenAPI spec to default location (./openapi.json)
-npx @volt-js/cli generate docs
+npx @volt.js/cli generate docs
 
 # Generate to custom location
-npx @volt-js/cli generate docs --output ./docs/api-spec.json
+npx @volt.js/cli generate docs --output ./docs/api-spec.json
 ```
 
 ### `volt generate docs --serve`
@@ -116,10 +116,10 @@ Generate documentation and immediately serve it with a web UI:
 
 ```bash
 # Generate and serve documentation at http://localhost:3001
-npx @volt-js/cli generate docs --serve
+npx @volt.js/cli generate docs --serve
 
 # Serve on custom port
-npx @volt-js/cli generate docs --serve --port 8080
+npx @volt.js/cli generate docs --serve --port 8080
 ```
 
 **Key Features:**

@@ -22,10 +22,10 @@ export const metadata: Metadata = {
     description:
       'Discover Volt.js, a modern framework that brings end-to-end type safety to your full-stack applications, simplifying state management and backend complexity.',
     type: 'article',
-    url: 'https://volt.js.org/blog/tutorials/introducing-volt-js',
+    url: 'https://volt.js.org/blog/tutorials/introducing-volt.js',
     images: [
       {
-        url: 'https://volt.js.org/og/introducing-volt-js.png', // Assuming an OG image exists at this path
+        url: 'https://volt.js.org/og/introducing-volt.js.png', // Assuming an OG image exists at this path
         width: 1200,
         height: 630,
         alt: 'Introducing Volt.js',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: 'Introducing Volt.js: A Type-Safe Full-Stack Framework',
     description:
       'Discover Volt.js, a modern framework that brings end-to-end type safety to your full-stack applications, simplifying state management and backend complexity.',
-    images: ['https://volt.js.org/og/introducing-volt-js.png'],
+    images: ['https://volt.js.org/og/introducing-volt.js.png'],
   },
 };
 

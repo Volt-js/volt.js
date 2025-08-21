@@ -10,7 +10,7 @@ interface TemplateReadmeProps {
 
 // Cache the README content for 1 hour
 async function getReadmeContent(templateId: string): Promise<string> {
-  const githubUrl = `https://raw.githubusercontent.com/andeerc/volt-js/main/apps/${templateId}/README.md`;
+  const githubUrl = `https://raw.githubusercontent.com/andeerc/volt.js/main/apps/${templateId}/README.md`;
   
   try {
     const response = await fetch(githubUrl, {
@@ -24,7 +24,7 @@ async function getReadmeContent(templateId: string): Promise<string> {
     return await response.text();
   } catch (error) {
     console.error(`Error fetching README for ${templateId}:`, error);
-    return `# ${templateId}\n\nREADME content could not be loaded. Please visit the [repository](https://github.com/andeerc/volt-js/tree/main/apps/${templateId}) for more information.`;
+    return `# ${templateId}\n\nREADME content could not be loaded. Please visit the [repository](https://github.com/andeerc/volt.js/tree/main/apps/${templateId}) for more information.`;
   }
 }
 

@@ -20,13 +20,13 @@ import type {
   JobSuccessHookContext,
   JobFailureHookContext,
   JobCompleteHookContext
-} from "@volt-js/core";
-import { isServer, SchedulePatterns } from "@volt-js/core";
+} from "@volt.js/core";
+import { isServer, SchedulePatterns } from "@volt.js/core";
 import type { BullMQAdapterOptions, BullMQInstances, BullMQQueue, BullMQJob } from "./types";
-import { createJobsRouter, createJobsRegistry, createJobsProxy } from "@volt-js/core";
-import type { StandardSchemaV1 } from "@volt-js/core";
-import type { JobExecutionContext } from "@volt-js/core";
-import { VoltError } from "@volt-js/core";
+import { createJobsRouter, createJobsRegistry, createJobsProxy } from "@volt.js/core";
+import type { StandardSchemaV1 } from "@volt.js/core";
+import type { JobExecutionContext } from "@volt.js/core";
+import { VoltError } from "@volt.js/core";
 
 /**
  * Creates a Job Queue Adapter for BullMQ.
@@ -40,8 +40,8 @@ import { VoltError } from "@volt-js/core";
  * 
  * @example
  * ```typescript
- * import { createBullMQAdapter } from "@volt-js/core/adapters";
- * import { createRedisStoreAdapter } from "@volt-js/core/adapters";
+ * import { createBullMQAdapter } from "@volt.js/core/adapters";
+ * import { createRedisStoreAdapter } from "@volt.js/core/adapters";
  * import type { VoltAppContext } from "@/volt.context";
  * 
  * const redisStore = createRedisStoreAdapter(redisClient);

@@ -1,13 +1,13 @@
-# @volt-js/adapter-redis
+# @volt.js/adapter-redis
 
-[![NPM Version](https://img.shields.io/npm/v/@volt-js/adapter-redis.svg)](https://www.npmjs.com/package/@volt-js/adapter-redis)
+[![NPM Version](https://img.shields.io/npm/v/@volt.js/adapter-redis.svg)](https://www.npmjs.com/package/@volt.js/adapter-redis)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 The official Redis adapter for the **Volt.js Store** system. This package provides a high-performance driver for caching and pub/sub messaging using a Redis data store.
 
 ## Role in the Ecosystem
 
-This adapter acts as the concrete implementation for the abstract Store interface defined in `@volt-js/core`. By plugging this adapter into your application, you enable powerful features:
+This adapter acts as the concrete implementation for the abstract Store interface defined in `@volt.js/core`. By plugging this adapter into your application, you enable powerful features:
 
 -   **Caching:** A fast, Redis-backed key-value cache for storing the results of expensive operations.
 -   **Pub/Sub:** A message bus for building real-time, event-driven features.
@@ -19,16 +19,16 @@ To use this adapter, you need to install it along with its peer dependency, `ior
 
 ```bash
 # npm
-npm install @volt-js/adapter-redis ioredis
+npm install @volt.js/adapter-redis ioredis
 
 # yarn
-yarn add @volt-js/adapter-redis ioredis
+yarn add @volt.js/adapter-redis ioredis
 
 # pnpm
-pnpm add @volt-js/adapter-redis ioredis
+pnpm add @volt.js/adapter-redis ioredis
 
 # bun
-bun add @volt-js/adapter-redis ioredis
+bun add @volt.js/adapter-redis ioredis
 ```
 
 ## Basic Usage
@@ -41,7 +41,7 @@ First, create an instance of the `ioredis` client and pass it to the adapter fac
 
 ```typescript
 // src/services/store.ts
-import { createRedisStoreAdapter } from '@volt-js/adapter-redis';
+import { createRedisStoreAdapter } from '@volt.js/adapter-redis';
 import { Redis } from 'ioredis';
 
 // It's recommended to configure your Redis connection via environment variables.
@@ -63,7 +63,7 @@ Next, enable the Store feature in your main `volt.ts` file by passing your `stor
 
 ```typescript
 // src/volt.ts
-import { Volt } from '@volt-js/core';
+import { Volt } from '@volt.js/core';
 import { store } from './services/store';
 
 export const volt = Volt

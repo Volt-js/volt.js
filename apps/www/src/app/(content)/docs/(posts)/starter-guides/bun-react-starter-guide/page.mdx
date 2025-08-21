@@ -41,7 +41,7 @@ Let's get the project installed and take a tour.
 ### Installation and Setup
 1.  **Initialize the Project**: Use the Volt.js CLI to scaffold a new project.
     ```bash
-    npx @volt-js/cli init my-bun-app
+    npx @volt.js/cli init my-bun-app
     ```
     When prompted, select **Bun + React** as your framework. Make sure to enable the **Store (Redis)** and **Queues (BullMQ)** features to get the full experience.
 
@@ -120,7 +120,7 @@ bunx prisma db push
 ### Step 3: Scaffold the Feature with the CLI
 Use the `volt generate` command to create the backend files automatically.
 ```bash
-bunx @volt-js/cli generate feature journalEntries --schema prisma:JournalEntry
+bunx @volt.js/cli generate feature journalEntries --schema prisma:JournalEntry
 ```
 This command generates the controller, procedures, and Zod interfaces for your `JournalEntry` feature inside `src/features/journalEntries/`.
 

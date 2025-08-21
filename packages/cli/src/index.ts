@@ -21,7 +21,7 @@ import {
   handleGenerateController,
   handleGenerateProcedure
 } from './adapters/scaffold';
-import { VoltRouter } from "@volt-js/core";
+import { VoltRouter } from "@volt.js/core";
 
 const program = new Command();
 

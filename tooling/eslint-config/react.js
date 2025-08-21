@@ -10,7 +10,7 @@ const project = resolve(process.cwd(), "tsconfig.json");
  */
 module.exports = {
   extends: [
-    "@volt-js/eslint-config",
+    "@volt.js/eslint-config",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",

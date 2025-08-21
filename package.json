@@ -1,5 +1,5 @@
 {
-  "name": "@volt-js/monorepo",
+  "name": "@volt.js/monorepo",
   "version": "0.2.6",
   "private": true,
   "description": "Volt.js ⚡ - A modern, type-safe HTTP framework for TypeScript",
@@ -7,12 +7,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andeerc/volt-js.git"
+    "url": "git+https://github.com/andeerc/volt.js.git"
   },
   "bugs": {
-    "url": "https://github.com/andeerc/volt-js/issues"
+    "url": "https://github.com/andeerc/volt.js/issues"
   },
-  "homepage": "https://andeerc.github.io/volt-js",
+  "homepage": "https://andeerc.github.io/volt.js",
   "keywords": [
     "typescript",
     "api",
@@ -35,7 +35,7 @@
   ],
   "scripts": {
     "build": "turbo build",
-    "build:www": "turbo build --filter=@volt-js/www",
+    "build:www": "turbo build --filter=@volt.js/www",
     "dev": "turbo dev",
     "test": "turbo test",
     "test:watch": "turbo test:watch",
@@ -52,8 +52,8 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.9",
-    "@volt-js/eslint-config": "*",
-    "@volt-js/typescript-config": "*",
+    "@volt.js/eslint-config": "*",
+    "@volt.js/typescript-config": "*",
     "@types/ioredis": "^4.28.10",
     "@types/node": "^22.9.0",
     "@types/rss": "^0.0.32",

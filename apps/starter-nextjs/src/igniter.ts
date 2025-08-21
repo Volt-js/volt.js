@@ -1,4 +1,4 @@
-import { Volt } from '@volt-js/core'
+import { Volt } from '@volt.js/core'
 import { createVoltAppContext } from "./volt.context"
 import { store } from "@/services/store"
 import { REGISTERED_JOBS } from "@/services/jobs"
@@ -8,7 +8,7 @@ import { telemetry } from "@/services/telemetry"
 import openapi from "@/docs/openapi.json"
 /**
  * @description Initialize the Volt.js
- * @see https://github.com/andeerc/volt-js
+ * @see https://github.com/andeerc/volt.js
  */
 export const volt = Volt
   .context(createVoltAppContext())

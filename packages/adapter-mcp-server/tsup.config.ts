@@ -6,6 +6,6 @@ export default defineConfig({
   dts: true,
   outDir: 'dist',
   clean: true,
-  external: ['@volt-js/core'],
-  noExternal: ['@volt-js/core']
+  external: ['@volt.js/core'],
+  noExternal: ['@volt.js/core']
 }); 

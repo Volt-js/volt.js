@@ -6,11 +6,11 @@ This means no more manual type definitions for your API responses, no more guess
 
 ## 1. Creating the API Client
 
-The client is typically defined once in `src/volt.client.ts`. It uses the `createVoltClient` factory function from `@volt-js/core/client`.
+The client is typically defined once in `src/volt.client.ts`. It uses the `createVoltClient` factory function from `@volt.js/core/client`.
 
 ```typescript
 // src/volt.client.ts
-import { createVoltClient, useVoltQueryClient } from '@volt-js/core/client';
+import { createVoltClient, useVoltQueryClient } from '@volt.js/core/client';
 // This is a TYPE-ONLY import. No server code is bundled.
 import type { AppRouter } from './volt.router';
 

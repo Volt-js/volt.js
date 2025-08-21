@@ -12,8 +12,8 @@ Welcome to the Volt.js starter for building high-performance, type-safe REST API
 -   **Type-Safe from the Ground Up**: Powered by Volt.js, ensuring a strongly-typed codebase that is easy to maintain and refactor.
 -   **Feature-Based Architecture**: A scalable project structure that organizes code by business domain, not technical layers.
 -   **Ready-to-Use Services**: Pre-configured examples for:
-    -   **Caching**: Integrated with Redis via `@volt-js/adapter-redis`.
-    -   **Background Jobs**: Asynchronous task processing with BullMQ via `@volt-js/adapter-bullmq`.
+    -   **Caching**: Integrated with Redis via `@volt.js/adapter-redis`.
+    -   **Background Jobs**: Asynchronous task processing with BullMQ via `@volt.js/adapter-bullmq`.
     -   **Structured Logging**: Production-ready, context-aware logging.
 -   **Database Ready**: Comes with Prisma set up for seamless database integration.
 -   **Auto-Generated Type-Safe Client**: Even as a REST API, you can generate a fully-typed client (`src/volt.client.ts`) for consumption by other TypeScript services or a separate front-end application.
@@ -32,12 +32,12 @@ Follow these steps to get your project up and running:
 
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/andeerc/volt-js.git
-    cd volt-js/apps/starter-deno-rest-api
+    git clone https://github.com/andeerc/volt.js.git
+    cd volt.js/apps/starter-deno-rest-api
     ```
 
 2.  **Configure Environment Variables**
-    Create a `.env` file in the root of this starter (`volt-js/apps/starter-deno-rest-api/.env`) and add your database and Redis connection URLs:
+    Create a `.env` file in the root of this starter (`volt.js/apps/starter-deno-rest-api/.env`) and add your database and Redis connection URLs:
 
     ```env
     # .env
@@ -145,7 +145,7 @@ Tasks are defined in `deno.json`.
 
 To learn more about Volt.js and its powerful features, check out the official documentation:
 
--   **[Volt.js GitHub Repository](https://github.com/andeerc/volt-js)**
+-   **[Volt.js GitHub Repository](https://github.com/andeerc/volt.js)**
 -   **[Official Documentation](https://voltjs.com/docs)**
 -   **[Core Concepts](https://voltjs.com/docs/core-concepts)**
 -   **[Store (Redis)](https://voltjs.com/docs/advanced-features/store)**

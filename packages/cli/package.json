@@ -1,6 +1,6 @@
 {
   "name": "@volt.js/cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "CLI for Volt.js ⚡ type-safe client generation",
   "main": "dist/index.js",
   "bin": {
@@ -30,7 +30,7 @@
   "author": "Anderson da Campo <andercampo12@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@volt-js/core": "*",
+    "@volt.js/core": "*",
     "@mrleebo/prisma-ast": "^0.5.0",
     "c12": "^3.0.4",
     "chalk": "4.1.2",
@@ -46,8 +46,8 @@
     "esbuild": "^0.23.0"
   },
   "devDependencies": {
-    "@volt-js/eslint-config": "*",
-    "@volt-js/typescript-config": "*",
+    "@volt.js/eslint-config": "*",
+    "@volt.js/typescript-config": "*",
     "@types/ioredis": "^4.28.10",
     "@types/prompts": "^2.4.9",
     "eslint": "^8.57.0",

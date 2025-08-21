@@ -1,4 +1,4 @@
-import { createRedisStoreAdapter } from '@volt-js/adapter-redis'
+import { createRedisStoreAdapter } from '@volt.js/adapter-redis'
 import { redis } from '@/services/redis'
 
 /**
@@ -7,6 +7,6 @@ import { redis } from '@/services/redis'
  * @remarks
  * Provides a unified interface for data storage operations using Redis.
  *
- * @see https://github.com/andeerc/volt-js/tree/main/packages/adapter-redis
+ * @see https://github.com/andeerc/volt.js/tree/main/packages/adapter-redis
  */
 export const store = createRedisStoreAdapter(redis)

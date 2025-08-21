@@ -1,4 +1,4 @@
-import { createConsoleTelemetryAdapter } from '@volt-js/core/adapters'
+import { createConsoleTelemetryAdapter } from '@volt.js/core/adapters'
 import { store } from './store'
 
 /**
@@ -7,7 +7,7 @@ import { store } from './store'
  * @remarks
  * Provides telemetry tracking with configurable options.
  *
- * @see https://github.com/andeerc/volt-js/tree/main/packages/core
+ * @see https://github.com/andeerc/volt.js/tree/main/packages/core
  */
 export const telemetry = createConsoleTelemetryAdapter({
   serviceName: 'sample-next-app',

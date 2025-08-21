@@ -25,4 +25,4 @@ export type {
   VoltTimer,
   VoltSpanOptions,
   VoltTelemetryConfig,
-} from '@volt-js/core'; 
+} from '@volt.js/core'; 

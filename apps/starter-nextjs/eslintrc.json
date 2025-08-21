@@ -1,6 +1,6 @@
 {
   "extends": [
-    "@volt-js/eslint-config/next",
+    "@volt.js/eslint-config/next",
     "next/core-web-vitals"
   ],
   "rules": {

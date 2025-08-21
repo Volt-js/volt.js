@@ -13,11 +13,11 @@ Welcome to the Volt.js starter for building high-performance, type-safe REST API
 -   **Type-Safe from the Ground Up**: Powered by Volt.js, ensuring a strongly-typed codebase that is easy to maintain and refactor.
 -   **Feature-Based Architecture**: A scalable project structure that organizes code by business domain, not technical layers.
 -   **Ready-to-Use Services**: Pre-configured examples for:
-    -   **Caching**: Integrated with Redis via `@volt-js/adapter-redis`.
-    -   **Background Jobs**: Asynchronous task processing with BullMQ via `@volt-js/adapter-bullmq`.
+    -   **Caching**: Integrated with Redis via `@volt.js/adapter-redis`.
+    -   **Background Jobs**: Asynchronous task processing with BullMQ via `@volt.js/adapter-bullmq`.
     -   **Structured Logging**: Production-ready, context-aware logging.
 -   **Database Ready**: Comes with Prisma set up for seamless database integration.
--   **Seamless Integration**: Uses the `@volt-js/core/adapters` to cleanly connect the Volt.js router to Express.
+-   **Seamless Integration**: Uses the `@volt.js/core/adapters` to cleanly connect the Volt.js router to Express.
 
 ## Prerequisites
 
@@ -34,8 +34,8 @@ Follow these steps to get your project up and running:
 
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/andeerc/volt-js.git
-    cd volt-js/apps/starter-express-rest-api
+    git clone https://github.com/andeerc/volt.js.git
+    cd volt.js/apps/starter-express-rest-api
     ```
 
 2.  **Install Dependencies**
@@ -44,7 +44,7 @@ Follow these steps to get your project up and running:
     ```
 
 3.  **Configure Environment Variables**
-    Create a `.env` file in the root of this starter (`volt-js/apps/starter-express-rest-api/.env`) and add your database and Redis connection URLs:
+    Create a `.env` file in the root of this starter (`volt.js/apps/starter-express-rest-api/.env`) and add your database and Redis connection URLs:
 
     ```env
     # .env
@@ -136,7 +136,7 @@ This starter comes with a pre-built `example` controller to demonstrate key feat
 
 To learn more about Volt.js and its powerful features, check out the official documentation:
 
--   **[Volt.js GitHub Repository](https://github.com/andeerc/volt-js)**
+-   **[Volt.js GitHub Repository](https://github.com/andeerc/volt.js)**
 -   **[Official Documentation](https://voltjs.com/docs)**
 -   **[Core Concepts](https://voltjs.com/docs/core-concepts)**
 

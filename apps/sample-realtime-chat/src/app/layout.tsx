@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { Geist, Geist_Mono } from "next/font/google";
-import { VoltProvider } from '@volt-js/core/client'
+import { VoltProvider } from '@volt.js/core/client'
 
 import "./globals.css"
 

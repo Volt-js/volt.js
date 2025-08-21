@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { introspectRouter } from './introspector';
 import { OpenAPIGenerator } from '../docs/openapi-generator';
-import type { VoltRouter } from '@volt-js/core';
+import type { VoltRouter } from '@volt.js/core';
 
 describe('OpenAPI Generator Integration - docs configuration', () => {
   it('should generate OpenAPI spec with docs configuration from router', () => {

@@ -52,7 +52,7 @@ Let's get the project up and running.
 
 1. **Initialize the Project**: Open your terminal and use the Volt.js CLI to scaffold a new Next.js project.
    ```bash
-   npx @volt-js/cli init my-next-app
+   npx @volt.js/cli init my-next-app
    ```
    The CLI will guide you through the setup, asking you to select Next.js as your framework and which features (like Store and Queues) you'd like to include. For this guide, enable both.
 
@@ -142,7 +142,7 @@ npx prisma db push
 ### Step 3: Scaffold the Feature with the CLI
 Instead of manually creating all the boilerplate files for our new feature, we'll use the Volt.js CLI to do the heavy lifting.
 ```bash
-npx @volt-js/cli generate feature posts --schema prisma:Post
+npx @volt.js/cli generate feature posts --schema prisma:Post
 ```
 This is an incredibly powerful command. It inspects the `Post` model in your Prisma schema and generates a complete, production-ready feature slice for you inside `src/features/posts/`. This includes:
 - `controllers/posts.controller.ts`: An API controller with pre-built CRUD actions (`list`, `getById`, `create`, `update`, `delete`).

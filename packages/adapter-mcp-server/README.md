@@ -1,6 +1,6 @@
-# @volt-js/adapter-mcp-server
+# @volt.js/adapter-mcp-server
 
-[![NPM Version](https://img.shields.io/npm/v/@volt-js/adapter-mcp-server.svg)](https://www.npmjs.com/package/@volt-js/adapter-mcp-server)
+[![NPM Version](https://img.shields.io/npm/v/@volt.js/adapter-mcp-server.svg)](https://www.npmjs.com/package/@volt.js/adapter-mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 The official Model Context Protocol (MCP) adapter for Volt.js. This package exposes your entire Volt.js API as a set of tools that can be consumed by MCP-compatible AI agents and applications.
@@ -11,20 +11,20 @@ This adapter transforms your Volt.js application into an AI-native tool server. 
 
 ## Installation
 
-To use this adapter, you need to install it alongside `@volt-js/core`.
+To use this adapter, you need to install it alongside `@volt.js/core`.
 
 ```bash
 # npm
-npm install @volt-js/adapter-mcp-server @volt-js/core
+npm install @volt.js/adapter-mcp-server @volt.js/core
 
 # yarn
-yarn add @volt-js/adapter-mcp-server @volt-js/core
+yarn add @volt.js/adapter-mcp-server @volt.js/core
 
 # pnpm
-pnpm add @volt-js/adapter-mcp-server @volt-js/core
+pnpm add @volt.js/adapter-mcp-server @volt.js/core
 
 # bun
-bun add @volt-js/adapter-mcp-server @volt-js/core
+bun add @volt.js/adapter-mcp-server @volt.js/core
 ```
 
 ## Basic Usage
@@ -37,7 +37,7 @@ In your Next.js application, create a new API route to handle MCP requests. For 
 
 ```typescript
 // src/app/api/mcp/[...transport]/route.ts
-import { createMcpAdapter } from '@volt-js/adapter-mcp-server';
+import { createMcpAdapter } from '@volt.js/adapter-mcp-server';
 import { AppRouter } from '@/volt.router'; // Import your main Volt.js router
 
 /**

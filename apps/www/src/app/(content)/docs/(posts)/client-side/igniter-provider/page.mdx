@@ -20,7 +20,7 @@ The provider should be placed as high up in your component tree as possible, typ
 // app/providers.tsx
 'use client';
 
-import { VoltProvider } from '@volt-js/core/client';
+import { VoltProvider } from '@volt.js/core/client';
 import type { PropsWithChildren } from 'react';
 
 export function Providers({ children }: PropsWithChildren) {
@@ -107,7 +107,7 @@ A function that receives the client context (from `getContext`) and returns an a
 
 ```tsx
 // app/providers.tsx
-import { VoltProvider } from '@volt-js/core/client';
+import { VoltProvider } from '@volt.js/core/client';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (

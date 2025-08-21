@@ -46,7 +46,7 @@ Let's walk through the initial setup process.
 ### Installation and Setup
 1.  **Initialize the Project**: Use the Volt.js CLI to scaffold your new API project.
     ```bash
-    npx @volt-js/cli init my-awesome-api
+    npx @volt.js/cli init my-awesome-api
     ```
     During the interactive setup, you'll be asked to choose a framework. Select your desired REST API starter (e.g., `Express REST API`). Also, enable the **Store (Redis)** and **Queues (BullMQ)** features to follow along with this guide.
 
@@ -96,7 +96,7 @@ The Express starter uses the `expressAdapter`. It creates a standard Express app
 ```typescript
 import express from 'express';
 import { AppRouter } from './volt.router';
-import { expressAdapter } from '@volt-js/core/adapters';
+import { expressAdapter } from '@volt.js/core/adapters';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -181,7 +181,7 @@ Run the `prisma db push` command appropriate for your starter.
 ### Step 3: Scaffold the Feature with the CLI
 This command is the same for all starters.
 ```bash
-npx @volt-js/cli generate feature snippets --schema prisma:Snippet
+npx @volt.js/cli generate feature snippets --schema prisma:Snippet
 ```
 This generates a full CRUD API for snippets inside `src/features/snippets/`.
 

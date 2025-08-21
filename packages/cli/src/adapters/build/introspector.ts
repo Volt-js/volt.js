@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { build, type BuildFailure } from 'esbuild';
 import { createChildLogger, formatError } from '../logger';
-import { VoltRouter } from '@volt-js/core';
+import { VoltRouter } from '@volt.js/core';
 import zodToJsonSchema from 'zod-to-json-schema';
 
 // This file is responsible for dynamically loading and introspecting the user's Volt router.

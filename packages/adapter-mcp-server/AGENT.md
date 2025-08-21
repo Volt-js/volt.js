@@ -1,14 +1,14 @@
-# AI Agent Maintenance Manual: `@volt-js/adapter-mcp-server`
+# AI Agent Maintenance Manual: `@volt.js/adapter-mcp-server`
 
 **Version:** 1.0.0
-**For AI Agent:** You are an expert TypeScript software engineer. This document is your primary technical guide to the `@volt-js/adapter-mcp-server` package. Read and understand it thoroughly before attempting any modifications. Your goal is to perform maintenance tasks accurately, respecting the architectural principles outlined here.
+**For AI Agent:** You are an expert TypeScript software engineer. This document is your primary technical guide to the `@volt.js/adapter-mcp-server` package. Read and understand it thoroughly before attempting any modifications. Your goal is to perform maintenance tasks accurately, respecting the architectural principles outlined here.
 
 ---
 
 ## 1. Package Overview
 
 ### 1.1. Package Name
-`@volt-js/adapter-mcp-server`
+`@volt.js/adapter-mcp-server`
 
 ### 1.2. Purpose
 This package is an **Adapter** that exposes an entire Volt.js `AppRouter` as a set of "tools" consumable by AI agents and clients that adhere to the **Model-Context-Protocol (MCP)**. Its primary function is to make your Volt.js API "AI-native," allowing large language models to understand and execute your API actions to fulfill user requests.
@@ -68,7 +68,7 @@ This section provides explicit, step-by-step instructions for performing common 
 
 ### Task 1: Add Support for a New Action Property in Tool Definitions
 
-**Scenario:** A new `summary` property has been added to the `VoltAction` interface in `@volt-js/core`. We need the MCP adapter to use this `summary` as the `description` for the generated tool, as it's more concise than the full `description` property.
+**Scenario:** A new `summary` property has been added to the `VoltAction` interface in `@volt.js/core`. We need the MCP adapter to use this `summary` as the `description` for the generated tool, as it's more concise than the full `description` property.
 
 1.  **Objective Analysis:** The goal is to change the tool generation logic to prioritize a new `summary` field for the tool's description.
 2.  **Locate Tool Generation Logic:** The logic that introspects the `AppRouter` and creates the list of MCP tools is the target.
@@ -109,8 +109,8 @@ This section provides explicit, step-by-step instructions for performing common 
 
 **Scenario:** When the MCP server calls an action via `$caller`, the action currently receives the default application context. We need a way to provide a custom, per-request context, for example, to pass the identity of the AI agent making the call.
 
-1.  **Objective Analysis:** The `router.$caller` method needs a way to accept a custom context. This is a feature of `@volt-js/core`. The adapter then needs to be updated to leverage this feature.
-2.  **Verify/Update Core Capability:** First, confirm that the `$caller` in `@volt-js/core` supports passing context. Let's assume it has been updated to `router.$caller.users.create({ body: {...} }, { customContext: {...} })`.
+1.  **Objective Analysis:** The `router.$caller` method needs a way to accept a custom context. This is a feature of `@volt.js/core`. The adapter then needs to be updated to leverage this feature.
+2.  **Verify/Update Core Capability:** First, confirm that the `$caller` in `@volt.js/core` supports passing context. Let's assume it has been updated to `router.$caller.users.create({ body: {...} }, { customContext: {...} })`.
 3.  **Update Adapter's Type Definitions:** The `createMcpAdapter` options should accept a context factory function.
     -   **File:** `packages/adapter-mcp-server/src/types.ts`.
     -   **Action:** Modify the `McpAdapterOptions` interface.

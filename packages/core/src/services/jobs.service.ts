@@ -368,7 +368,7 @@ export class VoltJobsService<
  * 
  * @example
  * ```typescript
- * import { createBullMQAdapter } from "@volt-js/core/adapters";
+ * import { createBullMQAdapter } from "@volt.js/core/adapters";
  * 
  * const jobsService = createVoltJobsService({
  *   adapter: createBullMQAdapter({ store: redisStore }),

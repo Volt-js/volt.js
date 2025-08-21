@@ -1,5 +1,5 @@
 {
-  "name": "@volt-js/adapter-opentelemetry",
+  "name": "@volt.js/adapter-opentelemetry",
   "version": "0.2.1",
   "description": "OpenTelemetry adapter for Volt.js ⚡ telemetry system",
   "exports": {
@@ -24,7 +24,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@volt-js/core": "*"
+    "@volt.js/core": "*"
   },
   "peerDependencies": {
     "@opentelemetry/api": "^1.7.0",
@@ -73,11 +73,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andeerc/volt-js.git",
+    "url": "git+https://github.com/andeerc/volt.js.git",
     "directory": "packages/adapter-opentelemetry"
   },
   "bugs": {
-    "url": "https://github.com/andeerc/volt-js/issues"
+    "url": "https://github.com/andeerc/volt.js/issues"
   },
-  "homepage": "https://github.com/andeerc/volt-js#readme"
+  "homepage": "https://github.com/andeerc/volt.js#readme"
 }

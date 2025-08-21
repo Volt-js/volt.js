@@ -220,8 +220,8 @@ export const audit = createVoltPlugin<AuditContext>({
     requiresFramework: "0.1.0",
     category: ["logging", "audit"],
     author: "Volt Team",
-    repository: "https://github.com/volt-js/volt",
-    documentation: "https://docs.volt-js.dev/plugins/audit",
+    repository: "https://github.com/volt.js/volt",
+    documentation: "https://docs.volt.js.dev/plugins/audit",
   },
 
   // Plugin dependencies

@@ -177,7 +177,7 @@ export function generateArticleStructuredData({
   modifiedTime?: string;
   author?: string;
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://volt-js.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://volt.js.vercel.app';
 
   return {
     '@context': 'https://schema.org',

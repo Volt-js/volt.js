@@ -5,7 +5,7 @@ In this comprehensive, step-by-step guide, you will build a fully type-safe, pro
 
 You'll discover how Volt.js accelerates development with its CLI, automatic code generation, and a beautifully simple set of hooks for data fetching and real-time communication.
 
-**Check out the live demo:** [**volt-js-sample-realtime-chat.vercel.app**](https://volt-js-sample-realtime-chat.vercel.app/)
+**Check out the live demo:** [**volt.js-sample-realtime-chat.vercel.app**](https://volt.js-sample-realtime-chat.vercel.app/)
 </Callout>
 
 ---
@@ -25,7 +25,7 @@ This is where **Server-Sent Events (SSE)** shine. SSE is a web standard that all
 -   **Automatic UI Revalidation:** Volt.js introduces a powerful `revalidate` mechanism. When a mutation happens on the backend (like sending a message), you can tell the server to notify all clients to refetch their data. This updates the UI automatically, often eliminating the need for manual client-side state management for real-time updates.
 -   **AI-Powered Productivity:** With the Volt.js CLI, you can generate entire API features directly from your Prisma schema, creating controllers, validation, and types in seconds.
 
-<Card title="View the Final Source Code on GitHub" href="https://github.com/andeerc/volt-js/tree/main/apps/sample-realtime-chat" />
+<Card title="View the Final Source Code on GitHub" href="https://github.com/andeerc/volt.js/tree/main/apps/sample-realtime-chat" />
 
 This tutorial follows the official `sample-realtime-chat` application. You can clone it to see the final result or follow along step-by-step to build it from scratch.
 
@@ -52,7 +52,7 @@ The fastest way to start a new Volt.js project is with the official CLI. It scaf
 Open your terminal and run the `volt init` command:
 
 ```bash
-npx @volt-js/cli@latest init
+npx @volt.js/cli@latest init
 ```
 
 The CLI will prompt you to choose a template. For this tutorial, select the **Next.js App Router** template. This will create a new directory with a fully configured Next.js project, including Volt.js, TypeScript, and Tailwind CSS.
@@ -119,7 +119,7 @@ This is where the magic of Volt.js's CLI tooling comes into play. Instead of man
 The generator introspects your `schema.prisma` file and scaffolds a complete feature slice based on a model. Run the following command in your terminal:
 
 ```bash
-npx @volt-js/cli generate feature message --schema prisma:Message
+npx @volt.js/cli generate feature message --schema prisma:Message
 ```
 
 <Callout type="success" title="Scaffold Code Generation">
@@ -473,8 +473,8 @@ Type a message in one window and hit send. You'll see it appear instantly in bot
 ## Production Notes
 
 -   **SSE and Proxies:** Server-Sent Events work excellently behind modern proxies and load balancers (like Vercel, Nginx, etc.). Just ensure your proxy is configured to not buffer the response and has appropriate keep-alive timeouts.
--   **Horizontal Scaling:** If you need to scale your application across multiple server instances, you'll need a shared message bus for real-time events. Volt.js has an adapter for Redis (`@volt-js/adapter-redis`) that handles this seamlessly. When you call `volt.realtime.publish()`, the Redis adapter will publish the message to a Redis channel, and all your server instances subscribed to that channel will receive it and forward it to their connected clients.
--   **Telemetry:** For production monitoring, consider using the `@volt-js/adapter-opentelemetry` to trace requests and real-time flows, helping you diagnose issues and monitor performance.
+-   **Horizontal Scaling:** If you need to scale your application across multiple server instances, you'll need a shared message bus for real-time events. Volt.js has an adapter for Redis (`@volt.js/adapter-redis`) that handles this seamlessly. When you call `volt.realtime.publish()`, the Redis adapter will publish the message to a Redis channel, and all your server instances subscribed to that channel will receive it and forward it to their connected clients.
+-   **Telemetry:** For production monitoring, consider using the `@volt.js/adapter-opentelemetry` to trace requests and real-time flows, helping you diagnose issues and monitor performance.
 
 ---
 
@@ -502,11 +502,11 @@ Type a message in one window and hit send. You'll see it appear instantly in bot
 
 You've just scratched the surface of what's possible with Volt.js. Here are some resources to continue your journey:
 
--   [**Live Demo**](https://volt-js-sample-realtime-chat.vercel.app/)
+-   [**Live Demo**](https://volt.js-sample-realtime-chat.vercel.app/)
 -   [**Official Documentation: Realtime (SSE)**](/docs/advanced-features/realtime)
 -   [**Official Documentation: `useRealtime` Hook**](/docs/client-side/use-realtime)
 -   [**Templates & Samples**](/templates)
 
-<Card title="Source Code: Real-Time Chat Sample" href="https://github.com/andeerc/volt-js/tree/main/apps/sample-realtime-chat" />
+<Card title="Source Code: Real-Time Chat Sample" href="https://github.com/andeerc/volt.js/tree/main/apps/sample-realtime-chat" />
 
 Happy hacking!

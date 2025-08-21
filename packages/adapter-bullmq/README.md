@@ -1,13 +1,13 @@
-# @volt-js/adapter-bullmq
+# @volt.js/adapter-bullmq
 
-[![NPM Version](https://img.shields.io/npm/v/@volt-js/adapter-bullmq.svg)](https://www.npmjs.com/package/@volt-js/adapter-bullmq)
+[![NPM Version](https://img.shields.io/npm/v/@volt.js/adapter-bullmq.svg)](https://www.npmjs.com/package/@volt.js/adapter-bullmq)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 The official BullMQ adapter for the **Volt.js Queues** system. This package provides a production-ready driver for handling background job processing using Redis.
 
 ## Role in the Ecosystem
 
-This adapter acts as a bridge between the abstract `@volt-js/core` Queues system and the powerful [BullMQ](https://bullmq.io/) library. It implements the necessary logic to enqueue, schedule, and process jobs, allowing you to add robust background task capabilities to your Volt.js application.
+This adapter acts as a bridge between the abstract `@volt.js/core` Queues system and the powerful [BullMQ](https://bullmq.io/) library. It implements the necessary logic to enqueue, schedule, and process jobs, allowing you to add robust background task capabilities to your Volt.js application.
 
 ## Installation
 
@@ -15,16 +15,16 @@ To use this adapter, you need to install it along with its peer dependencies: `b
 
 ```bash
 # npm
-npm install @volt-js/adapter-bullmq bullmq ioredis
+npm install @volt.js/adapter-bullmq bullmq ioredis
 
 # yarn
-yarn add @volt-js/adapter-bullmq bullmq ioredis
+yarn add @volt.js/adapter-bullmq bullmq ioredis
 
 # pnpm
-pnpm add @volt-js/adapter-bullmq bullmq ioredis
+pnpm add @volt.js/adapter-bullmq bullmq ioredis
 
 # bun
-bun add @volt-js/adapter-bullmq bullmq ioredis
+bun add @volt.js/adapter-bullmq bullmq ioredis
 ```
 
 ## Basic Usage
@@ -37,8 +37,8 @@ First, create an instance of the adapter and use it to define a router for a spe
 
 ```typescript
 // src/services/jobs.ts
-import { createBullMQAdapter } from '@volt-js/adapter-bullmq';
-import { createRedisStoreAdapter } from '@volt-js/adapter-redis'; // Often shares a Redis connection
+import { createBullMQAdapter } from '@volt.js/adapter-bullmq';
+import { createRedisStoreAdapter } from '@volt.js/adapter-redis'; // Often shares a Redis connection
 import { Redis } from 'ioredis';
 import { z } from 'zod';
 
@@ -81,7 +81,7 @@ Pass the `REGISTERED_JOBS` object to the `.jobs()` method in your main `volt.ts`
 
 ```typescript
 // src/volt.ts
-import { Volt } from '@volt-js/core';
+import { Volt } from '@volt.js/core';
 import { REGISTERED_JOBS } from './services/jobs';
 
 export const volt = Volt
