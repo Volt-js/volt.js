@@ -1,10 +1,11 @@
 # @volt.js/core
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Donate-yellow?style=for-the-badge&logo=coffee)](https://donate.stripe.com/9B68wQeY9eEpeYI5ftcZa01)
 
 [![NPM Version](https://img.shields.io/npm/v/@volt.js/core.svg)](https://www.npmjs.com/package/@volt.js/core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/andeerc/volt.js/main.yml?branch=main)](https://github.com/andeerc/volt.js/actions)
 
-**Performance-optimized core package for the Volt.js framework.** 
+**Performance-optimized core package for the Volt.js framework.**
 
 Features parallel processing, smart caching, and intelligent plugin dependency resolution for building type-safe, modern TypeScript applications at scale.
 
@@ -27,14 +28,14 @@ This package is the heart of the Volt.js framework. It provides all the fundamen
 - **2-3x faster** request processing for complex applications
 - Automatic optimization with zero configuration changes
 
-### 🔄 Smart Plugin Dependency Resolution  
+### 🔄 Smart Plugin Dependency Resolution
 - Intelligent plugin loading order based on dependency graph
 - Plugins execute in optimized batches with parallel processing
 - Built-in fallbacks ensure reliability even when plugins fail
 
 ### ⏱️ Configurable Timeouts & Fallbacks
 - Context creation: 5s timeout with fallback
-- Body parsing: 10s timeout with graceful degradation  
+- Body parsing: 10s timeout with graceful degradation
 - Plugin operations: 3s timeout per batch
 - Individual plugin proxies: 1s timeout with retry logic
 
