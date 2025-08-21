@@ -1,5 +1,8 @@
 <div align="center">
   <h1>🔥 Volt.js</h1>
+  <a href="https://donate.stripe.com/9B68wQeY9eEpeYI5ftcZa01" target="_blank">
+    <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Donate-yellow?style=for-the-badge&logo=coffee" alt="Buy Me a Coffee" />
+  </a>
   <p><strong>The End-to-End Typesafe Full-stack TypeScript Framework</strong></p>
   <p><em>Built for Humans and AI</em></p>
 
