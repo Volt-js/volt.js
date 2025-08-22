@@ -611,6 +611,30 @@ export const db = drizzle(sqlite, { schema })
       console.log(`  ${chalk.dim('Database operations:')} ${chalk.cyan(`${this.config.packageManager} run db:studio`)}`)
     }
 
+    console.log()
+    console.log(chalk.bold('Generate new features with Volt.js CLI:'))
+    console.log(`  ${chalk.dim('Create feature:')} ${chalk.cyan('npx @volt.js/cli generate feature <name>')}`)
+    console.log(`  ${chalk.dim('Create controller:')} ${chalk.cyan('npx @volt.js/cli generate controller <name>')}`)
+    console.log(`  ${chalk.dim('Create procedure:')} ${chalk.cyan('npx @volt.js/cli generate procedure <name>')}`)
+    console.log(`  ${chalk.dim('Create component:')} ${chalk.cyan('npx @volt.js/cli generate component <name>')}`)
+    
+    console.log()
+    console.log(chalk.bold('Development with real-time updates:'))
+    console.log(`  ${chalk.dim('Watch mode:')} ${chalk.cyan(`${this.config.packageManager} run dev`)} ${chalk.dim('- Auto-reload on changes')}`)
+    if (this.config.features.store) {
+      console.log(`  ${chalk.dim('Redis pub/sub:')} ${chalk.cyan('Built-in real-time messaging')}`)
+    }
+    if (this.config.database.provider !== 'none') {
+      console.log(`  ${chalk.dim('Database watch:')} ${chalk.cyan(`${this.config.packageManager} run db:studio`)} ${chalk.dim('- Visual DB updates')}`)
+    }
+    
+    console.log()
+    console.log(chalk.bold('Useful resources:'))
+    console.log(`  ${chalk.dim('Documentation:')} ${chalk.cyan('https://docs.volt.js.org')}`)
+    console.log(`  ${chalk.dim('Examples:')} ${chalk.cyan('https://github.com/volt-js/examples')}`)
+    console.log(`  ${chalk.dim('CLI Help:')} ${chalk.cyan('npx @volt.js/cli --help')}`)
+    
+
     if (this.isExistingProject) {
       console.log()
       console.log(chalk.yellow('Remember to integrate the Volt router into your existing server setup!'))
