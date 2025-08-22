@@ -45,7 +45,7 @@ export interface CLIOptions {
   orm?: string
   styling?: string
   ui?: string
-  noShadcn?: boolean
+  shadcn?: boolean
   packageManager?: string
   git?: boolean
   install?: boolean
@@ -181,7 +181,7 @@ export async function runSetupPrompts(
         initial: 0
       },
       {
-        type: (cliOptions.ui !== undefined || cliOptions.noShadcn) ? null : 'confirm',
+        type: (cliOptions.ui !== undefined || cliOptions.shadcn === false) ? null : 'confirm',
         name: 'shadcn',
         message: chalk.bold('• Would you like to use ShadCN/UI components?'),
         hint: chalk.dim('Automatically includes Tailwind CSS'),
@@ -291,7 +291,7 @@ export async function runSetupPrompts(
     }
 
     // Determine styling and UI options
-    const useShadcn = cliOptions.noShadcn ? false : (cliOptions.ui ? cliOptions.ui.includes('shadcn') : (answers.shadcn || false))
+    const useShadcn = cliOptions.shadcn === false ? false : (cliOptions.ui ? cliOptions.ui.includes('shadcn') : (answers.shadcn || false))
     const styling: StylingProvider = useShadcn ? 'tailwind' : (cliOptions.styling as StylingProvider) || (answers.styling || 'none')
     const ui: UIOptions = { shadcn: useShadcn }
 
