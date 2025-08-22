@@ -1,0 +1,7 @@
+{
+  "name": "ShadCN UI Components",
+  "description": "Complete set of ShadCN UI components for Volt.js projects",
+  "requiredDirectories": [
+    "src/components/ui"
+  ]
+}

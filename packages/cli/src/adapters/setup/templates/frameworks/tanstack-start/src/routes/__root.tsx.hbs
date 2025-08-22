@@ -32,7 +32,7 @@ function RootComponent() {
       <body>
         <VoltProvider
           enableRealtime={true}
-          debug={{#if (eq NODE_ENV 'development')}}true{{else}}false{{/if}}
+          debug={{#if (eq NODE_ENV 'development')}}{true}{{else}}{false}{{/if}}
         >
           <Outlet />
         </VoltProvider>

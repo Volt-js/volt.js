@@ -1,0 +1,59 @@
+{{#if (eq database.provider 'postgresql')}}
+import { drizzle } from 'drizzle-orm/node-postgres'
+import { Pool } from 'pg'
+import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core'
+
+export const users = pgTable('users', {
+  id: serial('id').primaryKey(),
+  name: text('name').notNull(),
+  email: text('email').notNull().unique(),
+  createdAt: timestamp('created_at').defaultNow()
+})
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+})
+
+export const database = drizzle(pool, { schema: { users } })
+{{else if (eq database.provider 'mysql')}}
+import { drizzle } from 'drizzle-orm/mysql2'
+import mysql from 'mysql2/promise'
+import { mysqlTable, int, varchar, timestamp } from 'drizzle-orm/mysql-core'
+
+export const users = mysqlTable('users', {
+  id: int('id').primaryKey().autoincrement(),
+  name: varchar('name', { length: 255 }).notNull(),
+  email: varchar('email', { length: 255 }).notNull().unique(),
+  createdAt: timestamp('created_at').defaultNow()
+})
+
+const connection = await mysql.createConnection({
+  uri: process.env.DATABASE_URL,
+})
+
+export const database = drizzle(connection, { schema: { users } })
+{{else if (eq database.provider 'sqlite')}}
+import { drizzle } from 'drizzle-orm/better-sqlite3'
+import Database from 'better-sqlite3'
+import { sqliteTable, integer, text } from 'drizzle-orm/sqlite-core'
+
+export const users = sqliteTable('users', {
+  id: integer('id').primaryKey(),
+  name: text('name').notNull(),
+  email: text('email').notNull().unique(),
+  createdAt: integer('created_at', { mode: 'timestamp' })
+})
+
+const sqlite = new Database(process.env.DATABASE_URL!.replace('file:', ''))
+
+export const database = drizzle(sqlite, { schema: { users } })
+{{/if}}
+
+/**
+ * Database instance using Drizzle ORM.
+ * 
+ * @remarks
+ * Provides type-safe database access with Drizzle ORM for {{database.provider}}.
+ * 
+ * @see https://orm.drizzle.team/
+ */

@@ -27,7 +27,12 @@
       "Bash(changeset publish)",
       "Bash(dir:*)",
       "Bash(if exist test-project rmdir /s /q test-project)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(for file in *.tsx)",
+      "Bash(done)",
+      "Bash(do mv \"$file\" \"$file%.tsx.tsx.hbs\")",
+      "Bash(find:*)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": [],

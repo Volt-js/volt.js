@@ -24,7 +24,6 @@
     }
   ],
   "requiredDirectories": [
-    "src/db",
     "drizzle"
   ],
   "conflicts": ["prisma"],

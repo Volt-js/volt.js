@@ -35,6 +35,8 @@ export function cn(...inputs: ClassValue[]) {
     const isTanStackStart = framework.includes('tanstack-start')
 
     let cssPath = "src/index.css"
+    let tailwindConfig = "tailwind.config.ts"
+    
     if (isNextJS) {
       cssPath = "src/app/globals.css"
     } else if (isTanStackStart) {
@@ -43,19 +45,24 @@ export function cn(...inputs: ClassValue[]) {
 
     const config = {
       "$schema": "https://ui.shadcn.com/schema.json",
-      "style": "default",
+      "style": "new-york",
       "rsc": isNextJS,
       "tsx": true,
       "tailwind": {
-        "config": "tailwind.config.js",
+        "config": tailwindConfig,
         "css": cssPath,
-        "baseColor": "slate",
-        "cssVariables": true
+        "baseColor": "zinc",
+        "cssVariables": true,
+        "prefix": ""
       },
       "aliases": {
         "components": "@/components",
-        "utils": "@/lib/utils"
-      }
+        "utils": "@/lib/utils",
+        "ui": "@/components/ui",
+        "lib": "@/lib",
+        "hooks": "@/hooks"
+      },
+      "iconLibrary": "lucide"
     }
 
     return {
@@ -82,31 +89,66 @@ export function cn(...inputs: ClassValue[]) {
   }
 
   /**
-   * Install all ShadCN components using add -a flag
+   * Get all ShadCN UI components
+   */
+  getAllShadCNComponents(): string[] {
+    return [
+      'accordion',
+      'alert',
+      'alert-dialog',
+      'aspect-ratio',
+      'avatar',
+      'badge',
+      'breadcrumb',
+      'button',
+      'calendar',
+      'card',
+      'carousel',
+      'chart',
+      'checkbox',
+      'collapsible',
+      'command',
+      'context-menu',
+      'dialog',
+      'drawer',
+      'dropdown-menu',
+      'form',
+      'hover-card',
+      'input',
+      'input-otp',
+      'label',
+      'menubar',
+      'navigation-menu',
+      'pagination',
+      'popover',
+      'progress',
+      'radio-group',
+      'resizable',
+      'scroll-area',
+      'select',
+      'separator',
+      'sheet',
+      'sidebar',
+      'skeleton',
+      'slider',
+      'sonner',
+      'switch',
+      'table',
+      'tabs',
+      'textarea',
+      'toggle',
+      'toggle-group',
+      'tooltip'
+    ]
+  }
+
+  /**
+   * Install all ShadCN components using templates instead of external command
    */
   async installAllComponentsAtOnce(): Promise<void> {
-    try {
-      await execa('npx', [
-        'shadcn-ui@latest',
-        'add',
-        'button',
-        'card',
-        'input',
-        'label',
-        'textarea',
-        '--yes'  // Skip confirmation prompts
-      ], {
-        cwd: this.projectDir,
-        stdio: 'inherit', // Show progress to user
-        timeout: 120000 // 2 minute timeout for all components
-      })
-    } catch (error) {
-      if (error.timedOut) {
-        throw new Error('ShadCN installation timed out after 2 minutes. You can install components manually later.')
-      }
-      console.warn('Failed to install ShadCN components:', error)
-      throw error
-    }
+    // This method is now handled by the template system
+    // All components are generated from templates in common/components/ui/
+    console.log('ShadCN UI components will be generated from templates')
   }
 
   /**

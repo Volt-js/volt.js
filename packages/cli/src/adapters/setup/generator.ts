@@ -531,7 +531,7 @@ export const db = drizzle(sqlite, { schema })
       }
     }
 
-    if (this.config.database.provider !== 'none') {
+    if (this.config.database.provider !== 'none' && this.config.installDependencies) {
       const ormName = this.config.orm === 'prisma' ? 'Prisma' : 'Drizzle'
       this.spinner.start(`Generating ${ormName} client...`)
 
@@ -585,6 +585,8 @@ export const db = drizzle(sqlite, { schema })
       console.log(`  ${chalk.cyan('cd')} ${this.config.projectName}`)
     }
 
+    console.log(`  ${chalk.cyan('cp')} .env.example .env`)
+    
     if (!this.config.installDependencies) {
       console.log(`  ${chalk.cyan(this.config.packageManager)} install`)
     }
@@ -603,6 +605,7 @@ export const db = drizzle(sqlite, { schema })
     console.log(chalk.bold('Helpful commands:'))
     console.log(`  ${chalk.dim('Start development:')} ${chalk.cyan(`${this.config.packageManager} run dev`)}`)
     console.log(`  ${chalk.dim('Build for production:')} ${chalk.cyan(`${this.config.packageManager} run build`)}`)
+    console.log(`  ${chalk.dim('Environment setup:')} ${chalk.cyan('cp .env.example .env')}`)
 
     if (this.config.database.provider !== 'none') {
       console.log(`  ${chalk.dim('Database operations:')} ${chalk.cyan(`${this.config.packageManager} run db:studio`)}`)
