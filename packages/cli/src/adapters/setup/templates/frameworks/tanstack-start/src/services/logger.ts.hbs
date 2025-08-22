@@ -1,0 +1,31 @@
+{{#if services.logger}}
+import { createConsoleLogger, VoltLogLevel } from '@volt.js/core'
+
+/**
+  * Logger instance for application logging.
+  *
+  * @remarks
+  * Provides structured logging with configurable log levels.
+  * This is used by the Volt instance to log events.
+  *
+  * @see https://github.com/Volt-js/volt.js
+  */
+export const logger = createConsoleLogger({
+  level: VoltLogLevel.INFO, // Change to DEBUG for more verbose logs
+  showTimestamp: true,
+})
+{{else}}
+/**
+ * Logger service placeholder.
+ * 
+ * @remarks
+ * Add your logging implementation here.
+ * This could be console, file-based, or external service logging.
+ */
+export const logger = {
+  info: console.log,
+  warn: console.warn,
+  error: console.error,
+  debug: console.debug,
+}
+{{/if}}

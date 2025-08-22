@@ -1,0 +1,15 @@
+{
+  "name": "Common Services",
+  "description": "Common service layer templates for Volt.js applications",
+  "dependencies": {
+    "dependencies": {
+      "@volt.js/core": "latest",
+      "@volt.js/adapter-bullmq": "latest",
+      "bullmq": "^4",
+      "zod": "^3.25.0"
+    }
+  },
+  "requiredDirectories": [
+    "src/services"
+  ]
+}

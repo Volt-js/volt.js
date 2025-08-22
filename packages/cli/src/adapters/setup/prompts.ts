@@ -16,11 +16,10 @@ import type {
  */
 const VOLT_LOGO = `
 ${chalk.blue('┌')}${chalk.blue('─'.repeat(60))}${chalk.blue('┐')}
-${chalk.blue('│')}${' '.repeat(20)}${chalk.bold.blue('⚡ VOLT.JS')}${' '.repeat(19)}${chalk.blue('│')}
-${chalk.blue('│')}${' '.repeat(15)}${chalk.dim('Type-safe API framework')}${' '.repeat(14)}${chalk.blue('│')}
+${chalk.blue('│')}${' '.repeat(20)}${chalk.bold.blue('⚡ VOLT.JS')}${' '.repeat(30)}${chalk.blue('│')}
+${chalk.blue('│')}${' '.repeat(15)}${chalk.dim('Type-safe API framework')}${' '.repeat(22)}${chalk.blue('│')}
 ${chalk.blue('└')}${chalk.blue('─'.repeat(60))}${chalk.blue('┘')}
 `
-
 /**
  * Welcome message with beautiful styling
  */
@@ -46,6 +45,7 @@ export interface CLIOptions {
   orm?: string
   styling?: string
   ui?: string
+  noShadcn?: boolean
   packageManager?: string
   git?: boolean
   install?: boolean
@@ -93,28 +93,12 @@ export async function runSetupPrompts(
         message: '• Which starter would you like to use?',
         choices: [
           {
-            title: `${chalk.green('Next.js')} ${chalk.dim('(Fullstack)')}`,
-            value: 'starter-nextjs'
+            title: `${chalk.green('Next.js')} ${chalk.dim('(Fullstack React Framework)')}`,
+            value: 'nextjs'
           },
           {
-            title: `${chalk.yellow('Express.js')} ${chalk.dim('(REST API)')}`,
-            value: 'starter-express-rest-api'
-          },
-          {
-            title: `${chalk.cyan('Deno')} ${chalk.dim('(REST API)')}`,
-            value: 'starter-deno-rest-api'
-          },
-          {
-            title: `${chalk.magenta('Bun')} ${chalk.dim('(REST API)')}`,
-            value: 'starter-bun-rest-api'
-          },
-          {
-            title: `${chalk.red('Bun + React (Vite)')} ${chalk.dim('(Fullstack)')}`,
-            value: 'starter-bun-react-app'
-          },
-          {
-            title: `${chalk.magenta('TanStack Start')} ${chalk.dim('(Fullstack)')}`,
-            value: 'starter-tanstack-start'
+            title: `${chalk.magenta('TanStack Start')} ${chalk.dim('(Modern Fullstack Framework)')}`,
+            value: 'tanstack-start'
           }
         ],
       },
@@ -197,7 +181,7 @@ export async function runSetupPrompts(
         initial: 0
       },
       {
-        type: (cliOptions.ui !== undefined) ? null : 'confirm',
+        type: (cliOptions.ui !== undefined || cliOptions.noShadcn) ? null : 'confirm',
         name: 'shadcn',
         message: chalk.bold('• Would you like to use ShadCN/UI components?'),
         hint: chalk.dim('Automatically includes Tailwind CSS'),
@@ -307,7 +291,7 @@ export async function runSetupPrompts(
     }
 
     // Determine styling and UI options
-    const useShadcn = cliOptions.ui ? cliOptions.ui.includes('shadcn') : (answers.shadcn || false)
+    const useShadcn = cliOptions.noShadcn ? false : (cliOptions.ui ? cliOptions.ui.includes('shadcn') : (answers.shadcn || false))
     const styling: StylingProvider = useShadcn ? 'tailwind' : (cliOptions.styling as StylingProvider) || (answers.styling || 'none')
     const ui: UIOptions = { shadcn: useShadcn }
 

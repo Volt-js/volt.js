@@ -1,0 +1,13 @@
+{{#if ui.shadcn}}
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+{{else}}
+// Utility functions for the application
+export const utils = {
+  // Add your utility functions here
+}
+{{/if}}

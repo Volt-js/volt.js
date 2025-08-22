@@ -24,7 +24,10 @@
       "Bash(npm install:*)",
       "Bash(npm test)",
       "Bash(npm run release:*)",
-      "Bash(changeset publish)"
+      "Bash(changeset publish)",
+      "Bash(dir:*)",
+      "Bash(if exist test-project rmdir /s /q test-project)",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": [],

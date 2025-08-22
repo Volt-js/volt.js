@@ -37,6 +37,9 @@ export class ProjectGenerator {
    */
   private mapTemplateToFramework(framework: string): string {
     const mapping: Record<string, string> = {
+      'nextjs': 'nextjs',
+      'tanstack-start': 'tanstack-start',
+      // Legacy mappings for backward compatibility
       'starter-nextjs': 'nextjs',
       'starter-express-rest-api': 'express',
       'starter-bun-react-app': 'vite',
@@ -86,138 +89,37 @@ export class ProjectGenerator {
     }
   }
 
-  private async downloadTemplate(): Promise<{ isStarter: boolean, success: boolean }> {
-    const { framework } = this.config
-    const templateUrl = `https://github.com/Volt-js/volt.js.git`
-    const branch = 'main'
-    const tempDir = path.join(this.targetDir, '__volt_tmp__')
-    const starterDir = path.join(tempDir, 'apps', framework)
-    const destDir = this.targetDir
-
-    let isValidStarter = false
-
-    this.spinner.start(`Baixando apenas o conteúdo da pasta starter (${framework}) do branch ${branch}...`)
-
-    try {
-      // Remove tempDir if exists
-      await fs.rm(tempDir, { recursive: true, force: true }).catch(() => { })
-      // Clone repo to tempDir
-      await execa('git', [
-        'clone',
-        '--depth', '1',
-        '--branch', branch,
-        '--single-branch',
-        templateUrl,
-        tempDir
-      ])
-      // Verifica se starterDir existe
-      const stat = await fs.stat(starterDir).catch(() => null)
-      if (!stat || !stat.isDirectory()) {
-        throw new Error('Diretório starter não encontrado no template clonado.')
-      }
-
-      isValidStarter = true
-
-      // Copia todo o conteúdo de starterDir para destDir
-      // Função recursiva para copiar arquivos e pastas
-      const copyRecursive = async (src: string, dest: string) => {
-        const entries = await fs.readdir(src, { withFileTypes: true })
-        for (const entry of entries) {
-          const srcPath = path.join(src, entry.name)
-          const destPath = path.join(dest, entry.name)
-          if (entry.isDirectory()) {
-            await fs.mkdir(destPath, { recursive: true })
-            await copyRecursive(srcPath, destPath)
-          } else if (entry.isFile()) {
-            await fs.copyFile(srcPath, destPath)
-          }
-        }
-      }
-
-      await copyRecursive(starterDir, destDir)
-
-      // Remove tempDir
-      await fs.rm(tempDir, { recursive: true, force: true }).catch(() => { })
-
-      this.spinner.succeed(chalk.dim('✓ Conteúdo da pasta starter copiado com sucesso'))
-      return { isStarter: isValidStarter, success: true }
-    } catch (error) {
-      // try check from error if is valid
-
-      console.error('Template download/copy failed', error)
-      this.spinner.fail(chalk.red('Falha ao baixar/copiar o template starter'))
-      logger.error('Template download/copy failed', { error })
-      // Remove tempDir se deu erro
-      await fs.rm(tempDir, { recursive: true, force: true }).catch(() => { })
-      return { isStarter: isValidStarter, success: false }
-    }
-  }
 
   /**
-   * Create project directory structure based on README.md structure
+   * Create minimal project directory structure
    */
   private async createProjectStructure(): Promise<void> {
     this.spinner.start('Creating project structure...')
 
     try {
-      // Skip template copying - we'll generate everything dynamically
-      console.log('🚀 Creating project structure dynamically...')
-
       // Ensure target directory exists
       await fs.mkdir(this.targetDir, { recursive: true })
 
-      // Create subdirectories dynamically based on configuration
+      // Create minimal directory structure
       const dirs = [
         'src',
         'src/features',
         'src/features/example',
-        'src/features/example/controllers',
-        'src/features/example/procedures'
+        'src/features/example/controllers'
       ]
 
-      // Add services directory only if any services are needed
-      const needsServices = Object.values(this.config.features).some(enabled => enabled) ||
-        this.config.database.provider !== 'none'
-
-      if (needsServices) {
-        dirs.push('src/services')
-      }
-
-      // Add presentation layers if framework supports it (React-based)
+      // Add framework-specific directories
       const frameworkType = this.mapTemplateToFramework(this.config.framework)
-      const reactFrameworks = ['nextjs', 'vite', 'tanstack-start']
-      if (reactFrameworks.includes(frameworkType)) {
-        dirs.push(
-          'src/features/example/presentation',
-          'src/features/example/presentation/components',
-          'src/features/example/presentation/hooks',
-          'src/features/example/presentation/contexts',
-          'src/features/example/presentation/utils'
-        )
-
-        // Add lib directory for ShadCN utils
-        if (this.config.ui.shadcn) {
-          dirs.push('src/lib')
-        }
-      }
-
-      // Add database directories based on ORM choice
-      if (this.config.database.provider !== 'none') {
-        if (this.config.orm === 'prisma') {
-          dirs.push('prisma')
-        } else if (this.config.orm === 'drizzle') {
-          dirs.push('src/db', 'drizzle')
-        }
-      }
-
-      // Add app directory structure for NextJS with specific features
+      
       if (frameworkType === 'nextjs') {
         dirs.push('src/app', 'src/app/api', 'src/app/api/v1', 'src/app/api/v1/[[...all]]')
+      } else if (frameworkType === 'tanstack-start') {
+        dirs.push('src/routes', 'src/routes/api', 'src/routes/api/v1')
+      }
 
-        // Add MCP directory if MCP is enabled
-        if (this.config.features.mcp) {
-          dirs.push('src/app/api/mcp', 'src/app/api/mcp/[transport]')
-        }
+      // Only add services directory if features require it
+      if (Object.values(this.config.features).some(enabled => enabled) || this.config.database.provider !== 'none') {
+        dirs.push('src/services')
       }
 
       for (const dir of dirs) {
@@ -616,12 +518,12 @@ export const db = drizzle(sqlite, { schema })
   private async runPostSetupTasks(): Promise<void> {
     // Install ShadCN components if enabled
     if (this.config.ui.shadcn && this.config.installDependencies) {
-      this.spinner.start('Installing ShadCN components...')
+      this.spinner.start('Installing all ShadCN components...')
 
       try {
         const installer = new ShadCNInstaller(this.targetDir)
         await installer.installComponentsPostGeneration()
-        this.spinner.succeed(chalk.green('✓ ShadCN components installed'))
+        this.spinner.succeed(chalk.green('✓ All ShadCN components installed'))
       } catch (error) {
         this.spinner.fail(chalk.red('✗ Failed to install ShadCN components'))
         logger.warn('ShadCN component installation failed', { error })

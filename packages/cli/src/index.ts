@@ -14,7 +14,7 @@ import {
   showInitHelp
 } from "./adapters/setup";
 import { runSetupPrompts, confirmOverwrite } from './adapters/setup/prompts'
-import { generateProject } from './adapters/setup/generator'
+import { generateProjectModular } from './adapters/setup/generator'
 import { createDetachedSpinner } from "./lib/spinner";
 import {
   handleGenerateFeature,
@@ -55,6 +55,7 @@ program
   .option("--orm <orm>", "ORM provider (prisma, drizzle)")
   .option("--styling <styling>", "Styling solution (none, tailwind, styled-components, emotion)")
   .option("--ui <ui>", "UI components (shadcn)")
+  .option("--no-shadcn", "Skip ShadCN UI component installation for faster setup")
   .option("--no-git", "Skip git repository initialization")
   .option("--no-install", "Skip automatic dependency installation")
   .option("--docker", "Setup Docker Compose for development")
@@ -107,7 +108,7 @@ program
         process.exit(1);
       }
 
-      await generateProject(config, targetDir, isExistingProject);
+      await generateProjectModular(config, targetDir, isExistingProject);
     } catch (error) {
       initLogger.error('Init command failed unexpectedly', {
         error: error instanceof Error ? formatError(error) : error,

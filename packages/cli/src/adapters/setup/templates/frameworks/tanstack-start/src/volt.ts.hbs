@@ -1,0 +1,48 @@
+import { Volt } from '@volt.js/core'
+import { createVoltAppContext } from "./volt.context"
+{{#if services.store}}
+import { store } from "@/services/store"
+{{/if}}
+{{#if services.jobs}}
+import { REGISTERED_JOBS } from "@/services/jobs"
+{{/if}}
+{{#if services.logger}}
+import { logger } from "@/services/logger"
+{{/if}}
+{{#if services.telemetry}}
+import { telemetry } from "@/services/telemetry"
+{{/if}}
+
+import openapi from './docs/openapi.json'
+
+/**
+ * @description Initialize the Volt.js
+ * @see https://github.com/Volt-js/volt.js
+ */
+export const volt = Volt
+  .context(createVoltAppContext())
+{{#if services.store}}
+  .store(store)
+{{/if}}
+{{#if services.jobs}}
+  .jobs(REGISTERED_JOBS)
+{{/if}}
+{{#if services.logger}}
+  .logger(logger)
+{{/if}}
+{{#if services.telemetry}}
+  .telemetry(telemetry)
+{{/if}}
+  .config({
+    baseURL: process.env.REACT_APP_VOLT_API_URL || 'http://localhost:3000',
+    basePATH: process.env.REACT_APP_VOLT_API_BASE_PATH || '/api/v1',
+  })
+  .docs({
+    openapi,
+    info: {
+      title: '{{projectName}}',
+      version: '1.0.0',
+      description: 'A {{projectName}} built with Volt.js and TanStack Start',
+    }
+  })
+  .create()

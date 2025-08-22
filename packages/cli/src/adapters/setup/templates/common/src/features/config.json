@@ -1,0 +1,15 @@
+{
+  "name": "Example Feature",
+  "description": "Example feature demonstrating Volt.js controller patterns",
+  "dependencies": {
+    "dependencies": {
+      "@volt.js/core": "latest",
+      "zod": "^3.25.0"
+    }
+  },
+  "requiredDirectories": [
+    "src/features",
+    "src/features/example",
+    "src/features/example/controllers"
+  ]
+}

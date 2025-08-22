@@ -4,19 +4,29 @@
   "dependencies": {
     "dependencies": {
       "@volt.js/core": "latest",
-      "next": "^15.0.0",
+      "@volt.js/adapter-bullmq": "latest",
+      "@volt.js/adapter-mcp-server": "latest",
+      "@volt.js/adapter-redis": "latest",
+      "@prisma/client": "^6.11.1",
+      "bullmq": "^4",
+      "next": "15.3.5",
       "react": "^19.0.0",
-      "react-dom": "^19.0.0"
+      "react-dom": "^19.0.0",
+      "zod": "3.25.67"
     },
     "devDependencies": {
-      "@types/react": "^19.0.0",
-      "@types/react-dom": "^19.0.0",
-      "eslint": "^9.0.0",
-      "eslint-config-next": "^15.0.0"
+      "@types/node": "^20",
+      "@types/react": "^19",
+      "@types/react-dom": "^19",
+      "@volt.js/eslint-config": "latest",
+      "eslint": "^8.57.0",
+      "eslint-config-next": "15.3.5",
+      "prisma": "^6.11.1",
+      "typescript": "^5"
     }
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -26,6 +36,15 @@
     "src/app/api",
     "src/app/api/v1",
     "src/app/api/v1/[[...all]]",
-    "src/components"
+    "src/app/api/mcp",
+    "src/app/api/mcp/[transport]",
+    "src/components",
+    "src/lib",
+    "src/hooks",
+    "src/services",
+    "src/features",
+    "src/features/example",
+    "src/features/example/controllers",
+    "src/docs"
   ]
 }

@@ -70,7 +70,8 @@ export class ModularTemplateGenerator {
       packageManager: config.packageManager,
       dockerCompose: config.dockerCompose,
       initGit: config.initGit,
-      installDependencies: config.installDependencies
+      installDependencies: config.installDependencies,
+      NODE_ENV: 'development'  // Default to development for template generation
     }
   }
 
@@ -79,6 +80,9 @@ export class ModularTemplateGenerator {
    */
   private mapFramework(framework: string): string {
     const mapping: Record<string, string> = {
+      'nextjs': 'nextjs',
+      'tanstack-start': 'tanstack-start',
+      // Legacy mappings for backward compatibility
       'starter-nextjs': 'nextjs',
       'starter-express-rest-api': 'express',
       'starter-bun-react-app': 'react',
@@ -134,7 +138,7 @@ export class ModularTemplateGenerator {
    */
   private addFrameworkDependencies(packageJson: any, framework: string): void {
     const frameworkConfigs: Record<string, { dependencies: Record<string, string>, devDependencies: Record<string, string> }> = {
-      'starter-nextjs': {
+      'nextjs': {
         dependencies: {
           'next': '^15.0.0',
           'react': '^19.0.0',
@@ -142,9 +146,7 @@ export class ModularTemplateGenerator {
         },
         devDependencies: {
           '@types/react': '^19.0.0',
-          '@types/react-dom': '^19.0.0',
-          'eslint': '^9.0.0',
-          'eslint-config-next': '^15.0.0'
+          '@types/react-dom': '^19.0.0'
         }
       },
       'starter-bun-react-app': {
@@ -159,19 +161,46 @@ export class ModularTemplateGenerator {
           'vite': '^5.0.0'
         }
       },
-      'starter-tanstack-start': {
+      'tanstack-start': {
         dependencies: {
-          '@tanstack/react-router': '^1.0.0',
-          '@tanstack/start': '^1.0.0',
+          '@tanstack/react-router': '^1.125.6',
+          '@tanstack/react-router-devtools': '^1.125.6',
+          '@tanstack/react-start': '^1.125.6',
+          'react': '^19.0.0',
+          'react-dom': '^19.0.0'
+        },
+        devDependencies: {
+          '@types/react': '^19.0.8',
+          '@types/react-dom': '^19.0.3',
+          'vite': '^6.3.5',
+          'vite-tsconfig-paths': '^5.1.4'
+        }
+      },
+      // Legacy compatibility mappings
+      'starter-nextjs': {
+        dependencies: {
+          'next': '^15.0.0',
           'react': '^19.0.0',
           'react-dom': '^19.0.0'
         },
         devDependencies: {
           '@types/react': '^19.0.0',
-          '@types/react-dom': '^19.0.0',
-          '@tanstack/router-plugin': '^1.0.0',
-          '@vitejs/plugin-react': '^4.0.0',
-          'vite': '^5.0.0'
+          '@types/react-dom': '^19.0.0'
+        }
+      },
+      'starter-tanstack-start': {
+        dependencies: {
+          '@tanstack/react-router': '^1.125.6',
+          '@tanstack/react-router-devtools': '^1.125.6',
+          '@tanstack/react-start': '^1.125.6',
+          'react': '^19.0.0',
+          'react-dom': '^19.0.0'
+        },
+        devDependencies: {
+          '@types/react': '^19.0.8',
+          '@types/react-dom': '^19.0.3',
+          'vite': '^6.3.5',
+          'vite-tsconfig-paths': '^5.1.4'
         }
       },
       'starter-express-rest-api': {
@@ -208,12 +237,12 @@ export class ModularTemplateGenerator {
    */
   private registerHandlebarsHelpers(): void {
     // Equality helper
-    Handlebars.registerHelper('eq', function (a, b) {
+    Handlebars.registerHelper('eq', function (a: any, b: any) {
       return a === b
     })
 
     // Not equal helper
-    Handlebars.registerHelper('ne', function (a, b) {
+    Handlebars.registerHelper('ne', function (a: any, b: any) {
       return a !== b
     })
 
@@ -227,35 +256,35 @@ export class ModularTemplateGenerator {
     })
 
     // Logical OR helper
-    Handlebars.registerHelper('or', function () {
-      const args = Array.prototype.slice.call(arguments, 0, -1)
+    Handlebars.registerHelper('or', function (...args: any[]) {
+      const options = args.pop()
       return args.some(arg => !!arg)
     })
 
     // Logical AND helper
-    Handlebars.registerHelper('and', function () {
-      const args = Array.prototype.slice.call(arguments, 0, -1)
+    Handlebars.registerHelper('and', function (...args: any[]) {
+      const options = args.pop()
       return args.every(arg => !!arg)
     })
 
     // JSON helper
-    Handlebars.registerHelper('json', function (context) {
+    Handlebars.registerHelper('json', function (context: any) {
       return JSON.stringify(context, null, 2)
     })
 
     // Uppercase helper
-    Handlebars.registerHelper('upperCase', function (str) {
-      return str.toUpperCase()
+    Handlebars.registerHelper('upperCase', function (str: string) {
+      return str?.toUpperCase() || ''
     })
 
     // Lowercase helper
-    Handlebars.registerHelper('lowerCase', function (str) {
-      return str.toLowerCase()
+    Handlebars.registerHelper('lowerCase', function (str: string) {
+      return str?.toLowerCase() || ''
     })
 
     // Capitalize helper
-    Handlebars.registerHelper('capitalize', function (str) {
-      return str.charAt(0).toUpperCase() + str.slice(1)
+    Handlebars.registerHelper('capitalize', function (str: string) {
+      return str ? str.charAt(0).toUpperCase() + str.slice(1) : ''
     })
   }
 

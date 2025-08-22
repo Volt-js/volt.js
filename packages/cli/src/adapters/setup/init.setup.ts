@@ -2,7 +2,7 @@ import fs from 'fs/promises'
 import path from 'path'
 import chalk from 'chalk'
 import { runSetupPrompts, confirmOverwrite } from './prompts'
-import { generateProject } from './generator'
+import { generateProjectModular } from './generator'
 import { createChildLogger } from '../logger'
 
 const logger = createChildLogger({ component: 'init-setup' })
@@ -49,7 +49,7 @@ export async function handleInitCommand(
     const config = await runSetupPrompts(targetDir);
 
     // The generator will also need to be smart about adding vs creating files.
-    await generateProject(config, targetDir, isExistingProject);
+    await generateProjectModular(config, targetDir, isExistingProject);
 
     logger.info('Project initialization completed successfully', {
       project: config.projectName,

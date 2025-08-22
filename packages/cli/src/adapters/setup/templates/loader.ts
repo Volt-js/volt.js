@@ -18,7 +18,21 @@ export class TemplateLoader {
   private registry: ModuleRegistry | null = null
 
   constructor(templatesDir?: string) {
-    this.templatesDir = templatesDir || path.join(__dirname, 'templates')
+    if (templatesDir) {
+      this.templatesDir = templatesDir
+    } else {
+      // Auto-detect templates directory
+      // First try the current directory (for source)
+      let candidateDir = __dirname
+      
+      // If we're in the built distribution (__dirname will be 'dist'), 
+      // the templates will be at dist/adapters/setup/templates
+      if (candidateDir.endsWith('dist') || candidateDir.includes(path.sep + 'dist' + path.sep)) {
+        candidateDir = path.join(candidateDir, 'adapters', 'setup', 'templates')
+      }
+      
+      this.templatesDir = candidateDir
+    }
   }
 
   /**
@@ -128,19 +142,11 @@ export class TemplateLoader {
       selectedModules.push(frameworkModule)
     }
 
-    // Include database modules if configured
-    if (context.database.provider && context.database.provider !== 'none') {
-      const dbModules = registry.databases[context.database.provider]
-      if (dbModules) {
-        selectedModules.push(...dbModules)
-      }
-
-      // Include ORM-specific modules
-      if (context.orm) {
-        const ormModules = registry.databases[context.orm]
-        if (ormModules) {
-          selectedModules.push(...ormModules)
-        }
+    // Include ORM-specific modules if database is configured
+    if (context.orm && context.database.provider !== 'none') {
+      const ormModules = registry.databases[context.orm]
+      if (ormModules) {
+        selectedModules.push(...ormModules)
       }
     }
 
@@ -325,12 +331,29 @@ export class TemplateLoader {
       // Add templates
       templates.push(...module.templates)
 
-      // Merge dependencies
+      // Merge base dependencies
       if (module.config.dependencies?.dependencies) {
         Object.assign(mergedDependencies.dependencies, module.config.dependencies.dependencies)
       }
       if (module.config.dependencies?.devDependencies) {
         Object.assign(mergedDependencies.devDependencies, module.config.dependencies.devDependencies)
+      }
+
+      // Process conditional dependencies
+      if (module.config.conditions) {
+        for (const condition of module.config.conditions) {
+          if (this.evaluateCondition(condition.when, context)) {
+            if (condition.then.dependencies?.dependencies) {
+              Object.assign(mergedDependencies.dependencies, condition.then.dependencies.dependencies)
+            }
+            if (condition.then.dependencies?.devDependencies) {
+              Object.assign(mergedDependencies.devDependencies, condition.then.dependencies.devDependencies)
+            }
+            if (condition.then.scripts) {
+              Object.assign(mergedScripts, condition.then.scripts)
+            }
+          }
+        }
       }
 
       // Merge scripts (last one wins)
@@ -353,9 +376,17 @@ export class TemplateLoader {
         module.config.requiredDirectories.forEach(dir => requiredDirectories.add(dir))
       }
 
-      // Collect conflicts
+      // Check for actual conflicts (only flag if conflicting modules are both selected)
       if (module.config.conflicts) {
-        conflicts.push(...module.config.conflicts)
+        for (const conflictName of module.config.conflicts) {
+          // Check if any other selected module has this conflict name as its ID
+          const hasConflictingModule = modules.some(otherModule => 
+            otherModule.id === conflictName && otherModule !== module
+          )
+          if (hasConflictingModule) {
+            conflicts.push(conflictName)
+          }
+        }
       }
     }
 

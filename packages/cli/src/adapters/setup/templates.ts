@@ -12,6 +12,9 @@ import { installShadCNComponents } from './shadcn-installer'
  */
 function mapTemplateToFramework(framework: string): SupportedFramework {
   const mapping: Record<string, SupportedFramework> = {
+    'nextjs': 'nextjs',
+    'tanstack-start': 'tanstack-start',
+    // Legacy mappings for backward compatibility
     'starter-nextjs': 'nextjs',
     'starter-express-rest-api': 'express',
     'starter-bun-react-app': 'vite',
@@ -24,54 +27,15 @@ function mapTemplateToFramework(framework: string): SupportedFramework {
 }
 
 /**
- * Generate main volt.ts file with proper imports and configuration
+ * Generate main volt.ts file - minimal version
  */
 export function generateVoltRouter(config: ProjectSetupConfig): TemplateFile {
-  const { features } = config
-
-  let imports = [`import { Volt } from '@volt.js/core'`]
-  let serviceImports: string[] = []
-
-  // Add context import
-  imports.push('import { createVoltAppContext } from "./volt.context"')
-
-  // Add feature service imports based on enabled features
-  if (features.store) {
-    serviceImports.push('import { store } from "@/services/store"')
-  }
-
-  if (features.jobs) {
-    serviceImports.push('import { REGISTERED_JOBS } from "@/services/jobs"')
-  }
-
-  if (features.logging) {
-    serviceImports.push('import { logger } from "@/services/logger"')
-  }
-
-  // Telemetry service import
-  if (features.telemetry) {
-    serviceImports.push('import { telemetry } from "@/services/telemetry"')
-  }
-
-  const allImports = [...imports, ...serviceImports].join('\n')
-
-  // Build configuration chain
-  let configChain = ['export const volt = Volt', '  .context(createVoltAppContext)']
-
-  if (features.store) configChain.push('  .store(store)')
-  if (features.jobs) configChain.push('  .jobs(REGISTERED_JOBS)')
-  if (features.logging) configChain.push('  .logger(logger)')
-  if (features.telemetry) configChain.push('  .telemetry(telemetry)')
-
-  configChain.push('  .create()')
-
-  const content = `${allImports}
+  const content = `import { Volt } from '@volt.js/core'
 
 /**
- * @description Initialize the Volt.js
- * @see https://github.com/Volt-js/volt.js
+ * Initialize Volt.js with minimal configuration
  */
-${configChain.join('\n')}
+export const volt = Volt.create()
 `
 
   return {
@@ -81,37 +45,16 @@ ${configChain.join('\n')}
 }
 
 /**
- * Generate volt.context.ts file with proper type definitions
+ * Generate volt.context.ts file - minimal version
  */
 export function generateVoltContext(config: ProjectSetupConfig): TemplateFile {
-  const { database } = config
-
-  let serviceImports: string[] = []
-  let contextProperties: string[] = []
-
-  if (database.provider !== 'none') {
-    serviceImports.push('import { database } from "@/services/database"')
-    contextProperties.push('    database,')
-  }
-
-  const allImports = serviceImports.join('\n')
-
-  const content = `${allImports}
-
-/**
- * @description Create the context of the Volt.js application
- * @see https://github.com/Volt-js/volt.js
+  const content = `/**
+ * Volt.js application context (minimal setup)
  */
 export const createVoltAppContext = () => {
-  return {
-${contextProperties.join('\n')}
-  }
+  return {}
 }
 
-/**
- * @description The context of the Volt.js application
- * @see https://github.com/Volt-js/volt.js
- */
 export type VoltAppContext = Awaited<ReturnType<typeof createVoltAppContext>>
 `
 
@@ -122,115 +65,28 @@ export type VoltAppContext = Awaited<ReturnType<typeof createVoltAppContext>>
 }
 
 /**
- * Generate example controller following the new feature structure
+ * Generate example controller - minimal version
  */
 export function generateExampleController(config: ProjectSetupConfig): TemplateFile {
-  const { features } = config
-
-  let imports = `import { volt } from '@/volt'
-import { z } from 'zod'`
-
-  let exampleActions = `    // Health check action
-    health: volt.query({
-      name: 'health',
-      description: 'Health check',
-      path: '/',
-      handler: async ({ request, response, context }) => {
-        ${features.logging ? 'context.logger.info(\'Health check requested\')' : ''}
-        return response.success({
-          status: 'ok',
-          timestamp: new Date().toISOString(),
-          features: {
-            store: ${features.store},
-            jobs: ${features.jobs},
-            mcp: ${features.mcp},
-            logging: ${features.logging}
-          }
-        })
-      }
-    })`
-
-  // Add store example if enabled
-  if (features.store) {
-    exampleActions += `,
-
-    // Cache demonstration action
-    cacheDemo: volt.query({
-      name: 'cacheDemo',
-      description: 'Demonstrate caching',
-      path: '/cache/:key' as const,
-      handler: async ({ request, response, context }) => {
-        const { key } = request.params
-        const cached = await context.store.get(key)
-
-        if (cached) {
-          return response.success({
-            data: cached,
-            source: 'cache'
-          })
-        }
-
-        // Generate sample data
-        const data = {
-          message: \`Hello from \${key}\`,
-          timestamp: new Date().toISOString()
-        }
-
-        // Cache for 1 hour
-        await context.store.set(key, data, { ttl: 3600 })
-
-        return response.success({
-          data,
-          source: 'generated'
-        })
-      }
-    })`
-  }
-
-  // Add jobs example if enabled
-  if (features.jobs) {
-    exampleActions += `,
-
-    // Background job scheduling action
-    scheduleJob: volt.mutation({
-      name: 'scheduleJob',
-      description: 'Schedule a background job',
-      path: '/schedule-job',
-      method: 'POST',
-      body: z.object({
-        message: z.string(),
-        delay: z.number().optional()
-      }),
-      handler: async ({ request, response, context }) => {
-        const { message, delay = 0 } = request.body
-
-        const jobId = await context.jobs.add('processMessage', {
-          message,
-          timestamp: new Date().toISOString()
-        }, { delay })
-
-        ${features.logging ? 'context.logger.info(\'Job scheduled\', { jobId, message })' : ''}
-
-        return response.success({
-          jobId,
-          message: 'Job scheduled successfully',
-          delay
-        })
-      }
-    })`
-  }
-
-  const content = `${imports}
+  const content = `import { volt } from '@/volt'
 
 /**
- * @description Example controller demonstrating Volt.js features
- * @see https://github.com/Volt-js/volt.js
+ * Example controller with minimal setup
  */
 export const exampleController = volt.controller({
   name: 'example',
   path: '/example',
   actions: {
-${exampleActions}
+    hello: volt.query({
+      name: 'hello',
+      path: '/hello',
+      handler: async ({ response }) => {
+        return response.success({
+          message: 'Hello from Volt.js!',
+          timestamp: new Date().toISOString()
+        })
+      }
+    })
   }
 })
 `
@@ -650,18 +506,16 @@ function getFrameworkDependencies(framework: string) {
   const reactFrameworks = ['nextjs', 'vite', 'tanstack-start']
 
   const frameworkConfigs: Record<string, { dependencies: Record<string, string>, devDependencies: Record<string, string> }> = {
-    'starter-nextjs': {
+    'nextjs': {
       dependencies: {
         'next': '^15.0.0',
         'react': '^19.0.0',
         'react-dom': '^19.0.0',
-        '@volt.js/core': 'latest' // Add core client dependency for React frameworks
+        '@volt.js/core': 'latest'
       },
       devDependencies: {
         '@types/react': '^19.0.0',
-        '@types/react-dom': '^19.0.0',
-        'eslint': '^9.0.0',
-        'eslint-config-next': '^15.0.0'
+        '@types/react-dom': '^19.0.0'
       }
     },
     'starter-express-rest-api': {
@@ -698,18 +552,47 @@ function getFrameworkDependencies(framework: string) {
       dependencies: {},
       devDependencies: {}
     },
+    'tanstack-start': {
+      dependencies: {
+        '@tanstack/react-router': '^1.0.0',
+        '@tanstack/start': '^1.0.0',
+        'react': '^19.0.0',
+        'react-dom': '^19.0.0',
+        '@volt.js/core': 'latest',
+        'vinxi': '^0.4.0'
+      },
+      devDependencies: {
+        '@types/react': '^19.0.0',
+        '@types/react-dom': '^19.0.0',
+        'vite': '^6.0.0'
+      }
+    },
+    // Legacy compatibility mappings
+    'starter-nextjs': {
+      dependencies: {
+        'next': '^15.0.0',
+        'react': '^19.0.0',
+        'react-dom': '^19.0.0',
+        '@volt.js/core': 'latest'
+      },
+      devDependencies: {
+        '@types/react': '^19.0.0',
+        '@types/react-dom': '^19.0.0'
+      }
+    },
     'starter-tanstack-start': {
       dependencies: {
         '@tanstack/react-router': '^1.0.0',
         '@tanstack/start': '^1.0.0',
         'react': '^19.0.0',
         'react-dom': '^19.0.0',
-        '@volt.js/core': 'latest' // Add core client dependency for React frameworks
+        '@volt.js/core': 'latest',
+        'vinxi': '^0.4.0'
       },
       devDependencies: {
         '@types/react': '^19.0.0',
         '@types/react-dom': '^19.0.0',
-        'vite': '^5.0.0'
+        'vite': '^6.0.0'
       }
     }
   }
@@ -748,6 +631,7 @@ function generateScripts(config: ProjectSetupConfig): Record<string, string> {
       scripts.dev = 'vinxi dev'
       scripts.build = 'vinxi build'
       scripts.start = 'vinxi start'
+      scripts['type-check'] = 'tsc --noEmit'
       break
     case 'generic':
       if (config.framework.includes('bun')) {
@@ -1092,29 +976,22 @@ export function generateFrameworkFiles(config: ProjectSetupConfig): TemplateFile
 function generateNextJSFiles(config: ProjectSetupConfig): TemplateFile[] {
   const files: TemplateFile[] = []
 
-  // next.config.ts
+  // next.config.ts - minimal
   files.push({
     path: 'next.config.ts',
     content: `import type { NextConfig } from 'next'
 
-const nextConfig: NextConfig = {
-  experimental: {
-    typedRoutes: true
-  }
-}
+const nextConfig: NextConfig = {}
 
 export default nextConfig`
   })
 
-  // app/layout.tsx
+  // app/layout.tsx - minimal
   files.push({
     path: 'src/app/layout.tsx',
     content: `import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import { Providers } from '@/components/providers'
 ${config.styling === 'tailwind' || config.ui.shadcn ? `import './globals.css'` : ''}
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: '${config.projectName}',
@@ -1128,7 +1005,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <Providers>
           {children}
         </Providers>
@@ -1138,35 +1015,26 @@ export default function RootLayout({
 }`
   })
 
-  // app/page.tsx
+  // app/page.tsx - minimal
   files.push({
     path: 'src/app/page.tsx',
     content: `export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm">
-        <h1 className="text-4xl font-bold text-center">
-          Welcome to ${config.projectName}
-        </h1>
-        <p className="text-xl text-center mt-4 text-gray-600">
-          Built with Volt.js ${config.database.provider !== 'none' ? `and ${config.orm === 'prisma' ? 'Prisma' : 'Drizzle'}` : ''}
-        </p>
-      </div>
+    <main>
+      <h1>Welcome to ${config.projectName}</h1>
+      <p>Built with Volt.js</p>
     </main>
   )
 }`
   })
 
-  // API route for Volt
+  // API route for Volt.js
   files.push({
     path: 'src/app/api/v1/[[...all]]/route.ts',
-    content: `import { volt } from '@/volt'
+    content: `import { AppRouter } from '@/volt.router'
+import { nextRouteHandlerAdapter } from '@volt.js/core/adapters'
 
-export const GET = volt.handler
-export const POST = volt.handler
-export const PUT = volt.handler
-export const PATCH = volt.handler
-export const DELETE = volt.handler`
+export const { GET, POST, PUT, DELETE, PATCH } = nextRouteHandlerAdapter(AppRouter)`
   })
 
   return files
@@ -1285,16 +1153,71 @@ export default App`
 }
 
 function generateTanStackFiles(config: ProjectSetupConfig): TemplateFile[] {
-  return [{
+  const files: TemplateFile[] = []
+
+  // app.config.ts - minimal
+  files.push({
     path: 'app.config.ts',
     content: `import { defineConfig } from '@tanstack/start/config'
 
-export default defineConfig({
-  server: {
-    preset: 'node-server'
-  }
+export default defineConfig({})`
+  })
+
+  // src/routes/__root.tsx - minimal
+  files.push({
+    path: 'src/routes/__root.tsx',
+    content: `import { createRootRoute, Outlet } from '@tanstack/react-router'
+
+export const Route = createRootRoute({
+  component: () => (
+    <html>
+      <head>
+        <title>${config.projectName}</title>
+      </head>
+      <body>
+        <Outlet />
+      </body>
+    </html>
+  ),
 })`
-  }]
+  })
+
+  // src/routes/index.tsx - minimal
+  files.push({
+    path: 'src/routes/index.tsx',
+    content: `import { createFileRoute } from '@tanstack/react-router'
+
+export const Route = createFileRoute('/')({
+  component: Home,
+})
+
+function Home() {
+  return (
+    <main>
+      <h1>Welcome to ${config.projectName}</h1>
+      <p>Built with Volt.js and TanStack Start</p>
+    </main>
+  )
+}`
+  })
+
+  // API route for Volt.js
+  files.push({
+    path: 'src/routes/api/v1/$.ts',
+    content: `import { createAPIFileRoute } from '@tanstack/start/api'
+import { AppRouter } from '@/volt.router'
+import { tanStackHandlerAdapter } from '@volt.js/core/adapters'
+
+export const Route = createAPIFileRoute('/api/v1/$')({
+  GET: tanStackHandlerAdapter(AppRouter),
+  POST: tanStackHandlerAdapter(AppRouter),
+  PUT: tanStackHandlerAdapter(AppRouter),
+  DELETE: tanStackHandlerAdapter(AppRouter),
+  PATCH: tanStackHandlerAdapter(AppRouter),
+})`
+  })
+
+  return files
 }
 
 /**

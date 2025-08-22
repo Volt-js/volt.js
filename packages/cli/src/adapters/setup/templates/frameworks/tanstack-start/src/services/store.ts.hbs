@@ -1,0 +1,25 @@
+{{#if services.store}}
+import { createRedisStoreAdapter } from '@volt.js/adapter-redis'
+import { redis } from '@/services/redis'
+
+/**
+ * Store adapter for data persistence.
+ *
+ * @remarks
+ * Provides a unified interface for data storage operations using Redis.
+ *
+ * @see https://github.com/Volt-js/volt.js/tree/main/packages/adapter-redis
+ */
+export const store = createRedisStoreAdapter(redis)
+{{else}}
+/**
+ * Store service placeholder.
+ * 
+ * @remarks
+ * Add your store implementation here.
+ * This could be Redis, in-memory, or file-based storage.
+ */
+export const store = {
+  // Add your store implementation here
+}
+{{/if}}

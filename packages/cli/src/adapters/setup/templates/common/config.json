@@ -1,0 +1,10 @@
+{
+  "name": "Common Templates",
+  "description": "Common templates shared across frameworks",
+  "dependencies": {},
+  "requiredDirectories": [
+    "src/lib",
+    "src/hooks",
+    "src/docs"
+  ]
+}
