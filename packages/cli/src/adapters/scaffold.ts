@@ -24,6 +24,129 @@ async function writeFile(filePath: string, content: string): Promise<void> {
   await fs.writeFile(filePath, content, 'utf-8');
 }
 
+// --- Router Registration Functions ---
+
+async function findRouterFile(): Promise<string | null> {
+  const possiblePaths = [
+    'src/volt.router.ts',
+    'src/volt.router.js',
+    'src/router.ts',
+    'src/router.js',
+    'volt.router.ts',
+    'volt.router.js'
+  ];
+
+  for (const routerPath of possiblePaths) {
+    try {
+      await fs.access(routerPath);
+      return routerPath;
+    } catch {
+      // File doesn't exist, continue searching
+    }
+  }
+  return null;
+}
+
+async function registerControllerInRouter(featureName: string, controllerName: string): Promise<void> {
+  const spinner = logger.spinner(`Registering controller in router...`)
+  spinner.start()
+
+  try {
+    const routerPath = await findRouterFile();
+    if (!routerPath) {
+      spinner.warn('No volt.router.ts file found. Please manually register your controller.');
+      return;
+    }
+
+    const routerContent = await fs.readFile(routerPath, 'utf-8');
+    
+    // Generate import statement
+    const importStatement = `import { ${controllerName} } from '@/features/${featureName}'`;
+    
+    // Check if import already exists
+    if (routerContent.includes(importStatement)) {
+      spinner.info(`Controller '${controllerName}' is already imported in router`);
+      return;
+    }
+
+    // Find the last import statement and add our import after it
+    const lines = routerContent.split('\n');
+    let lastImportIndex = -1;
+    
+    for (let i = 0; i < lines.length; i++) {
+      if (lines[i].trim().startsWith('import ')) {
+        lastImportIndex = i;
+      }
+    }
+
+    if (lastImportIndex === -1) {
+      throw new Error('Could not find import statements in router file');
+    }
+
+    // Insert the new import
+    lines.splice(lastImportIndex + 1, 0, importStatement);
+
+    // Find the controllers object and add our controller
+    let controllersStart = -1;
+    let controllersEnd = -1;
+    let braceCount = 0;
+    let foundControllers = false;
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      
+      if (line.includes('controllers: {') || line.startsWith('controllers: {')) {
+        controllersStart = i;
+        foundControllers = true;
+        braceCount = 1;
+        continue;
+      }
+      
+      if (foundControllers) {
+        // Count opening and closing braces to find the end of controllers object
+        braceCount += (line.match(/{/g) || []).length;
+        braceCount -= (line.match(/}/g) || []).length;
+        
+        if (braceCount === 0) {
+          controllersEnd = i;
+          break;
+        }
+      }
+    }
+
+    if (controllersStart === -1 || controllersEnd === -1) {
+      throw new Error('Could not find controllers object in router file');
+    }
+
+    // Check if controller is already registered
+    const controllersSection = lines.slice(controllersStart, controllersEnd + 1).join('\n');
+    const controllerKey = toCamelCase(featureName);
+    
+    if (controllersSection.includes(`${controllerKey}:`)) {
+      spinner.info(`Controller '${controllerKey}' is already registered in router`);
+      return;
+    }
+
+    // Add the controller registration before the closing brace
+    const controllerRegistration = `    ${controllerKey}: ${controllerName},`;
+    lines.splice(controllersEnd, 0, controllerRegistration);
+
+    // Write the updated content back to the file
+    const updatedContent = lines.join('\n');
+    await fs.writeFile(routerPath, updatedContent, 'utf-8');
+
+    spinner.success(`Successfully registered '${controllerName}' in router`);
+    logger.info(`Added controller registration: ${controllerKey}: ${controllerName}`);
+
+  } catch (error) {
+    spinner.error(`Failed to register controller in router`);
+    logger.error('Router registration failed:', error);
+    console.log(chalk.yellow(`\n⚠️  Please manually add the following to your router:`));
+    console.log(chalk.cyan(`   import { ${controllerName} } from '@/features/${featureName}'`));
+    console.log(chalk.cyan(`   ${toCamelCase(featureName)}: ${controllerName},`));
+  }
+}
+
 
 // --- Schema Provider Factory ---
 
@@ -281,6 +404,11 @@ async function scaffoldEmptyFeature(featureName: string, featureDir: string) {
       generateEmptyIndexTemplate(featureName)
     )
     spinner.success(`Scaffolded empty feature '${featureName}'`)
+
+    // Register controller in router
+    const controllerName = `${featureName.toLowerCase()}Controller`
+    await registerControllerInRouter(featureName, controllerName)
+    
   } catch (error) {
     spinner.error(`Failed to create empty feature '${featureName}'`)
     throw error
@@ -328,7 +456,10 @@ async function scaffoldFeatureFromSchema(featureName: string, schemaString: stri
     )
 
     spinner.success(`Successfully scaffolded feature '${featureName}' from '${modelName}' model.`)
-    console.log(chalk.cyan(`\n✅ Next step: Register the '${toCamelCase(featureName)}Controller' in 'src/volt.router.ts'`))
+
+    // Register controller in router
+    const controllerName = `${toCamelCase(featureName)}Controller`
+    await registerControllerInRouter(featureName, controllerName)
 
   } catch (error) {
     spinner.error(`Failed to scaffold feature from schema`)
