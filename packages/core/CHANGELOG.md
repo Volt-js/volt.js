@@ -1,5 +1,16 @@
 # @volt.js/core
 
+## 0.3.6
+
+### Patch Changes
+
+- feat: jobs with SSE revalidate integration and version sync
+  - Enhanced job context factory with revalidate capabilities for SSE updates
+  - Improved CLI router registration for automatic controller setup
+  - Fixed TypeScript typings for job handlers and contexts
+  - Added comprehensive job-to-SSE integration examples in test-react app
+  - Synchronized package versions across the monorepo for consistent releases
+
 ## 0.3.4
 
 ### Patch Changes

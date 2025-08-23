@@ -33,7 +33,9 @@
       "Bash(do mv \"$file\" \"$file%.tsx.tsx.hbs\")",
       "Bash(find:*)",
       "Bash(grep:*)",
-      "Bash(npx @volt.js/cli generate:*)"
+      "Bash(npx @volt.js/cli generate:*)",
+      "Bash(cat:*)",
+      "Bash(npx changeset:*)"
     ],
     "deny": [],
     "ask": [],

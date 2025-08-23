@@ -1,5 +1,16 @@
 # @volt.js/adapter-mcp-server
 
+## 0.2.2
+
+### Patch Changes
+
+- feat: jobs with SSE revalidate integration and version sync
+  - Enhanced job context factory with revalidate capabilities for SSE updates
+  - Improved CLI router registration for automatic controller setup
+  - Fixed TypeScript typings for job handlers and contexts
+  - Added comprehensive job-to-SSE integration examples in test-react app
+  - Synchronized package versions across the monorepo for consistent releases
+
 ## 0.2.0
 
 ### Minor Changes
@@ -9,13 +20,11 @@
   Volt.js is now a fully modular, type-safe backend framework. This alpha release debuts a robust architecture with first-class type safety, powerful built-in features, and standalone adapters for extensibility and flexibility.
 
   ### Breaking Changes
-
   - New modular package architecture
   - Adapters extracted into standalone packages
   - Updated import paths and API patterns
 
   ### Core Features
-
   - **Type-Safe Router**
     - Procedure-based routing system
     - Middleware chain with execution control
@@ -95,7 +104,6 @@
   ```
 
   ### Key Benefits
-
   - Full type safety across all features
   - Modular architecture - install only what you need
   - Built-in realtime capabilities
@@ -109,7 +117,6 @@
   ### Next Steps
 
   We're currently focused on:
-
   - Completing the new Volt.js CLI for improved developer experience
   - Finalizing comprehensive unit and integration test coverage
   - Expanding and refining documentation with more examples
